@@ -5,231 +5,321 @@ import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  FileText,
-  Users,
-  CalendarDays,
-  AlertTriangle,
-  CheckCircle2,
-  Clock,
-  MapPin,
-  BarChart3,
-  ShieldCheck,
-  Sparkles,
   BookOpen,
+  Users,
+  FileText,
+  Calendar,
+  Database,
+  BarChart3,
+  AlertTriangle,
+  CheckCircle,
+  ArrowRight,
+  Briefcase,
+  GraduationCap,
+  DollarSign,
+  Shield,
+  Zap,
+  Clock,
+  Building2,
 } from "lucide-react";
 
-const submissions = [
+const mandatorySubmissions = [
   {
-    icon: MapPin,
-    title: "1. Local Content Master Plan",
+    icon: BookOpen,
+    number: "1",
+    title: "Local Content Master Plan",
     deadline: "Within 4 months of petroleum agreement",
-    period: "Full agreement term (typically 5 years)",
-    desc: "A comprehensive strategic plan covering employment, procurement, and capacity development for the entire term of your petroleum agreement. Required only once — when you first enter an agreement.",
-    items: ["Employment Sub-Plan", "Procurement Sub-Plan", "Capacity Development Sub-Plan", "Company profile", "Petroleum agreement references"],
+    description:
+      "A comprehensive, multi-year plan covering the full term of the petroleum agreement (typically 5 years). It sets out projected local employment, procurement, and capacity development targets across the life of the contract.",
   },
   {
-    icon: CalendarDays,
-    title: "2. Annual Local Content Plan",
-    deadline: "December 31 (for the following year)",
-    period: "Next calendar year",
-    desc: "A forward-looking 12-month plan submitted before the start of each calendar year. Projects your expected local content performance across employment, procurement, and capacity development.",
-    items: ["Employment projections", "Procurement targets", "Capacity development activities", "12-month forward plan"],
+    icon: Calendar,
+    number: "2",
+    title: "Annual Local Content Plan",
+    deadline: "Before the start of each calendar year",
+    description:
+      "A forward-looking 12-month plan detailing projected local employment ratios, procurement spend with Guyanese companies, and capacity building initiatives for the upcoming year.",
   },
   {
     icon: FileText,
-    title: "3. H1 Half-Yearly Report",
+    number: "3",
+    title: "H1 Half-Yearly Report",
     deadline: "July 30",
-    period: "January 1 – June 30",
-    desc: "Covers the first six months. Must include Expenditure, Employment, and Capacity Development Sub-Reports plus a Comparative Analysis Narrative explaining variances from your Annual Plan.",
-    items: ["Expenditure Sub-Report", "Employment Sub-Report", "Capacity Development Sub-Report", "Comparative Analysis Narrative"],
+    description:
+      "A backward-looking report covering actual performance from January 1 to June 30. Includes expenditure, employment, and capacity development data, plus a Comparative Analysis Narrative.",
+    link: { label: "H1 Deadline Details", href: "/h1-reporting-deadline-july-30" },
   },
   {
     icon: FileText,
-    title: "4. H2 Half-Yearly Report",
-    deadline: "January 30 (following year)",
-    period: "July 1 – December 31",
-    desc: "Same structure as H1, covering the second six months. Includes year-end reconciliation and full-year cumulative data where applicable.",
-    items: ["Expenditure Sub-Report", "Employment Sub-Report", "Capacity Development Sub-Report", "Comparative Analysis Narrative"],
+    number: "4",
+    title: "H2 Half-Yearly Report",
+    deadline: "January 30",
+    description:
+      "A backward-looking report covering actual performance from July 1 to December 31. Includes year-end reconciliation and a full-year Comparative Analysis Narrative.",
+    link: { label: "H2 Deadline Details", href: "/h2-reporting-deadline-january-30" },
   },
   {
     icon: BarChart3,
-    title: "5. Annual Performance Report",
-    deadline: "February 14 (45 days after year end)",
-    period: "Full calendar year",
-    desc: "A summary report covering the entire calendar year. Compares actual local content performance against the targets set in your Annual Local Content Plan.",
-    items: ["Full-year expenditure summary", "Employment performance", "Capacity development outcomes", "Variance analysis"],
+    number: "5",
+    title: "Annual Performance Report",
+    deadline: "Annually (as required by the Secretariat)",
+    description:
+      "A summary of full-year compliance performance against the Annual Local Content Plan. Aggregates H1 and H2 data and provides a comprehensive view of the company\u2019s local content contribution.",
   },
+];
+
+const deadlineCalendar = [
+  { deadline: "January 30", submission: "H2 Half-Yearly Report (Jul\u2013Dec of prior year)", priority: "Critical" },
+  { deadline: "Before Jan 1", submission: "Annual Local Content Plan (upcoming year)", priority: "Critical" },
+  { deadline: "July 30", submission: "H1 Half-Yearly Report (Jan\u2013Jun)", priority: "Critical" },
+  { deadline: "Within 4 months", submission: "Local Content Master Plan (new agreements only)", priority: "High" },
+  { deadline: "As required", submission: "Annual Performance Report", priority: "High" },
 ];
 
 const dataCategories = [
   {
-    title: "Expenditure Data",
-    color: "bg-emerald-100 text-emerald-700",
-    items: ["Supplier name and country of origin", "Guyanese vs non-Guyanese classification", "LCA sector category (40 categories)", "Amount spent in reporting period", "Sole source code (if applicable)", "LCS Certificate ID for local suppliers"],
+    icon: DollarSign,
+    title: "Expenditure",
+    items: [
+      "Total procurement spend for the period",
+      "Breakdown by local vs. foreign suppliers",
+      "Goods and services categories",
+      "Subcontractor expenditure allocation",
+    ],
   },
   {
-    title: "Employment Data",
-    color: "bg-blue-100 text-blue-700",
-    items: ["Employee name and nationality", "Job title and ISCO-08 category", "Guyanese national status", "Managerial / Technical / Non-Technical level", "Remuneration band", "Start and end dates"],
+    icon: Users,
+    title: "Employment",
+    items: [
+      "Total headcount by nationality (Guyanese vs. expatriate)",
+      "Job classification breakdown (management, technical, skilled, unskilled)",
+      "New hires during the period",
+      "Succession planning for expatriate positions",
+    ],
   },
   {
+    icon: GraduationCap,
     title: "Capacity Development",
-    color: "bg-amber-100 text-amber-700",
-    items: ["Training programme name", "Number of participants", "Guyanese participants", "Duration and dates", "Cost of programme", "Type: training, scholarship, technology transfer"],
+    items: [
+      "Training programmes conducted",
+      "Number of Guyanese nationals trained",
+      "Scholarships and educational sponsorships",
+      "Technology transfer initiatives",
+      "Associated expenditure for each activity",
+    ],
   },
 ];
 
 const commonMistakes = [
-  "Submitting after the deadline without requesting an extension",
-  "Missing the Comparative Analysis Narrative entirely",
-  "Incorrect Guyanese vs non-Guyanese classification of suppliers",
-  "Not including sole-source codes for sole-sourced contracts",
-  "Using outdated template versions (must use Version 4.1)",
-  "Omitting capacity development spend (GY$0 triggers Secretariat query)",
-  "Not including LCS Certificate IDs for registered local suppliers",
-  "Mixing reporting periods or including out-of-period transactions",
+  {
+    mistake: "Submitting on the deadline day",
+    fix: "Submit at least 5 business days before the statutory deadline. Last-minute submissions risk system issues and leave no time for corrections.",
+  },
+  {
+    mistake: "Inconsistent data between H1 and H2 reports",
+    fix: "Cross-reference your H1 figures when preparing H2. The Secretariat reviews both reports together and flags discrepancies.",
+  },
+  {
+    mistake: "Generic Comparative Analysis Narratives",
+    fix: "Address each material variance specifically. The Secretariat expects genuine explanations, not template language.",
+  },
+  {
+    mistake: "Not reconciling against the Annual Plan",
+    fix: "Your reports are evaluated against your approved plan. Track compliance throughout the year, not just at reporting time.",
+  },
+  {
+    mistake: "Missing or incomplete capacity development data",
+    fix: "Document training activities as they happen. Reconstructing this data at year-end is the most common source of errors.",
+  },
+  {
+    mistake: "Failing to update the Local Content Register",
+    fix: "Ensure your registration is current. Lapsed registrations can trigger compliance flags even if your reports are filed on time.",
+  },
 ];
 
 export default function CompleteGuideContent() {
   return (
     <>
       <HeroSection
-        eyebrow="FLAGSHIP GUIDE · 2026 EDITION"
-        headline="The Complete Guide to LCA Reporting in Guyana"
-        sub="Everything you need to know about Local Content Act compliance — from first-time filing to ongoing reporting obligations."
-        geometricVariant="topology"
-        primaryCTA={{ label: "Download Checklist", href: "/contact" }}
-        secondaryCTA={{ label: "Talk to an Expert", href: "/contact" }}
+        eyebrow="2026 Edition"
+        headline="The Complete Guide to LCA Reporting in Guyana (2026)"
+        sub="Everything you need to know about Local Content Act compliance: all 5 mandatory submissions, deadlines, data requirements, common mistakes, penalties, and how to automate reporting."
+        geometricVariant="hexagons"
+        primaryCTA={{ label: "Get Compliance Help", href: "/contact" }}
+        secondaryCTA={{ label: "View Filing Calendar", href: "/lca-filing-calendar" }}
       />
 
-      {/* Definition Block */}
-      <section className="py-16 px-6">
+      {/* Table of Contents */}
+      <section className="py-16 px-6 bg-surface">
         <div className="mx-auto max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            className="bg-accent-light/40 border-l-4 border-accent rounded-r-xl p-6"
+            className="bg-card border border-border rounded-lg p-8"
           >
-            <div className="flex items-center gap-2 mb-3">
-              <BookOpen size={18} className="text-accent" />
-              <h2 className="text-sm font-bold text-accent uppercase tracking-wider">What Is LCA Reporting?</h2>
-            </div>
-            <p className="text-sm text-text-primary leading-relaxed">
-              Local Content Act (LCA) reporting is the mandatory compliance process under Guyana&apos;s Local Content Act 2021
-              (No. 18 of 2021). Every contractor, subcontractor, and licensee in the petroleum sector must submit recurring
-              reports to the Local Content Secretariat covering employment of Guyanese nationals, procurement from local
-              suppliers, and capacity development activities. There are five mandatory submissions per year, with penalties
-              of up to GY$50 million for non-compliance.
-            </p>
+            <h2 className="font-display text-lg text-text-primary mb-4">In This Guide</h2>
+            <ol className="space-y-2 text-sm text-text-secondary">
+              {[
+                "What Is the Local Content Act?",
+                "Who Must File?",
+                "The 5 Mandatory Submissions Explained",
+                "Filing Deadlines Calendar",
+                "What Data You Need",
+                "The Comparative Analysis Narrative",
+                "Common Mistakes and How to Avoid Them",
+                "Penalties for Non-Compliance",
+                "How LCA Desk Automates Reporting",
+                "How Stabroek Advisory\u2019s Managed Service Works",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 text-accent font-display text-xs">
+                    {i + 1}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ol>
           </motion.div>
         </div>
       </section>
 
-      {/* Table of Contents */}
-      <section className="py-12 px-6 bg-surface">
+      {/* Section 1: What Is the Local Content Act? */}
+      <section className="py-20 px-6">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-xl text-text-primary mb-6">In This Guide</h2>
-          <nav className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {[
-              "Who Must File",
-              "The 5 Mandatory Submissions",
-              "Filing Deadlines",
-              "What Data You Need",
-              "The Comparative Analysis Narrative",
-              "Common Mistakes",
-              "Penalties for Non-Compliance",
-              "Automating with LCA Desk",
-            ].map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.03 }}
-                className="flex items-center gap-3 bg-card border border-border rounded-lg px-4 py-3 text-sm text-text-secondary hover:text-accent hover:border-accent/30 transition-colors"
-              >
-                <span className="text-accent font-bold text-xs">{String(i + 1).padStart(2, "0")}</span>
-                {item}
-              </motion.div>
-            ))}
-          </nav>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
+              1. What Is the Local Content Act?
+            </h2>
+            <div className="bg-card border border-accent/30 rounded-lg p-8 mb-6">
+              <p className="text-sm text-text-secondary leading-relaxed">
+                The <strong className="text-text-primary">Local Content Act 2021</strong> (No. 18 of 2021)
+                is Guyana&apos;s primary legislation governing the participation of Guyanese nationals and
+                companies in the petroleum sector. It was enacted to ensure that the country&apos;s oil and
+                gas wealth generates tangible economic benefits for Guyanese citizens through local
+                employment, procurement, and capacity development.
+              </p>
+            </div>
+            <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+              <p>
+                The Act created the <strong className="text-text-primary">Local Content Secretariat</strong> as
+                the regulatory body responsible for monitoring compliance, maintaining the Local Content
+                Register, and enforcing reporting obligations. It also established the{" "}
+                <strong className="text-text-primary">Local Content Register</strong>, a directory of
+                Guyanese nationals and companies eligible to provide goods and services to the petroleum
+                sector.
+              </p>
+              <p>
+                Since coming into force, the Act has steadily expanded in scope and enforcement. Over
+                1,300 companies are now subject to filing requirements, and the Secretariat has
+                increased both its monitoring capabilities and its willingness to impose penalties for
+                non-compliance.
+              </p>
+              <p>
+                For a detailed breakdown of the Act&apos;s structure, see our{" "}
+                <Link href="/lca-act-overview" className="text-accent hover:underline font-medium">
+                  LCA Act Overview
+                </Link>.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Who Must File */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">Who Must File</h2>
-          <p className="text-sm text-text-secondary leading-relaxed mb-8">
-            All entities engaged in petroleum operations in Guyana are required to file LCA reports.
-            This includes:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Section 2: Who Must File? */}
+      <section className="py-20 px-6 bg-surface">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6 text-center">
+              2. Who Must File?
+            </h2>
+            <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+              The filing obligation applies broadly across the petroleum supply chain.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Users, title: "Contractors", desc: "Operators and primary contractors holding petroleum agreements with the Government of Guyana." },
-              { icon: Users, title: "Subcontractors", desc: "Service companies, suppliers, and any entity in the petroleum supply chain providing goods or services." },
-              { icon: Users, title: "Licensees", desc: "Companies holding petroleum prospecting or production licences under the Petroleum Act." },
+              {
+                icon: Building2,
+                title: "Contractors",
+                body: "Any entity that has entered into a petroleum agreement with the Government of Guyana. This includes operators and joint venture partners holding exploration or production licences.",
+              },
+              {
+                icon: Briefcase,
+                title: "Subcontractors",
+                body: "Companies providing goods or services to a contractor in connection with petroleum operations. This includes drilling companies, logistics providers, catering firms, and engineering consultancies.",
+              },
+              {
+                icon: Shield,
+                title: "Licensees",
+                body: "Holders of petroleum prospecting licences or other authorisations under the Petroleum (Exploration and Production) Act. Both Guyanese and foreign-owned entities are covered.",
+              },
             ].map((item) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                className="bg-card border border-border rounded-xl p-5"
+                className="bg-card border border-border rounded-lg p-6"
               >
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4">
                   <item.icon size={20} className="text-accent" />
                 </div>
-                <h3 className="text-sm font-medium text-text-primary mb-2">{item.title}</h3>
-                <p className="text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                <h3 className="font-display text-base text-text-primary mb-2">{item.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{item.body}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The 5 Mandatory Submissions */}
-      <section className="py-20 px-6 bg-surface">
+      {/* Section 3: The 5 Mandatory Submissions */}
+      <section className="py-20 px-6">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">The 5 Mandatory Submissions</h2>
-          <p className="text-sm text-text-secondary mb-10">
-            Every company in the petroleum sector must complete these five submissions. Missing any one can trigger enforcement.
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4 text-center">
+            3. The 5 Mandatory Submissions Explained
+          </h2>
+          <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+            Every entity subject to the Act must prepare and submit these five documents to the
+            Local Content Secretariat.
           </p>
           <div className="space-y-6">
-            {submissions.map((s, i) => (
+            {mandatorySubmissions.map((item) => (
               <motion.div
-                key={s.title}
+                key={item.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-card border border-border rounded-xl p-6"
+                className="bg-card border border-border rounded-lg p-6 flex items-start gap-4"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/10 to-teal/10 flex items-center justify-center flex-shrink-0">
-                    <s.icon size={20} className="text-accent" />
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-accent font-display text-sm font-bold">{item.number}</span>
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 className="font-display text-base text-text-primary">{item.title}</h3>
+                    <span className="inline-flex items-center gap-1 rounded-md bg-accent/10 px-2 py-0.5 text-xs text-accent font-medium">
+                      <Clock size={12} />
+                      {item.deadline}
+                    </span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-display text-lg text-text-primary mb-1">{s.title}</h3>
-                    <div className="flex flex-wrap gap-4 mb-3">
-                      <span className="text-xs text-text-muted flex items-center gap-1">
-                        <Clock size={12} /> {s.period}
-                      </span>
-                      <span className="text-xs text-accent font-medium flex items-center gap-1">
-                        <AlertTriangle size={12} /> Deadline: {s.deadline}
-                      </span>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed mb-4">{s.desc}</p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                      {s.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-xs text-text-secondary">
-                          <CheckCircle2 size={12} className="text-accent flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <p className="text-sm text-text-secondary leading-relaxed">{item.description}</p>
+                  {"link" in item && item.link && (
+                    <Link
+                      href={item.link.href}
+                      className="text-sm text-accent hover:underline font-medium mt-2 inline-flex items-center gap-1"
+                    >
+                      {item.link.label} <ArrowRight size={14} />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -237,94 +327,90 @@ export default function CompleteGuideContent() {
         </div>
       </section>
 
-      {/* Filing Deadlines */}
-      <section className="py-20 px-6">
+      {/* Section 4: Filing Deadlines Calendar */}
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">Filing Deadlines at a Glance</h2>
-          <div className="space-y-3">
-            {[
-              { date: "Within 4 months", label: "Master Plan — after entering petroleum agreement", color: "from-purple-500 to-indigo-500" },
-              { date: "December 31", label: "Annual Local Content Plan — for the following year", color: "from-blue-500 to-cyan-500" },
-              { date: "July 30", label: "H1 Half-Yearly Report — January to June period", color: "from-accent to-teal" },
-              { date: "January 30", label: "H2 Half-Yearly Report — July to December period", color: "from-accent to-teal" },
-              { date: "February 14", label: "Annual Performance Report — 45 days after year end", color: "from-amber-500 to-orange-500" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.date}
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.04 }}
-                className="flex items-center gap-4 bg-card border border-border rounded-lg px-5 py-3.5 hover:border-accent/30 transition-all"
-              >
-                <span className={`flex-shrink-0 bg-gradient-to-r ${item.color} text-white text-xs font-bold px-3.5 py-1.5 rounded-md min-w-[120px] text-center`}>
-                  {item.date}
-                </span>
-                <p className="text-sm text-text-secondary">{item.label}</p>
-              </motion.div>
-            ))}
-          </div>
-          {/* Semantic HTML table for AI/screen reader parsing */}
-          <div className="mt-10 overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="bg-accent/5">
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Report Type</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Period Covered</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Deadline</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Submitted To</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: "H1 Half-Yearly Report", period: "January 1 – June 30", deadline: "July 30", to: "localcontent@nre.gov.gy" },
-                  { type: "H2 Half-Yearly Report", period: "July 1 – December 31", deadline: "January 30", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Local Content Plan", period: "Forward 12-month projection", deadline: "60 days before January 1", to: "localcontent@nre.gov.gy" },
-                  { type: "Local Content Master Plan", period: "5-year forward projection", deadline: "Within 4 months of new contract", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Performance Report", period: "Prior calendar year", deadline: "45 days after December 31", to: "localcontent@nre.gov.gy" },
-                ].map((row, i) => (
-                  <tr key={row.type} className={i % 2 === 1 ? "bg-surface" : ""}>
-                    <td className="px-4 py-3 text-text-primary font-medium border border-border">{row.type}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.period}</td>
-                    <td className="px-4 py-3 text-accent font-medium border border-border">{row.deadline}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.to}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-text-muted mt-6">
-            Deadlines falling on weekends or public holidays extend to the next business day.
-            See <Link href="/lca-filing-calendar" className="text-accent hover:underline">full filing calendar</Link>.
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4 text-center">
+            4. Filing Deadlines Calendar
+          </h2>
+          <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+            Key dates every petroleum sector company operating in Guyana needs to track.
           </p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="bg-card border border-border rounded-lg overflow-hidden"
+          >
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-surface">
+                    <th className="text-left py-3 px-4 font-display text-text-primary">Deadline</th>
+                    <th className="text-left py-3 px-4 font-display text-text-primary">Submission</th>
+                    <th className="text-left py-3 px-4 font-display text-text-primary">Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {deadlineCalendar.map((row, i) => (
+                    <tr key={i} className="border-b border-border last:border-0">
+                      <td className="py-3 px-4 text-text-primary font-medium whitespace-nowrap">{row.deadline}</td>
+                      <td className="py-3 px-4 text-text-secondary">{row.submission}</td>
+                      <td className="py-3 px-4">
+                        <span
+                          className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${
+                            row.priority === "Critical"
+                              ? "bg-accent/10 text-accent"
+                              : "bg-teal/10 text-teal"
+                          }`}
+                        >
+                          {row.priority}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+          <div className="text-center mt-6">
+            <Link
+              href="/lca-filing-calendar"
+              className="text-sm text-accent hover:underline font-medium inline-flex items-center gap-1"
+            >
+              View full interactive filing calendar <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* What Data You Need */}
-      <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">What Data You Need</h2>
-          <p className="text-sm text-text-secondary mb-10">
-            LCA reports require three categories of data. Having these ready before your deadline is the single
-            most important factor in filing on time.
+      {/* Section 5: What Data You Need */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4 text-center">
+            5. What Data You Need
+          </h2>
+          <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+            All LCA reports require data across three categories. Collecting this data continuously
+            throughout the year is far easier than reconstructing it at reporting time.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {dataCategories.map((cat, i) => (
+            {dataCategories.map((cat) => (
               <motion.div
                 key={cat.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-card border border-border rounded-xl p-5"
+                className="bg-card border border-border rounded-lg p-6"
               >
-                <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-4 ${cat.color}`}>
-                  {cat.title}
-                </span>
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4">
+                  <cat.icon size={20} className="text-accent" />
+                </div>
+                <h3 className="font-display text-base text-text-primary mb-3">{cat.title}</h3>
                 <ul className="space-y-2">
-                  {cat.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-xs text-text-secondary">
-                      <CheckCircle2 size={11} className="text-accent mt-0.5 flex-shrink-0" />
+                  {cat.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <CheckCircle size={14} className="text-accent flex-shrink-0 mt-0.5" />
                       {item}
                     </li>
                   ))}
@@ -335,132 +421,271 @@ export default function CompleteGuideContent() {
         </div>
       </section>
 
-      {/* Comparative Analysis Narrative */}
-      <section className="py-20 px-6">
+      {/* Section 6: The Comparative Analysis Narrative */}
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">The Comparative Analysis Narrative</h2>
-          <p className="text-sm text-text-secondary leading-relaxed mb-6">
-            Every Half-Yearly Report must be accompanied by a Comparative Analysis Narrative — a written document
-            explaining how your actual local content performance compares to the targets in your Annual Local
-            Content Plan. This narrative covers expenditure, employment, and capacity development.
-          </p>
-          <div className="bg-card border border-border rounded-xl p-6 mb-6">
-            <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              The narrative must explain variances, both positive and negative, using formal language and
-              correct LCA terminology. It is the most time-consuming part of the filing process — typically
-              taking compliance officers <strong className="text-text-primary">4-6 hours per period</strong>.
-            </p>
-            <div className="bg-accent-light/40 border border-accent/20 rounded-lg p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles size={14} className="text-accent" />
-                <span className="text-xs font-bold text-accent">AI AUTOMATION</span>
-              </div>
-              <p className="text-xs text-text-secondary leading-relaxed">
-                LCA Desk&apos;s AI reads your expenditure, employment, and capacity development data and drafts
-                the entire Comparative Analysis Narrative automatically — using the formal tone and LCA
-                terminology the Secretariat expects.{" "}
-                <Link href="/lcadesk" className="text-accent hover:underline">Learn more about AI narrative drafting →</Link>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
+              6. The Comparative Analysis Narrative
+            </h2>
+            <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+              <p>
+                The Comparative Analysis Narrative is the most overlooked\u2014and arguably most
+                important\u2014component of Half-Yearly Reports. It is a written explanation of the
+                variances between your <strong className="text-text-primary">Annual Local Content Plan</strong> projections
+                and your <strong className="text-text-primary">actual performance</strong> during the reporting period.
+              </p>
+              <p>
+                The Secretariat does not expect every company to hit every target perfectly. What it
+                does expect is a{" "}
+                <strong className="text-text-primary">genuine, specific explanation</strong> for
+                material deviations. Generic statements like &ldquo;market conditions impacted
+                performance&rdquo; are insufficient.
+              </p>
+              <p>
+                A strong Comparative Analysis Narrative should:
+              </p>
+              <ul className="space-y-2 ml-4">
+                {[
+                  "Identify each material variance by category (expenditure, employment, capacity development)",
+                  "Provide specific reasons for the deviation (e.g., project delays, workforce transitions, supplier availability)",
+                  "Describe corrective actions taken or planned for the remainder of the year",
+                  "Reference supporting data where applicable",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle size={14} className="text-accent flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p>
+                For the H2 report, the narrative carries additional weight because it closes out the
+                calendar year. The Secretariat evaluates your cumulative performance against the full
+                Annual Plan.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Common Mistakes */}
-      <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">Common Mistakes to Avoid</h2>
-          <div className="space-y-3">
-            {commonMistakes.map((mistake, i) => (
+      {/* Section 7: Common Mistakes */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4 text-center">
+            7. Common Mistakes and How to Avoid Them
+          </h2>
+          <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+            After working with dozens of petroleum sector companies on LCA compliance, these are the
+            most frequent errors we see.
+          </p>
+          <div className="space-y-4">
+            {commonMistakes.map((item, i) => (
               <motion.div
-                key={mistake}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.03 }}
-                className="flex items-start gap-3 bg-card border border-border rounded-lg px-5 py-3"
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="bg-card border border-border rounded-lg p-6"
               >
-                <AlertTriangle size={14} className="text-amber-500 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-text-secondary">{mistake}</p>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 text-accent font-display text-sm">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-display text-base text-text-primary mb-1">{item.mistake}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{item.fix}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Penalties */}
-      <section className="py-20 px-6">
+      {/* Section 8: Penalties */}
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">Penalties for Non-Compliance</h2>
-          <div className="bg-card border border-red-200 rounded-xl p-6">
-            <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              Under Section 41 of the Local Content Act, penalties for non-compliance are severe:
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
+              8. Penalties for Non-Compliance
+            </h2>
+            <div className="bg-card border border-accent/30 rounded-lg p-8 mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle size={20} className="text-accent" />
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Under the Local Content Act, penalties range from{" "}
+                  <strong className="text-text-primary">GY$1 million to GY$50 million</strong> per
+                  offence. False or misleading submissions are a{" "}
+                  <strong className="text-text-primary">criminal offence</strong>.
+                </p>
+              </div>
+            </div>
+            <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+              <p>
+                Beyond financial penalties, non-compliance leads to suspension from the Local Content
+                Register, contract approval delays, negative impact on bid evaluations, and
+                reputational damage within the Secretariat&apos;s compliance tracking system.
+              </p>
+              <p>
+                The Secretariat has steadily increased enforcement activity since the Act came into
+                force. Companies that previously operated with minimal oversight should expect greater
+                scrutiny in 2026 and beyond.
+              </p>
+            </div>
+            <div className="mt-6">
+              <Link
+                href="/local-content-act-penalties-guyana"
+                className="text-sm text-accent hover:underline font-medium inline-flex items-center gap-1"
+              >
+                Read full penalties breakdown <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 9: LCA Desk */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6 text-center">
+              9. How LCA Desk Automates Reporting
+            </h2>
+            <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
+              LCA Desk is purpose-built software that eliminates the manual work of LCA report
+              preparation.
             </p>
-            <ul className="space-y-2 mb-4">
-              {[
-                "Fines from GY$1 million to GY$50 million per offence",
-                "False or misleading submissions are a criminal offence",
-                "Suspension or removal from the Local Content Register",
-                "Delays to contract approvals and petroleum agreement renewals",
-                "Negative impact on bid evaluation scores",
-              ].map((p) => (
-                <li key={p} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <AlertTriangle size={13} className="text-red-500 mt-0.5 flex-shrink-0" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-text-muted">
-              See <Link href="/local-content-act-penalties-guyana" className="text-accent hover:underline">full penalties guide</Link> for details.
-            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Database,
+                title: "Centralised Data Collection",
+                body: "Import expenditure, employment, and capacity development data from your existing systems. No more spreadsheets.",
+              },
+              {
+                icon: Zap,
+                title: "Automated Report Generation",
+                body: "LCA Desk formats your data into the required report structure automatically. One click generates a submission-ready report.",
+              },
+              {
+                icon: Shield,
+                title: "Built-in Validation",
+                body: "Automated checks catch data inconsistencies, missing fields, and H1/H2 discrepancies before you submit.",
+              },
+              {
+                icon: Calendar,
+                title: "Deadline Management",
+                body: "Automated reminders and a compliance calendar ensure you never miss a filing deadline.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="bg-card border border-border rounded-lg p-6 flex gap-4"
+              >
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <item.icon size={20} className="text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-display text-base text-text-primary mb-2">{item.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">{item.body}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/lcadesk"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent to-teal px-8 py-3.5 text-sm font-medium text-white hover:shadow-lg hover:shadow-accent/25 hover:scale-[1.02] transition-all"
+            >
+              Explore LCA Desk <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Automating with LCA Desk */}
+      {/* Section 10: Managed Service */}
       <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Automation</p>
-              <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
-                Automate Your LCA Reporting with LCA Desk
-              </h2>
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                LCA Desk is the only compliance platform built specifically for Guyana&apos;s Local Content Act.
-                It combines AI-powered automation with the official Secretariat template structure to
-                eliminate manual data entry, automate narrative drafting, and catch compliance gaps before submission.
+        <div className="mx-auto max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
+              10. How Stabroek Advisory&apos;s Managed Service Works
+            </h2>
+            <div className="space-y-4 text-sm text-text-secondary leading-relaxed mb-8">
+              <p>
+                For companies that want full-service compliance support, Stabroek Advisory&apos;s
+                managed service handles the entire LCA reporting process end to end.
               </p>
-              <Link
-                href="/lcadesk"
-                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-teal px-6 py-3 text-sm text-white font-medium hover:shadow-lg hover:shadow-accent/20 transition-all"
-              >
-                Explore LCA Desk →
-              </Link>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
-                { icon: ShieldCheck, text: "All 5 submission types supported" },
-                { icon: Sparkles, text: "AI narrative drafting saves 4-6 hours" },
-                { icon: AlertTriangle, text: "Pre-submission compliance gap detection" },
-                { icon: CalendarDays, text: "Automated deadline alerts" },
-                { icon: FileText, text: "Export in official Secretariat format" },
+                { step: "1", title: "Data Collection", body: "We work with your finance, HR, and operations teams to gather all required expenditure, employment, and capacity development data." },
+                { step: "2", title: "Report Preparation", body: "Our compliance analysts prepare the full report in the required format, including the Comparative Analysis Narrative with specific variance explanations." },
+                { step: "3", title: "Internal Review", body: "You receive the draft report for review and approval. We address any questions or adjustments before submission." },
+                { step: "4", title: "Submission & Documentation", body: "We submit the report to the Secretariat on your behalf and provide you with confirmation records for your files." },
+                { step: "5", title: "Ongoing Monitoring", body: "Between reporting periods, we track your compliance metrics and flag potential issues before they become problems." },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-3 bg-card border border-border rounded-lg px-4 py-3">
-                  <item.icon size={16} className="text-accent flex-shrink-0" />
-                  <span className="text-sm text-text-secondary">{item.text}</span>
-                </div>
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 text-accent font-display text-sm">
+                    {item.step}
+                  </div>
+                  <div className="pt-0.5">
+                    <h3 className="font-display text-base text-text-primary mb-1">{item.title}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{item.body}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent to-teal px-8 py-3.5 text-sm font-medium text-white hover:shadow-lg hover:shadow-accent/25 hover:scale-[1.02] transition-all"
+              >
+                Book a Consultation <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-accent/30 text-accent px-8 py-3.5 text-sm font-medium hover:bg-accent/5 hover:border-accent hover:scale-[1.02] transition-all"
+              >
+                View All Services
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       <CTABanner
-        headline="Ready to simplify your LCA reporting?"
-        body="Whether you use LCA Desk self-serve or our managed service, we'll get you compliant. Book a consultation and we'll assess your filing status within 24 hours."
+        headline="Ready to simplify your LCA compliance?"
+        body="Whether you need software, managed services, or both, we can help you meet every deadline with confidence. Talk to our team."
         primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Try LCA Desk", href: "/lcadesk" }}
+        secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
       />
     </>
   );
