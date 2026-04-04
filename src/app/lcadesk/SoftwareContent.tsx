@@ -351,7 +351,7 @@ export default function SoftwareContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-all group"
+                className="bg-white/[0.15] backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all group shadow-lg"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
