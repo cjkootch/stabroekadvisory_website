@@ -114,9 +114,9 @@ export default function LCAFilingCalendarContent() {
             {yearCalendar.map((m) => (
               <motion.div
                 key={m.month}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className={`bg-card border rounded-lg p-4 ${
                   m.events.some((e) => e.type === "deadline")
                     ? "border-accent/50 shadow-sm"
@@ -165,9 +165,9 @@ export default function LCAFilingCalendarContent() {
             {filings.map((f) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6"
               >
                 <div className="flex items-start gap-4">

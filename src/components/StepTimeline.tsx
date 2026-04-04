@@ -34,10 +34,10 @@ export default function StepTimeline({ steps }: StepTimelineProps) {
         return (
           <motion.div
             key={step.title}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: i * 0.08, duration: 0.4 }}
             whileHover={{ y: -4 }}
             className="relative text-center group"
           >

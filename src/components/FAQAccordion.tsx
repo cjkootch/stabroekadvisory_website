@@ -23,10 +23,10 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
         return (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: i * 0.03, duration: 0.35 }}
             className={`border rounded-xl overflow-hidden transition-all duration-200 ${
               isOpen ? "border-accent/40 bg-accent-light/30 shadow-sm" : "border-border hover:border-accent/20 bg-card"
             }`}

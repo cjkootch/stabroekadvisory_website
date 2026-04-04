@@ -157,9 +157,9 @@ export default function PricingToggle() {
         {plans.map((plan) => (
           <motion.div
             key={plan.name}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
             className={`rounded-xl p-6 flex flex-col border transition-all ${
               plan.highlighted

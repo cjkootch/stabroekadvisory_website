@@ -145,9 +145,9 @@ export default function AboutContent() {
             {whyHouston.map((item) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6 flex gap-4"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -173,9 +173,9 @@ export default function AboutContent() {
             {expertise.map((e) => (
               <motion.div
                 key={e.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-5 text-center"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mx-auto mb-3">
@@ -198,9 +198,9 @@ export default function AboutContent() {
             {values.map((v) => (
               <motion.div
                 key={v.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6 shadow-sm"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4">

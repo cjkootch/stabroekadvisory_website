@@ -23,9 +23,9 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-60px" }}
       whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,168,122,0.12)" }}
       className={`rounded-xl p-6 flex flex-col border transition-all relative overflow-hidden ${
         highlighted

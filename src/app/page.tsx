@@ -190,7 +190,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: i * 0.03 }}
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(0,168,122,0.08)" }}
                 className="text-xs border border-accent/30 text-accent px-4 py-2 rounded-full font-medium cursor-default transition-colors hover:border-accent/60"
               >
@@ -212,9 +212,9 @@ export default function HomePage() {
             {problemCards.map((card, i) => (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
                 className={`bg-card border border-border rounded-xl p-6 border-l-4 shadow-sm ${card.color} group transition-all`}
@@ -392,7 +392,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                transition={{ delay: i * 0.04 }}
                 whileHover={{ x: 4 }}
                 className="flex items-center gap-4 bg-card border border-border rounded-lg px-5 py-3.5 hover:border-accent/30 hover:shadow-sm transition-all group"
               >

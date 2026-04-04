@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -347,9 +347,9 @@ export default function SoftwareContent() {
             {aiFeatures.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.1 }}
                 className="bg-white/[0.15] backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all group shadow-lg"
               >
@@ -512,9 +512,9 @@ export default function SoftwareContent() {
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
                 className="bg-card border border-border rounded-xl p-6 transition-all"
@@ -544,9 +544,9 @@ export default function SoftwareContent() {
             {howItWorks.map((step, i) => (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.1 }}
                 className="relative"
               >

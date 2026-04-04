@@ -25,9 +25,9 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-60px" }}
       whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,168,122,0.12)" }}
       transition={{ duration: 0.3 }}
       className="bg-card border border-border rounded-xl p-6 flex flex-col shadow-sm group hover:border-accent/30 transition-all relative overflow-hidden"

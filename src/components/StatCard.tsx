@@ -11,7 +11,7 @@ interface StatCardProps {
 
 export default function StatCard({ value, label, lightOnDark = false }: StatCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
   const [displayed, setDisplayed] = useState(value);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function StatCard({ value, label, lightOnDark = false }: StatCard
     }
     const target = parseInt(match[1].replace(/,/g, ""), 10);
     const suffix = value.slice(match[1].length);
-    const duration = 1500;
+    const duration = 1200;
     const start = Date.now();
 
     const animate = () => {
@@ -41,10 +41,10 @@ export default function StatCard({ value, label, lightOnDark = false }: StatCard
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.4 }}
       whileHover={{ scale: 1.05 }}
       className={`text-center px-3 py-4 rounded-xl transition-colors ${
         lightOnDark
