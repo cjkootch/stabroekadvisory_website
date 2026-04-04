@@ -5,284 +5,608 @@ import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  BookOpen,
-  Users,
   FileText,
-  CalendarDays,
+  Users,
+  Calendar,
+  Grid3X3,
+  Calculator,
+  ClipboardCheck,
   AlertTriangle,
-  CheckCircle2,
-  ShieldCheck,
-  Search,
+  UserPlus,
   Globe,
-  ClipboardList,
-  Building2,
+  CheckCircle,
+  ArrowRight,
 } from "lucide-react";
 
-const serviceCategories = [
-  "Accommodation and Food Services", "Administrative and Support Services",
-  "Agriculture Forestry and Fishing", "Air Transport",
-  "Architectural and Engineering Activities", "Audit and Accounting",
-  "Chemicals and Pharmaceuticals", "Civil Works/Construction",
-  "Cleaning Services", "Computer and Information Technology",
-  "Drilling and Well Services", "Education and Training",
-  "Electrical Equipment and Services", "Environmental Services",
-  "Financial and Insurance Activities", "Freight and Logistics",
-  "Fuel and Lubricants", "Geological and Geophysical Services",
-  "Health and Medical Services", "Human Resources/Manpower",
-  "Industrial Equipment and Machinery", "Inspection and Testing",
-  "Insurance Services", "Legal Services",
-  "Maintenance Repair and Operations", "Manufacturing",
-  "Marine Services", "Mining and Quarrying",
-  "Office Equipment and Supplies", "Personal Protective Equipment",
-  "Pipeline Services", "Professional Scientific and Technical",
-  "Real Estate Activities", "Rental and Leasing",
-  "Safety and Emergency Services", "Security Services",
-  "Subsea Services", "Telecommunications",
-  "Transportation", "Waste Management and Remediation",
+const reservedCategories = [
+  "Accommodation and Food Services",
+  "Administrative and Support Services",
+  "Agriculture Forestry and Fishing",
+  "Air Transport",
+  "Architectural and Engineering Activities",
+  "Audit and Accounting",
+  "Chemicals and Pharmaceuticals",
+  "Civil Works/Construction",
+  "Cleaning Services",
+  "Computer and Information Technology",
+  "Drilling and Well Services",
+  "Education and Training",
+  "Electrical Equipment and Services",
+  "Environmental Services",
+  "Financial and Insurance Activities",
+  "Freight and Logistics",
+  "Fuel and Lubricants",
+  "Geological and Geophysical Services",
+  "Health and Medical Services",
+  "Human Resources/Manpower",
+  "Industrial Equipment and Machinery",
+  "Inspection and Testing",
+  "Insurance Services",
+  "Legal Services",
+  "Maintenance Repair and Operations",
+  "Manufacturing",
+  "Marine Services",
+  "Mining and Quarrying",
+  "Office Equipment and Supplies",
+  "Personal Protective Equipment",
+  "Pipeline Services",
+  "Professional Scientific and Technical",
+  "Real Estate Activities",
+  "Rental and Leasing",
+  "Safety and Emergency Services",
+  "Security Services",
+  "Subsea Services",
+  "Telecommunications",
+  "Transportation",
+  "Waste Management and Remediation",
 ];
 
 const commonMistakes = [
-  "Submitting after the deadline without requesting an extension",
-  "Missing the Comparative Analysis Narrative entirely",
-  "Incorrect Guyanese vs non-Guyanese classification of suppliers",
-  "Not including sole-source codes for sole-sourced contracts",
-  "Using outdated template versions (must use Version 4.1)",
-  "Omitting capacity development spend (GY$0 triggers Secretariat query)",
-  "Not including LCS Certificate IDs for registered local suppliers",
-  "Mixing reporting periods or including out-of-period transactions",
-  "Failing to disaggregate employment data by nationality and job level",
-  "Submitting without internal quality review",
+  {
+    title: "Submitting after the deadline",
+    description: "Even one day late can trigger a formal notice from the Secretariat. File at least 5 business days early to allow for corrections.",
+  },
+  {
+    title: "Using outdated templates",
+    description: "The Secretariat updates its reporting templates periodically. Always download the latest version from localcontent@nre.gov.gy before starting a report.",
+  },
+  {
+    title: "Misclassifying local vs. foreign employees",
+    description: "Only Guyanese nationals count as local employees. Permanent residents, CARICOM nationals, and work-permit holders are classified as foreign.",
+  },
+  {
+    title: "Omitting subcontractor spend",
+    description: "Your report must include spend through subcontractors, not just direct procurement. Tier-1 and Tier-2 subcontractor data is required.",
+  },
+  {
+    title: "Failing to disaggregate by service category",
+    description: "Expenditure must be broken down across the 40 reserved service categories. Lumping spend into a single category will trigger a revision request.",
+  },
+  {
+    title: "Not reporting zero-activity periods",
+    description: "Even if your company had no petroleum-related activity during a reporting period, you must still file a nil report.",
+  },
+  {
+    title: "Inconsistent figures between reports",
+    description: "H1 + H2 numbers must reconcile with Annual Performance Report totals. The Secretariat cross-references filings.",
+  },
+  {
+    title: "Missing narrative explanations",
+    description: "Numerical data alone is insufficient. Each section requires narrative context explaining variances, challenges, and planned improvements.",
+  },
+  {
+    title: "Incorrect email submission format",
+    description: "Reports must be submitted as PDF attachments to localcontent@nre.gov.gy with the correct subject line format specified by the Secretariat.",
+  },
+  {
+    title: "Failing to retain supporting documentation",
+    description: "Invoices, payroll records, and contracts supporting reported figures must be retained for at least 5 years for potential audit verification.",
+  },
 ];
 
-const registrationSteps = [
-  { step: "01", title: "Eligibility Assessment", desc: "Confirm your company meets the definition of a contractor, subcontractor, or licensee under the Act." },
-  { step: "02", title: "Document Preparation", desc: "Gather incorporation documents, Tax Identification Number, NIS registration, proof of Guyanese ownership (if applicable), and company profile." },
-  { step: "03", title: "Application Submission", desc: "Submit your application to the Local Content Secretariat at localcontent@nre.gov.gy with all required supporting documents." },
-  { step: "04", title: "Secretariat Review", desc: "The Secretariat reviews your application, may request additional information, and issues a decision." },
-  { step: "05", title: "Certificate Issuance", desc: "Upon approval, you receive your LCS Certificate with a unique Certificate ID used in all future filings." },
+const calendarEntries = [
+  { deadline: "January 30", report: "H2 Half-Yearly Report", period: "July 1 \u2013 December 31", icon: FileText },
+  { deadline: "February 14", report: "Annual Performance Report", period: "Prior calendar year", icon: ClipboardCheck },
+  { deadline: "July 30", report: "H1 Half-Yearly Report", period: "January 1 \u2013 June 30", icon: FileText },
+  { deadline: "November 1", report: "Annual Local Content Plan", period: "Forward 12-month projection", icon: Calendar },
+  { deadline: "Within 4 months of contract", report: "Local Content Master Plan", period: "5-year forward projection", icon: FileText },
 ];
 
 export default function LCAComplianceGuideContent() {
   return (
     <>
       <HeroSection
-        eyebrow="DEFINITIVE GUIDE · 2026 EDITION"
+        eyebrow="The Definitive Resource"
         headline="Guyana LCA Compliance Guide"
-        sub="Everything contractors need to know about Local Content Act reporting — from registration to filing to audit defense."
+        sub="Everything contractors, subcontractors, and licensees need to know about the Local Content Act 2021 — filings, deadlines, penalties, and best practices for 2026."
         geometricVariant="topology"
-        primaryCTA={{ label: "Talk to an Expert", href: "/contact" }}
-        secondaryCTA={{ label: "Try LCA Desk", href: "/lcadesk" }}
+        primaryCTA={{ label: "Get Compliant with LCA Desk", href: "/lcadesk" }}
+        secondaryCTA={{ label: "Talk to an Advisor", href: "/contact" }}
       />
 
-      {/* 1. Definition Block */}
-      <section className="py-16 px-6">
+      {/* Definition Block */}
+      <section className="py-20 px-6">
         <div className="mx-auto max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            className="bg-accent-light/40 border-l-4 border-accent rounded-r-xl p-6"
+            className="border-l-4 border-accent bg-card rounded-r-xl p-8"
           >
-            <div className="flex items-center gap-2 mb-3">
-              <BookOpen size={18} className="text-accent" />
-              <h2 className="text-sm font-bold text-accent uppercase tracking-wider">What Is the Local Content Act 2021?</h2>
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              What is the Local Content Act 2021?
+            </h2>
+            <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+              <p>
+                The <strong className="text-text-primary">Local Content Act 2021</strong> (No. 18 of 2021)
+                is Guyana&apos;s landmark legislation governing the participation of Guyanese nationals and
+                companies in the petroleum sector. Enacted on December 29, 2021, the Act ensures that
+                Guyana&apos;s oil and gas wealth translates into measurable local economic development.
+              </p>
+              <p>
+                The Act established the <strong className="text-text-primary">Local Content Secretariat</strong> within
+                the Ministry of Natural Resources as the regulatory body responsible for monitoring compliance,
+                maintaining the Local Content Register, and enforcing reporting obligations. It applies to
+                every entity involved in petroleum operations &mdash; from major operators like ExxonMobil Guyana
+                to the smallest service subcontractor.
+              </p>
+              <p>
+                With over <strong className="text-text-primary">1,300 companies</strong> now on the Local Content
+                Register and enforcement activity increasing year over year, understanding the Act is not
+                optional &mdash; it is a legal requirement for doing business in Guyana&apos;s petroleum sector.
+              </p>
             </div>
-            <p className="text-sm text-text-primary leading-relaxed">
-              The Local Content Act 2021 (No. 18 of 2021) is Guyana&apos;s primary legislation governing the participation of
-              Guyanese nationals and companies in the petroleum sector. It requires all contractors, subcontractors, and
-              licensees to submit recurring reports to the Local Content Secretariat covering employment, procurement, and
-              capacity development. Non-compliance penalties range from GY$1 million to GY$50 million, and false submissions
-              constitute a criminal offence. Over 1,300 companies are currently registered on the Local Content Register.
-            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. Who Must File */}
+      {/* Who Must File */}
       <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">Who Must File LCA Reports?</h2>
-          <p className="text-sm text-text-secondary leading-relaxed mb-8">
-            Every entity engaged in petroleum operations in Guyana is subject to LCA reporting requirements.
-            There are no exemptions based on company size, nationality, or contract value.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <Users className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              Who Must File Under the LCA?
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              The Local Content Act applies to three categories of entities operating in Guyana&apos;s petroleum sector.
+              If your company falls into any of these categories, you have mandatory filing obligations.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Building2, title: "Contractors", desc: "Operators and primary contractors holding petroleum agreements — including ExxonMobil, Hess, CNOOC, and their direct contract holders." },
-              { icon: Users, title: "Subcontractors", desc: "Service companies, suppliers, and any entity providing goods or services to the petroleum sector, regardless of tier." },
-              { icon: FileText, title: "Licensees", desc: "Companies holding petroleum prospecting or production licences under the Petroleum Act, including exploration-phase operators." },
+              {
+                title: "Contractors",
+                description:
+                  "Any person who has entered into a petroleum agreement with the Government of Guyana. This includes major operators such as ExxonMobil Guyana, Hess Corporation, and CNOOC who hold production sharing agreements for offshore blocks.",
+                examples: "ExxonMobil Guyana, Hess Guyana, CNOOC Petroleum Guyana, CGX Energy, Repsol",
+              },
+              {
+                title: "Subcontractors",
+                description:
+                  "Any person who has entered into a contract with a contractor or another subcontractor for the provision of goods or services related to petroleum operations. This captures the entire supply chain.",
+                examples: "Halliburton, SLB, Saipem, TechnipFMC, local shore base operators, catering companies, marine vessel operators",
+              },
+              {
+                title: "Licensees",
+                description:
+                  "Any person who holds a petroleum prospecting license or petroleum production license under the Petroleum (Exploration and Production) Act. This includes companies in the exploration phase before commercial production begins.",
+                examples: "Companies holding exploration licenses for frontier blocks, joint venture partners in licensed areas",
+              },
             ].map((item) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                className="bg-card border border-border rounded-xl p-5"
+                className="bg-card rounded-xl border border-border p-6"
               >
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
-                  <item.icon size={20} className="text-accent" />
-                </div>
-                <h3 className="text-sm font-medium text-text-primary mb-2">{item.title}</h3>
-                <p className="text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                <h3 className="font-display text-lg text-text-primary mb-3">{item.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">{item.description}</p>
+                <p className="text-xs text-text-secondary">
+                  <strong className="text-accent">Examples:</strong> {item.examples}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. The 5 Mandatory Submissions — with semantic table */}
+      {/* The 5 Mandatory Submissions */}
       <section className="py-20 px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">The 5 Mandatory Submission Types</h2>
-          <p className="text-sm text-text-secondary mb-8">
-            The Local Content Act requires five distinct submissions. Each has a different reporting period, deadline, and data structure.
-          </p>
-          <div className="overflow-x-auto">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <FileText className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              The 5 Mandatory Submissions
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              The Local Content Act 2021 requires every contractor, subcontractor, and licensee to submit
+              five distinct reports to the Local Content Secretariat. Missing any one of these triggers
+              penalties ranging from GY$1 million to GY$50 million.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="overflow-x-auto"
+          >
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-accent/5">
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Report Type</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Period Covered</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Deadline</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Submitted To</th>
+                <tr className="bg-accent/10">
+                  <th className="text-left p-4 font-display text-text-primary border border-border">Report Type</th>
+                  <th className="text-left p-4 font-display text-text-primary border border-border">Period Covered</th>
+                  <th className="text-left p-4 font-display text-text-primary border border-border">Deadline</th>
+                  <th className="text-left p-4 font-display text-text-primary border border-border">Submitted To</th>
                 </tr>
               </thead>
               <tbody>
-                {[
-                  { type: "H1 Half-Yearly Report", period: "January 1 – June 30", deadline: "July 30", to: "localcontent@nre.gov.gy" },
-                  { type: "H2 Half-Yearly Report", period: "July 1 – December 31", deadline: "January 30", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Local Content Plan", period: "Forward 12-month projection", deadline: "60 days before January 1", to: "localcontent@nre.gov.gy" },
-                  { type: "Local Content Master Plan", period: "5-year forward projection", deadline: "Within 4 months of new contract", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Performance Report", period: "Prior calendar year", deadline: "45 days after December 31", to: "localcontent@nre.gov.gy" },
-                ].map((row, i) => (
-                  <tr key={row.type} className={i % 2 === 1 ? "bg-surface" : ""}>
-                    <td className="px-4 py-3 text-text-primary font-medium border border-border">{row.type}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.period}</td>
-                    <td className="px-4 py-3 text-accent font-medium border border-border">{row.deadline}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.to}</td>
-                  </tr>
-                ))}
+                <tr className="bg-card">
+                  <td className="p-4 text-text-primary border border-border font-medium">H1 Half-Yearly Report</td>
+                  <td className="p-4 text-text-secondary border border-border">January 1 &ndash; June 30</td>
+                  <td className="p-4 text-accent border border-border font-medium">July 30</td>
+                  <td className="p-4 text-text-secondary border border-border">localcontent@nre.gov.gy</td>
+                </tr>
+                <tr>
+                  <td className="p-4 text-text-primary border border-border font-medium">H2 Half-Yearly Report</td>
+                  <td className="p-4 text-text-secondary border border-border">July 1 &ndash; December 31</td>
+                  <td className="p-4 text-accent border border-border font-medium">January 30</td>
+                  <td className="p-4 text-text-secondary border border-border">localcontent@nre.gov.gy</td>
+                </tr>
+                <tr className="bg-card">
+                  <td className="p-4 text-text-primary border border-border font-medium">Annual Local Content Plan</td>
+                  <td className="p-4 text-text-secondary border border-border">Forward 12-month projection</td>
+                  <td className="p-4 text-accent border border-border font-medium">60 days before January 1</td>
+                  <td className="p-4 text-text-secondary border border-border">localcontent@nre.gov.gy</td>
+                </tr>
+                <tr>
+                  <td className="p-4 text-text-primary border border-border font-medium">Local Content Master Plan</td>
+                  <td className="p-4 text-text-secondary border border-border">5-year forward projection</td>
+                  <td className="p-4 text-accent border border-border font-medium">Within 4 months of new contract</td>
+                  <td className="p-4 text-text-secondary border border-border">localcontent@nre.gov.gy</td>
+                </tr>
+                <tr className="bg-card">
+                  <td className="p-4 text-text-primary border border-border font-medium">Annual Performance Report</td>
+                  <td className="p-4 text-text-secondary border border-border">Prior calendar year</td>
+                  <td className="p-4 text-accent border border-border font-medium">45 days after December 31</td>
+                  <td className="p-4 text-text-secondary border border-border">localcontent@nre.gov.gy</td>
+                </tr>
               </tbody>
             </table>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="mt-8 space-y-6"
+          >
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-display text-lg text-text-primary mb-2">Half-Yearly Reports (H1 &amp; H2)</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                The most common filing obligation. Half-yearly reports cover actual expenditure, employment,
+                and capacity development data for the preceding six-month period. Reports must follow the
+                Version 4.1 Secretariat guidelines (June 2025) and include both quantitative data tables
+                and narrative explanations for each section. The H1 report covers January through June and
+                is due July 30. The H2 report covers July through December and is due January 30 of the
+                following year.
+              </p>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-display text-lg text-text-primary mb-2">Annual Local Content Plan</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                A forward-looking document projecting your company&apos;s local content activities for the
+                upcoming calendar year. It must include projected local employment targets, planned procurement
+                from Guyanese suppliers across the 40 reserved categories, and capacity development initiatives.
+                The plan is due 60 days before January 1 (effectively November 1) and serves as the benchmark
+                against which your actual performance will be measured.
+              </p>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-display text-lg text-text-primary mb-2">Local Content Master Plan</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Required within 4 months of entering into a new petroleum agreement or contract. The Master Plan
+                covers the full term of the agreement (typically 5 years) and outlines long-term commitments to
+                local employment, technology transfer, skills development, and procurement from Guyanese companies.
+                This is the most comprehensive filing and requires detailed projections for each year of the contract term.
+              </p>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-display text-lg text-text-primary mb-2">Annual Performance Report</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                A backward-looking report covering actual performance for the prior calendar year, due 45 days
+                after December 31 (February 14). This report is cross-referenced against your Annual Local Content
+                Plan to measure how well you met your projected targets. Significant variances between planned
+                and actual figures require detailed narrative explanations.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 4. Filing Calendar */}
+      {/* LCA Filing Calendar */}
       <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">The LCA Filing Calendar</h2>
-          <div className="space-y-3">
-            {[
-              { month: "January 30", label: "H2 Half-Yearly Report due (covers Jul–Dec prior year)", color: "from-accent to-teal" },
-              { month: "February 14", label: "Annual Performance Report due (45 days after year end)", color: "from-amber-500 to-orange-500" },
-              { month: "July 30", label: "H1 Half-Yearly Report due (covers Jan–Jun current year)", color: "from-accent to-teal" },
-              { month: "November 1", label: "Annual Local Content Plan due (60 days before Jan 1)", color: "from-blue-500 to-cyan-500" },
-              { month: "Ongoing", label: "Master Plan due within 4 months of new petroleum agreement", color: "from-purple-500 to-indigo-500" },
-            ].map((item, i) => (
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <Calendar className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              The LCA Filing Calendar
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Mark these dates. The Secretariat enforces deadlines strictly &mdash; even one day late
+              can trigger a formal notice and potential penalties.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {calendarEntries.map((entry) => (
               <motion.div
-                key={item.month}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.04 }}
-                className="flex items-center gap-4 bg-card border border-border rounded-lg px-5 py-3.5"
+                key={entry.report}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="bg-card rounded-xl border border-border p-6 flex flex-col md:flex-row md:items-center gap-4"
               >
-                <span className={`flex-shrink-0 bg-gradient-to-r ${item.color} text-white text-xs font-bold px-3.5 py-1.5 rounded-md min-w-[110px] text-center`}>
-                  {item.month}
-                </span>
-                <p className="text-sm text-text-secondary">{item.label}</p>
+                <div className="flex items-center gap-4 md:w-1/4">
+                  <entry.icon className="w-6 h-6 text-accent shrink-0" />
+                  <span className="font-display text-lg text-accent">{entry.deadline}</span>
+                </div>
+                <div className="md:w-1/3">
+                  <h3 className="font-display text-text-primary">{entry.report}</h3>
+                </div>
+                <div className="md:w-5/12">
+                  <p className="text-sm text-text-secondary">{entry.period}</p>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="mt-8 bg-card rounded-xl border border-accent/30 p-6"
+          >
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <strong className="text-accent">Pro tip:</strong> Start preparing each report at least 4 weeks before
+              the deadline. Data collection from subcontractors and internal departments is typically the
+              biggest bottleneck. <Link href="/lcadesk" className="text-accent hover:underline">LCA Desk</Link> automates
+              data collection and generates compliant reports in hours, not weeks.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* 5. The 40 Reserved Service Categories */}
+      {/* The 40 Reserved Service Categories */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <Grid3X3 className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              The 40 Reserved Service Categories
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              The Local Content Act designates 40 service categories where Guyanese companies must be
+              given first consideration. Contractors must report expenditure across each of these categories
+              in their half-yearly and annual reports.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"
+          >
+            {reservedCategories.map((category, index) => (
+              <div
+                key={category}
+                className="bg-card rounded-lg border border-border px-4 py-3 text-sm text-text-secondary hover:border-accent/50 hover:text-text-primary transition-colors"
+              >
+                <span className="text-accent font-medium mr-2">{String(index + 1).padStart(2, "0")}</span>
+                {category}
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="mt-8 bg-card rounded-xl border border-border p-6"
+          >
+            <p className="text-sm text-text-secondary leading-relaxed">
+              For each of these 40 categories, your half-yearly report must show: total spend, local spend
+              (to Guyanese-registered companies), foreign spend, and the resulting local content percentage.
+              The Secretariat uses these figures to assess whether you are giving first consideration to
+              Guyanese suppliers as required by the Act.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How Local Content Rates Are Calculated */}
+      <section className="py-20 px-6 bg-surface">
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <Calculator className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              How Local Content Rates Are Calculated
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              The Secretariat evaluates local content performance using two primary metrics:
+              procurement local content rate and employment local content rate.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-4">Procurement Rate</h3>
+              <div className="bg-surface rounded-lg p-4 mb-4 text-center">
+                <p className="text-xs text-text-secondary mb-1">Formula</p>
+                <p className="font-display text-accent text-lg">
+                  Local Spend &divide; Total Spend &times; 100
+                </p>
+              </div>
+              <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                <strong className="text-text-primary">Local spend</strong> includes payments to companies
+                registered on the Local Content Register. <strong className="text-text-primary">Total spend</strong> includes
+                all procurement expenditure for petroleum operations during the reporting period.
+              </p>
+              <div className="bg-surface rounded-lg p-4">
+                <p className="text-xs text-text-secondary mb-2">Example</p>
+                <p className="text-sm text-text-secondary">
+                  If your company spent <strong className="text-text-primary">US$5M total</strong> on services
+                  and <strong className="text-text-primary">US$2M</strong> went to Guyanese-registered suppliers,
+                  your procurement local content rate is <strong className="text-accent">40%</strong>.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-4">Employment Rate</h3>
+              <div className="bg-surface rounded-lg p-4 mb-4 text-center">
+                <p className="text-xs text-text-secondary mb-1">Formula</p>
+                <p className="font-display text-accent text-lg">
+                  Guyanese Employees &divide; Total Employees &times; 100
+                </p>
+              </div>
+              <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                <strong className="text-text-primary">Guyanese employees</strong> means nationals of Guyana only.
+                CARICOM nationals, permanent residents, and work-permit holders count
+                as <strong className="text-text-primary">foreign employees</strong>. Both direct hires and
+                contract workers must be included.
+              </p>
+              <div className="bg-surface rounded-lg p-4">
+                <p className="text-xs text-text-secondary mb-2">Example</p>
+                <p className="text-sm text-text-secondary">
+                  If your project has <strong className="text-text-primary">200 total workers</strong> and
+                  <strong className="text-text-primary"> 150 are Guyanese nationals</strong>, your employment
+                  local content rate is <strong className="text-accent">75%</strong>.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="mt-6 bg-card rounded-xl border border-accent/30 p-6"
+          >
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <strong className="text-accent">Important:</strong> These rates must be calculated and reported
+              for each of the 40 reserved service categories individually, not just as aggregate totals.
+              The Secretariat reviews category-level data to identify areas where local participation
+              can be improved.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What Happens During a Secretariat Audit */}
       <section className="py-20 px-6">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">The 40 Reserved Service Categories</h2>
-          <p className="text-sm text-text-secondary mb-8">
-            The Local Content Act designates 40 service categories where Guyanese nationals and companies must receive
-            first consideration. All expenditure must be classified into one of these categories in your reports.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-            {serviceCategories.map((cat, i) => (
-              <motion.div
-                key={cat}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.01 }}
-                className="flex items-center gap-2 bg-card border border-border rounded-lg px-3 py-2.5 text-xs text-text-secondary"
-              >
-                <span className="text-accent font-bold text-[10px] w-5 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                {cat}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <ClipboardCheck className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              What Happens During a Secretariat Audit
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              The Local Content Secretariat has the power to audit any entity subject to the Act.
+              Here is what to expect if your company receives an audit notice.
+            </p>
+          </motion.div>
 
-      {/* 6. How Local Content Rates Are Calculated */}
-      <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">How Local Content Rates Are Calculated</h2>
-          <p className="text-sm text-text-secondary leading-relaxed mb-8">
-            The Secretariat calculates your local content rate separately for expenditure and employment:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h3 className="text-sm font-bold text-text-primary mb-3">Expenditure Rate</h3>
-              <div className="bg-surface rounded-lg p-4 font-mono text-xs text-text-secondary text-center mb-3">
-                Local Content Rate = <span className="text-accent">(Guyanese Spend ÷ Total Spend)</span> × 100
-              </div>
-              <p className="text-xs text-text-secondary">
-                Example: If total procurement is $10M and $6.5M goes to Guyanese-registered suppliers,
-                your expenditure local content rate is <strong className="text-text-primary">65%</strong>.
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h3 className="text-sm font-bold text-text-primary mb-3">Employment Rate</h3>
-              <div className="bg-surface rounded-lg p-4 font-mono text-xs text-text-secondary text-center mb-3">
-                Employment Rate = <span className="text-accent">(Guyanese Staff ÷ Total Staff)</span> × 100
-              </div>
-              <p className="text-xs text-text-secondary">
-                Example: If you employ 50 people and 38 are Guyanese nationals,
-                your employment local content rate is <strong className="text-text-primary">76%</strong>.
-                This must be disaggregated by management, technical, and non-technical levels.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. What Happens During a Secretariat Audit */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">What Happens During a Secretariat Audit</h2>
-          <div className="space-y-4">
+          <div className="space-y-6">
             {[
-              { step: "1", title: "Notice of Review", desc: "The Secretariat notifies your company that a filed submission is under review. This can happen within months of filing or retroactively." },
-              { step: "2", title: "Document Request", desc: "You receive a formal request for supporting documentation — payroll records, procurement contracts, supplier invoices, and capacity development evidence." },
-              { step: "3", title: "Data Verification", desc: "The Secretariat cross-references your submission data against supporting documents, checking for accuracy in classifications, amounts, and nationality statuses." },
-              { step: "4", title: "Findings Report", desc: "If discrepancies are found, the Secretariat issues a findings report with specific items requiring correction or explanation." },
-              { step: "5", title: "Remediation or Penalty", desc: "You are given an opportunity to submit corrections. If issues persist or are material, penalty proceedings under Section 41 may be initiated." },
-            ].map((item, i) => (
+              {
+                step: "01",
+                title: "Formal Notice",
+                description:
+                  "The Secretariat issues a written notice of audit, typically providing 14\u201330 days advance notice. The notice specifies the reporting periods under review and the scope of the audit.",
+              },
+              {
+                step: "02",
+                title: "Document Request",
+                description:
+                  "You will receive a detailed document request list. This typically includes payroll records, procurement invoices, contracts with subcontractors, proof of payments to local suppliers, employee nationality documentation, and training records. All documents must be provided within the timeframe specified.",
+              },
+              {
+                step: "03",
+                title: "On-Site or Desk Review",
+                description:
+                  "The Secretariat\u2019s compliance team reviews your submitted documents against the figures reported in your half-yearly and annual reports. They verify local vs. foreign spend classifications, employee nationality counts, and service category allocations. Some audits are conducted entirely by desk review; others involve on-site visits.",
+              },
+              {
+                step: "04",
+                title: "Preliminary Findings",
+                description:
+                  "After the review, the Secretariat issues preliminary findings identifying any discrepancies, misclassifications, or areas of concern. You are given an opportunity to respond to these findings and provide additional documentation or explanations.",
+              },
+              {
+                step: "05",
+                title: "Final Report & Follow-Up",
+                description:
+                  "The Secretariat issues a final audit report with recommendations and, if applicable, corrective actions required. Significant discrepancies may result in penalties under Section 41 of the Act. Companies are expected to implement corrective measures and demonstrate improved compliance in subsequent filings.",
+              },
+            ].map((item) => (
               <motion.div
                 key={item.step}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-4 bg-card border border-border rounded-xl px-5 py-4"
+                className="bg-card rounded-xl border border-border p-6 flex gap-6"
               >
-                <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 text-accent text-sm font-bold">
-                  {item.step}
+                <div className="shrink-0">
+                  <span className="font-display text-2xl text-accent">{item.step}</span>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-text-primary mb-1">{item.title}</h3>
-                  <p className="text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                  <h3 className="font-display text-lg text-text-primary mb-2">{item.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -290,52 +614,116 @@ export default function LCAComplianceGuideContent() {
         </div>
       </section>
 
-      {/* 8. Common Filing Mistakes */}
+      {/* Common Filing Mistakes */}
       <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">Common Filing Mistakes and How to Avoid Them</h2>
-          <div className="space-y-3">
-            {commonMistakes.map((mistake, i) => (
-              <motion.div
-                key={mistake}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.03 }}
-                className="flex items-start gap-3 bg-card border border-border rounded-lg px-5 py-3"
-              >
-                <AlertTriangle size={14} className="text-amber-500 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-text-secondary">{mistake}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <AlertTriangle className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              Common Filing Mistakes
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              After reviewing hundreds of LCA filings, these are the most frequent errors that
+              trigger revision requests or penalties from the Secretariat.
+            </p>
+          </motion.div>
 
-      {/* 9. How to Register */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">How to Register on the Local Content Register</h2>
-          <p className="text-sm text-text-secondary mb-8">
-            Registration on the Local Content Register is mandatory for all companies providing goods or services
-            to the petroleum sector. Your LCS Certificate ID is required on every filing.
-          </p>
-          <div className="space-y-4">
-            {registrationSteps.map((s, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {commonMistakes.map((mistake) => (
               <motion.div
-                key={s.step}
+                key={mistake.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-4 bg-card border border-border rounded-xl px-5 py-4"
+                className="bg-card rounded-xl border border-border p-5"
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-teal flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
-                  {s.step}
+                <h3 className="font-display text-sm text-text-primary mb-2 flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  {mistake.title}
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed pl-6">{mistake.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How to Register on the Local Content Register */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <UserPlus className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              How to Register on the Local Content Register
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Registration on the Local Content Register is a prerequisite for being recognized
+              as a local content provider. Here is the step-by-step process.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              {
+                step: "1",
+                title: "Confirm Eligibility",
+                description:
+                  "Your company must be incorporated in Guyana with at least 51% Guyanese ownership. For sole proprietors, the owner must be a Guyanese national. Joint ventures must demonstrate majority Guyanese control. Foreign companies are not eligible for the Register but are still subject to LCA reporting obligations.",
+              },
+              {
+                step: "2",
+                title: "Gather Required Documents",
+                description:
+                  "Prepare your Certificate of Incorporation (or Business Registration), Tax Identification Number (TIN), valid Tax Compliance Certificate, NIS compliance letter, proof of Guyanese ownership (share register, partnership agreement), company profile detailing services offered, and CVs of key personnel.",
+              },
+              {
+                step: "3",
+                title: "Complete the Application Form",
+                description:
+                  "Download the registration application form from the Local Content Secretariat. Complete all sections including company details, ownership structure, service categories (from the 40 reserved categories), and capacity information.",
+              },
+              {
+                step: "4",
+                title: "Submit to the Secretariat",
+                description:
+                  "Submit your completed application and supporting documents to the Local Content Secretariat at localcontent@nre.gov.gy or in person at the Ministry of Natural Resources in Georgetown. Ensure all documents are certified copies where required.",
+              },
+              {
+                step: "5",
+                title: "Verification & Approval",
+                description:
+                  "The Secretariat reviews your application, verifies ownership documentation, and may conduct site visits. Processing typically takes 2\u20134 weeks. Once approved, your company is added to the Register and assigned a registration number.",
+              },
+              {
+                step: "6",
+                title: "Maintain Your Registration",
+                description:
+                  "Registration must be renewed annually. Keep your Tax Compliance Certificate and NIS compliance current. Update the Secretariat promptly if there are changes to ownership structure, services offered, or contact information.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="bg-card rounded-xl border border-border p-6 flex gap-6"
+              >
+                <div className="shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <span className="font-display text-accent">{item.step}</span>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-text-primary mb-1">{s.title}</h3>
-                  <p className="text-xs text-text-secondary leading-relaxed">{s.desc}</p>
+                  <h3 className="font-display text-lg text-text-primary mb-2">{item.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -343,47 +731,112 @@ export default function LCAComplianceGuideContent() {
         </div>
       </section>
 
-      {/* 10. Foreign Contractors */}
+      {/* LCA Compliance for Foreign Contractors */}
       <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">LCA Compliance for Foreign Contractors</h2>
-          <div className="bg-card border border-border rounded-xl p-6 mb-6">
-            <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              Foreign companies operating in Guyana&apos;s petroleum sector face the same compliance obligations as
-              Guyanese companies, with additional considerations:
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-12"
+          >
+            <Globe className="w-10 h-10 text-accent mx-auto mb-4" />
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              LCA Compliance for Foreign Contractors
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Foreign companies operating in Guyana&apos;s petroleum sector face unique compliance
+              challenges. Here is what non-Guyanese entities need to know.
             </p>
-            <ul className="space-y-2.5">
-              {[
-                "You must register on the Local Content Register regardless of country of incorporation",
-                "Employment data must clearly distinguish Guyanese nationals from expatriate staff",
-                "The Act mandates 'first consideration' for Guyanese nationals in all hiring",
-                "Procurement from foreign suppliers must be justified — the Secretariat tracks local vs foreign spend ratios",
-                "Your Annual Plan must include specific targets for increasing local content over time",
-                "A Houston or US-based entity still needs Guyanese registration if providing petroleum sector services",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <CheckCircle2 size={14} className="text-accent mt-0.5 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+          </motion.div>
+
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-3">You Must Still File</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Foreign companies are not exempt from LCA reporting. If you are a contractor, subcontractor,
+                or licensee in Guyana&apos;s petroleum sector, you must submit all 5 mandatory reports regardless
+                of where your company is incorporated. Many foreign companies mistakenly believe that only
+                their Guyanese subsidiary or joint venture partner needs to file &mdash; this is incorrect.
+                Every entity in the petroleum supply chain has independent filing obligations.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-3">First Consideration Obligations</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                The Act requires that foreign contractors give &ldquo;first consideration&rdquo; to Guyanese nationals
+                for employment and to registered Guyanese companies for the supply of goods and services.
+                This does not mean you must always choose a Guyanese provider, but you must demonstrate that
+                you evaluated local options first. Your reports must include narrative explanations for why
+                foreign suppliers were selected over local alternatives in each service category.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-3">Succession Planning</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Foreign companies bringing expatriate workers into Guyana must demonstrate succession planning &mdash;
+                a documented plan showing how each expatriate position will eventually be transitioned to a
+                Guyanese national. This includes specific timelines, training programs, and milestones.
+                The Secretariat reviews succession plans as part of both half-yearly reports and annual plans.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-3">Technology Transfer Requirements</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Foreign contractors are expected to contribute to the development of local capacity through
+                technology transfer. This includes training programs, knowledge sharing, mentorship of Guyanese
+                employees, and investment in local educational institutions. Your Master Plan and Annual Plans
+                must include specific technology transfer commitments with measurable targets.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="bg-card rounded-xl border border-border p-6"
+            >
+              <h3 className="font-display text-lg text-text-primary mb-3">Joint Venture Considerations</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Many foreign companies operate through joint ventures with Guyanese partners. Both the JV entity
+                and the foreign parent may have independent filing obligations depending on their role in
+                petroleum operations. Ensure that reporting responsibilities are clearly allocated in your
+                JV agreement and that both parties understand their individual obligations under the Act.
+              </p>
+            </motion.div>
           </div>
-          <p className="text-sm text-text-secondary leading-relaxed">
-            Stabroek Advisory specializes in helping foreign contractors — particularly US-based companies — navigate
-            LCA compliance. Our Houston headquarters and Georgetown presence means we understand both sides of the
-            compliance equation.{" "}
-            <Link href="/guyana-local-content-consultant" className="text-accent hover:underline">
-              Learn about our consulting services →
-            </Link>
-          </p>
         </div>
       </section>
 
+      {/* CTA Banner */}
       <CTABanner
-        headline="Need help with LCA compliance?"
-        body="Whether you're filing for the first time or managing compliance across multiple entities, we can help. Book a consultation and we'll assess your filing status within 24 hours."
-        primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
+        headline="Stay Compliant. Stay Focused on Operations."
+        body="LCA Desk automates your Local Content Act reporting so you can focus on what you do best. From data collection to Secretariat-ready reports, we handle the compliance burden."
+        primaryCTA={{ label: "Start with LCA Desk", href: "/lcadesk" }}
+        secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />
     </>
   );
