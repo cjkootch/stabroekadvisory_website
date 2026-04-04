@@ -240,7 +240,7 @@ export default function HomePage() {
                   Covers all 5 mandatory submission types — Half-Yearly Reports,
                   Annual Plans, Master Plans, and Performance Reports.
                 </p>
-                <p className="text-sm font-medium text-gold mb-4">From $249/month</p>
+                <p className="text-sm font-medium text-gold mb-4">From $500/month</p>
                 <Link
                   href="/software"
                   className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"

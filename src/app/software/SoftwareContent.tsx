@@ -64,7 +64,7 @@ export default function SoftwareContent() {
         eyebrow="LCA DESK"
         headline="The only software built specifically for Guyana's Local Content Act"
         sub="Manage all five mandatory LCA submissions from a single dashboard. Built on the official Version 4.1 guidelines from the Local Content Secretariat."
-        primaryCTA={{ label: "Start Free Trial", href: "/contact" }}
+        primaryCTA={{ label: "Request a Demo", href: "/contact" }}
         secondaryCTA={{ label: "See How It Works", href: "#features" }}
         backgroundImage="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80"
       />
@@ -225,12 +225,12 @@ export default function SoftwareContent() {
             Simple, transparent pricing
           </h2>
           <p className="text-sm text-text-secondary text-center mb-12">
-            Save 2 months with annual billing
+            Save 15% with annual billing
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <PricingCard
-              name="Starter"
-              price="$199"
+              name="Standard"
+              price="$500"
               period="month"
               features={[
                 "1 company profile",
@@ -238,11 +238,11 @@ export default function SoftwareContent() {
                 "CSV and text export",
                 "Email support",
               ]}
-              cta={{ label: "Start Free Trial", href: "/contact" }}
+              cta={{ label: "Get Started", href: "/contact" }}
             />
             <PricingCard
               name="Professional"
-              price="$349"
+              price="$750"
               period="month"
               highlighted
               features={[
@@ -252,7 +252,7 @@ export default function SoftwareContent() {
                 "Narrative guidance templates",
                 "Filing deadline alerts",
               ]}
-              cta={{ label: "Start Free Trial", href: "/contact" }}
+              cta={{ label: "Get Started", href: "/contact" }}
             />
             <PricingCard
               name="Enterprise"
@@ -271,10 +271,10 @@ export default function SoftwareContent() {
       </section>
 
       <CTABanner
-        headline="Start your free trial today."
-        body="No credit card required. Set up your first company profile in under 10 minutes."
-        primaryCTA={{ label: "Start Free Trial", href: "/contact" }}
-        secondaryCTA={{ label: "Book a Demo", href: "/contact" }}
+        headline="Ready to streamline your LCA compliance?"
+        body="Request a demo and see how LCA Desk can simplify your mandatory filings."
+        primaryCTA={{ label: "Request a Demo", href: "/contact" }}
+        secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />
     </>
   );
