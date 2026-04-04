@@ -146,7 +146,7 @@ export default function HomePage() {
         sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
         primaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        backgroundImage="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=1920&q=80"
         fullHeight
       />
 

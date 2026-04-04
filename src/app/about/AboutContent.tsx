@@ -78,7 +78,7 @@ export default function AboutContent() {
       <HeroSection
         headline="The US-Guyana Compliance Bridge"
         sub="Houston expertise. Georgetown presence. Built for Guyana's oil boom."
-        backgroundImage="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1513828583688-c52571e73e83?w=1920&q=80"
       />
 
       {/* Our Story */}
