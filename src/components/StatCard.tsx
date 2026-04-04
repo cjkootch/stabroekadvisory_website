@@ -17,7 +17,6 @@ export default function StatCard({ value, label, lightOnDark = false }: StatCard
   useEffect(() => {
     if (!isInView) return;
 
-    // Extract numeric part for animation
     const match = value.match(/^([\d,]+)/);
     if (!match) {
       setDisplayed(value);
@@ -46,9 +45,18 @@ export default function StatCard({ value, label, lightOnDark = false }: StatCard
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="text-center"
+      whileHover={{ scale: 1.05 }}
+      className={`text-center px-3 py-4 rounded-xl transition-colors ${
+        lightOnDark
+          ? "hover:bg-white/5"
+          : "hover:bg-accent/5"
+      }`}
     >
-      <p className={`font-display text-4xl md:text-5xl mb-2 ${lightOnDark ? "text-amber-400" : "text-gold"}`}>{displayed}</p>
+      <p className={`font-display text-4xl md:text-5xl mb-2 ${
+        lightOnDark ? "text-emerald-300" : "gradient-text"
+      }`}>
+        {displayed}
+      </p>
       <p className={`text-sm ${lightOnDark ? "text-white/70" : "text-text-secondary"}`}>{label}</p>
     </motion.div>
   );

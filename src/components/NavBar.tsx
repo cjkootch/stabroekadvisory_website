@@ -30,9 +30,12 @@ export default function NavBar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-accent text-xl">&#9679;</span>
-          <span className="font-display text-sm tracking-[0.25em] uppercase text-text-primary">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-accent" />
+          </span>
+          <span className="font-display text-sm tracking-[0.25em] uppercase text-text-primary group-hover:text-accent transition-colors">
             Stabroek Advisory
           </span>
         </Link>
@@ -50,7 +53,7 @@ export default function NavBar() {
           ))}
           <Link
             href="/contact"
-            className="ml-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+            className="ml-2 rounded-lg bg-gradient-to-r from-accent to-teal px-5 py-2 text-sm font-medium text-white hover:shadow-lg hover:shadow-accent/20 hover:scale-[1.02] transition-all"
           >
             Book a Consultation
           </Link>
@@ -89,7 +92,7 @@ export default function NavBar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-white text-center hover:bg-accent-hover transition-colors"
+                className="rounded-lg bg-gradient-to-r from-accent to-teal px-5 py-2.5 text-sm font-medium text-white text-center hover:shadow-lg transition-all"
               >
                 Book a Consultation
               </Link>

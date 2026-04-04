@@ -11,28 +11,44 @@ interface StepTimelineProps {
   steps: Step[];
 }
 
+const stepColors = [
+  { bg: "bg-emerald-100", text: "text-emerald-700", border: "border-emerald-400" },
+  { bg: "bg-teal-100", text: "text-teal-700", border: "border-teal-400" },
+  { bg: "bg-cyan-100", text: "text-cyan-700", border: "border-cyan-400" },
+  { bg: "bg-blue-100", text: "text-blue-700", border: "border-blue-400" },
+];
+
 export default function StepTimeline({ steps }: StepTimelineProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-      {/* Connecting line - desktop only */}
-      <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-px bg-border" />
+      {/* Gradient connecting line */}
+      <div
+        className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-0.5 rounded-full"
+        style={{
+          background: "linear-gradient(90deg, #10B981, #0D9488, #06B6D4, #3B82F6)",
+        }}
+      />
 
-      {steps.map((step, i) => (
-        <motion.div
-          key={step.title}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.5 }}
-          className="relative text-center"
-        >
-          <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent text-accent flex items-center justify-center text-sm font-medium mx-auto mb-4 relative z-10">
-            {i + 1}
-          </div>
-          <h4 className="font-display text-base text-text-primary mb-2">{step.title}</h4>
-          <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
-        </motion.div>
-      ))}
+      {steps.map((step, i) => {
+        const color = stepColors[i % stepColors.length];
+        return (
+          <motion.div
+            key={step.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15, duration: 0.5 }}
+            whileHover={{ y: -4 }}
+            className="relative text-center group"
+          >
+            <div className={`w-12 h-12 rounded-full ${color.bg} ${color.text} border-2 ${color.border} flex items-center justify-center text-sm font-bold mx-auto mb-4 relative z-10 transition-shadow group-hover:shadow-lg`}>
+              {i + 1}
+            </div>
+            <h4 className="font-display text-base text-text-primary mb-2 group-hover:text-accent transition-colors">{step.title}</h4>
+            <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
