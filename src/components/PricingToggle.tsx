@@ -14,6 +14,7 @@ interface Plan {
   cta: { label: string; href: string };
   highlighted?: boolean;
   isService?: boolean;
+  aiBadge?: string;
 }
 
 const plans: Plan[] = [
@@ -39,9 +40,12 @@ const plans: Plan[] = [
     monthly: 599,
     annual: 5990,
     highlighted: true,
+    aiBadge: "Includes AI Narrative Drafting",
     features: [
       "Up to 5 entities / projects",
       "5–10 users",
+      "AI narrative drafting (all report types)",
+      "Compliance gap detection",
       "Historical reports",
       "Workforce + procurement dashboards",
       "Validation alerts",
@@ -55,8 +59,12 @@ const plans: Plan[] = [
     bestFor: "Large contractors / multi-entity",
     monthly: 1999,
     annual: 19990,
+    aiBadge: "Includes All AI Features + Document Intelligence",
     features: [
       "Unlimited entities",
+      "All AI features",
+      "Document upload & auto-extraction",
+      "In-app AI compliance assistant",
       "Role-based permissions",
       "API / ERP integrations",
       "White-glove onboarding",
@@ -174,7 +182,13 @@ export default function PricingToggle() {
             )}
 
             <h3 className="text-lg font-medium text-text-primary mb-1">{plan.name}</h3>
-            <p className="text-xs text-text-muted mb-4">{plan.bestFor}</p>
+            <p className="text-xs text-text-muted mb-2">{plan.bestFor}</p>
+            {plan.aiBadge && (
+              <p className="text-[10px] font-medium text-accent bg-accent/8 px-2 py-1 rounded inline-block mb-3">
+                {plan.aiBadge}
+              </p>
+            )}
+            {!plan.aiBadge && <div className="mb-2" />}
 
             <div className="mb-1">
               <motion.span
