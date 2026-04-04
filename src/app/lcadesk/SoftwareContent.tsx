@@ -337,7 +337,7 @@ export default function SoftwareContent() {
             <h2 className="font-[family-name:var(--font-tech)] text-3xl md:text-4xl text-white mb-4">
               The AI That Does the Hard Work
             </h2>
-            <p className="text-sm text-emerald-100/70 max-w-xl mx-auto leading-relaxed">
+            <p className="text-sm text-white/75 max-w-xl mx-auto leading-relaxed">
               LCA compliance isn&apos;t just data entry — it&apos;s analysis, narrative writing, and risk management.
               LCA Desk&apos;s AI handles the parts that take the most time.
             </p>
@@ -351,7 +351,7 @@ export default function SoftwareContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/[0.15] backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all group shadow-lg"
+                className="bg-white/[0.25] backdrop-blur-md border border-white/30 rounded-2xl p-6 hover:bg-white/30 transition-all group shadow-lg"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
@@ -362,7 +362,7 @@ export default function SoftwareContent() {
                   </span>
                 </div>
                 <h3 className="text-lg font-medium text-white mb-3">{f.title}</h3>
-                <p className="text-sm text-emerald-100/60 leading-relaxed mb-5">{f.desc}</p>
+                <p className="text-sm text-white/80 leading-relaxed mb-5">{f.desc}</p>
 
                 {/* Example block */}
                 <div className="bg-[#080E1A] rounded-xl border border-white/5 p-4 font-mono text-xs overflow-hidden">
