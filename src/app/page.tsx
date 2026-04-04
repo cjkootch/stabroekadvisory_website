@@ -257,7 +257,7 @@ export default function HomePage() {
                   Covers all 5 mandatory submission types — Half-Yearly Reports,
                   Annual Plans, Master Plans, and Performance Reports.
                 </p>
-                <p className="text-sm font-medium text-gold mb-4">From $500/month</p>
+                <p className="text-sm font-medium text-gold mb-4">From $149/month</p>
                 <Link
                   href="/lcadesk"
                   className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
@@ -300,7 +300,7 @@ export default function HomePage() {
                   You stay compliant. We do the work.
                 </p>
                 <p className="text-sm font-medium text-gold mb-4">
-                  From $1,200/month
+                  From $2,500/month
                 </p>
                 <Link
                   href="/services"
