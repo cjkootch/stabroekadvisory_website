@@ -66,6 +66,7 @@ export default function SoftwareContent() {
         sub="Manage all five mandatory LCA submissions from a single dashboard. Built on the official Version 4.1 guidelines from the Local Content Secretariat."
         primaryCTA={{ label: "Start Free Trial", href: "/contact" }}
         secondaryCTA={{ label: "See How It Works", href: "#features" }}
+        backgroundImage="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80"
       />
 
       {/* UI Mockups */}

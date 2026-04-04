@@ -6,9 +6,10 @@ import { motion, useInView } from "framer-motion";
 interface StatCardProps {
   value: string;
   label: string;
+  lightOnDark?: boolean;
 }
 
-export default function StatCard({ value, label }: StatCardProps) {
+export default function StatCard({ value, label, lightOnDark = false }: StatCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [displayed, setDisplayed] = useState(value);
@@ -47,8 +48,8 @@ export default function StatCard({ value, label }: StatCardProps) {
       transition={{ duration: 0.5 }}
       className="text-center"
     >
-      <p className="font-display text-4xl md:text-5xl text-gold mb-2">{displayed}</p>
-      <p className="text-sm text-text-secondary">{label}</p>
+      <p className={`font-display text-4xl md:text-5xl mb-2 ${lightOnDark ? "text-amber-400" : "text-gold"}`}>{displayed}</p>
+      <p className={`text-sm ${lightOnDark ? "text-white/70" : "text-text-secondary"}`}>{label}</p>
     </motion.div>
   );
 }

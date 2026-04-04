@@ -146,6 +146,7 @@ export default function HomePage() {
         sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
         primaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
+        backgroundImage="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1920&q=80"
         fullHeight
       />
 
@@ -207,7 +208,7 @@ export default function HomePage() {
             Two ways to stay compliant. Zero room for error.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Track 1 */}
+            {/* Track 1 — Software */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -216,35 +217,40 @@ export default function HomePage() {
                 y: -4,
                 boxShadow: "0 0 20px rgba(0,200,150,0.12)",
               }}
-              className="bg-card border border-border rounded-lg p-8"
+              className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center">
-                  <Monitor size={20} className="text-accent" />
-                </div>
-                <span className="text-[10px] font-medium uppercase tracking-wider bg-accent/10 text-accent px-2 py-0.5 rounded">
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                  alt="Analytics dashboard"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
                   Software
                 </span>
               </div>
-              <h3 className="font-display text-xl text-text-primary mb-3">
-                Self-Serve Compliance Software
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                Log in, enter your data, generate submission-ready reports in the
-                official Secretariat format. Built on the Version 4.1 guidelines.
-                Covers all 5 mandatory submission types — Half-Yearly Reports,
-                Annual Plans, Master Plans, and Performance Reports.
-              </p>
-              <p className="text-sm font-medium text-gold mb-4">From $249/month</p>
-              <Link
-                href="/software"
-                className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
-              >
-                Explore LCA Desk &rarr;
-              </Link>
+              <div className="p-8 pt-4">
+                <h3 className="font-display text-xl text-text-primary mb-3">
+                  Self-Serve Compliance Software
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                  Log in, enter your data, generate submission-ready reports in the
+                  official Secretariat format. Built on the Version 4.1 guidelines.
+                  Covers all 5 mandatory submission types — Half-Yearly Reports,
+                  Annual Plans, Master Plans, and Performance Reports.
+                </p>
+                <p className="text-sm font-medium text-gold mb-4">From $249/month</p>
+                <Link
+                  href="/software"
+                  className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
+                >
+                  Explore LCA Desk &rarr;
+                </Link>
+              </div>
             </motion.div>
 
-            {/* Track 2 */}
+            {/* Track 2 — Managed Service */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -253,44 +259,55 @@ export default function HomePage() {
                 y: -4,
                 boxShadow: "0 0 20px rgba(0,200,150,0.12)",
               }}
-              className="bg-card border border-border rounded-lg p-8"
+              className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center">
-                  <ShieldCheck size={20} className="text-accent" />
-                </div>
-                <span className="text-[10px] font-medium uppercase tracking-wider bg-accent/10 text-accent px-2 py-0.5 rounded">
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                  alt="Professional consulting"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
                   Full Service
                 </span>
               </div>
-              <h3 className="font-display text-xl text-text-primary mb-3">
-                Managed Compliance Reporting
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                Send us your payroll and procurement data each period. We handle
-                everything — data collection, entry, narrative writing, quality
-                review, submission to the Secretariat, and any follow-up requests.
-                You stay compliant. We do the work.
-              </p>
-              <p className="text-sm font-medium text-gold mb-4">
-                From $1,200/month
-              </p>
-              <Link
-                href="/services"
-                className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
-              >
-                Learn More &rarr;
-              </Link>
+              <div className="p-8 pt-4">
+                <h3 className="font-display text-xl text-text-primary mb-3">
+                  Managed Compliance Reporting
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                  Send us your payroll and procurement data each period. We handle
+                  everything — data collection, entry, narrative writing, quality
+                  review, submission to the Secretariat, and any follow-up requests.
+                  You stay compliant. We do the work.
+                </p>
+                <p className="text-sm font-medium text-gold mb-4">
+                  From $1,200/month
+                </p>
+                <Link
+                  href="/services"
+                  className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
+                >
+                  Learn More &rarr;
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-5 gap-8">
+      {/* Stats — with background image */}
+      <section className="relative py-20 px-6 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1920&q=80"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
+        <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-5 gap-8">
           {stats.map((s) => (
-            <StatCard key={s.label} value={s.value} label={s.label} />
+            <StatCard key={s.label} value={s.value} label={s.label} lightOnDark />
           ))}
         </div>
       </section>
@@ -334,10 +351,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* US Market Entry */}
+      {/* US Market Entry — with photo */}
       <section className="py-20 px-6">
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-4">
+              US Market Entry Advisory
+            </p>
             <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
               Guyanese oil sector companies need US suppliers. We&apos;re already
               there.
@@ -352,32 +372,28 @@ export default function HomePage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors font-medium"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-2.5 text-sm text-white font-medium hover:bg-accent-hover transition-colors"
             >
               Talk to Our Houston Team &rarr;
             </Link>
           </div>
-          <div className="flex items-center justify-center">
-            {/* Abstract SVG graphic */}
-            <svg
-              viewBox="0 0 300 300"
-              className="w-64 h-64 text-accent/20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              <circle cx="150" cy="150" r="120" />
-              <circle cx="150" cy="150" r="80" />
-              <circle cx="150" cy="150" r="40" />
-              <line x1="150" y1="30" x2="150" y2="270" />
-              <line x1="30" y1="150" x2="270" y2="150" />
-              <path d="M 80 80 Q 150 120 220 80" />
-              <path d="M 80 220 Q 150 180 220 220" />
-              <circle cx="150" cy="150" r="6" fill="currentColor" className="text-accent" />
-              <circle cx="90" cy="120" r="4" fill="currentColor" className="text-gold" />
-              <circle cx="210" cy="180" r="4" fill="currentColor" className="text-gold" />
-            </svg>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80"
+              alt="Houston skyline at dusk"
+              className="w-full h-80 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-white text-sm font-medium">Houston, Texas — HQ</p>
+              <p className="text-white/70 text-xs">5-hour direct flight to Georgetown</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

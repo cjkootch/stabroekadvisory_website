@@ -7,8 +7,15 @@ import { Mail, MapPin, Clock, Link2 } from "lucide-react";
 export default function ContactContent() {
   return (
     <>
-      <section className="pt-32 pb-20 px-6">
-        <div className="mx-auto max-w-6xl">
+      {/* Hero banner */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white" />
+        <div className="relative mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
