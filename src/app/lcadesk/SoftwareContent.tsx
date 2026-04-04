@@ -661,6 +661,93 @@ export default function SoftwareContent() {
         </div>
       </section>
 
+      {/* ───── SECURITY & DATA HANDLING ───── */}
+      <section className="py-20 px-6 bg-surface">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Security</p>
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
+              Your compliance data is protected
+            </h2>
+            <p className="text-sm text-text-secondary max-w-lg mx-auto">
+              LCA filings contain sensitive payroll, procurement, and supplier data. We built LCA Desk with security as a foundation — not an afterthought.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Encrypted in Transit & at Rest", desc: "All data is encrypted using TLS 1.3 in transit and AES-256 at rest. Your payroll figures and supplier relationships never travel unprotected." },
+              { title: "Cloud-Hosted Infrastructure", desc: "LCA Desk runs on enterprise-grade cloud infrastructure with automatic backups, failover redundancy, and 99.9% uptime SLA." },
+              { title: "Role-Based Access Control", desc: "Limit who can view, edit, or submit filings. Assign roles per entity so team members only see what they need." },
+              { title: "Audit Trail", desc: "Every change to your compliance data is logged — who changed what, when, and why. Full traceability for Secretariat audits." },
+              { title: "Data Isolation", desc: "Each client's data is logically isolated. No cross-tenant access. Your competitors will never see your filings." },
+              { title: "AI Data Privacy", desc: "AI features process your data in real-time but never store it for model training. Your compliance data is never used to improve AI models." },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="bg-card border border-border rounded-xl p-5"
+              >
+                <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+                  <ShieldCheck size={16} className="text-accent" />
+                </div>
+                <h3 className="text-sm font-medium text-text-primary mb-2">{item.title}</h3>
+                <p className="text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── CHANGELOG ───── */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-14">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Changelog</p>
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
+              Always up to date with the Secretariat
+            </h2>
+            <p className="text-sm text-text-secondary max-w-lg mx-auto">
+              When the Secretariat updates their guidelines, we update LCA Desk — typically within 30 days.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {[
+              { date: "Mar 2026", version: "v2.4", title: "AI Narrative Drafting", desc: "Added AI-powered Comparative Analysis Report generation for all half-yearly submissions." },
+              { date: "Feb 2026", version: "v2.3", title: "Compliance Gap Detection", desc: "Pre-submission AI scan flags low Guyanese employment rates, missing certificates, and procurement gaps." },
+              { date: "Jan 2026", version: "v2.2", title: "Multi-Entity Dashboard", desc: "Manage multiple companies from a single view with aggregate compliance metrics." },
+              { date: "Dec 2025", version: "v2.1", title: "Annual Performance Report", desc: "Added support for the 5th mandatory submission type with year-end reconciliation." },
+              { date: "Oct 2025", version: "v2.0", title: "Version 4.1 Guidelines Update", desc: "Full template refresh to match the Local Content Secretariat's Version 4.1 Submission Guideline (June 2025)." },
+              { date: "Aug 2025", version: "v1.5", title: "Employment Tracking Overhaul", desc: "ISCO-08 job classification, nationality disaggregation, and remuneration band tracking." },
+              { date: "Jun 2025", version: "v1.0", title: "LCA Desk Launch", desc: "Initial release covering Half-Yearly Reports, Annual Plans, and Master Plans." },
+            ].map((entry, i) => (
+              <motion.div
+                key={entry.version}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.03 }}
+                className="flex gap-4 items-start"
+              >
+                <div className="flex-shrink-0 w-20 text-right">
+                  <span className="text-xs text-text-muted">{entry.date}</span>
+                  <br />
+                  <span className="text-[10px] font-mono text-accent font-bold">{entry.version}</span>
+                </div>
+                <div className="w-px bg-border self-stretch relative">
+                  <div className="absolute top-1 -left-[3px] w-[7px] h-[7px] rounded-full bg-accent" />
+                </div>
+                <div className="pb-4">
+                  <h4 className="text-sm font-medium text-text-primary">{entry.title}</h4>
+                  <p className="text-xs text-text-secondary leading-relaxed">{entry.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ───── PRICING ───── */}
       <section className="py-20 px-6 bg-surface" id="pricing">
         <div className="mx-auto max-w-5xl">
