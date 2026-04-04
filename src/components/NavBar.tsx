@@ -34,7 +34,7 @@ export default function NavBar() {
           <img
             src="/logo-black.png"
             alt="Stabroek Advisory"
-            className="h-6 w-auto"
+            className="h-11 w-auto"
           />
         </Link>
 

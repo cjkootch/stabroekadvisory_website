@@ -51,7 +51,7 @@ export default function Footer() {
               <img
                 src="/logo-black.png"
                 alt="Stabroek Advisory"
-                className="h-5 w-auto"
+                className="h-9 w-auto"
               />
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">
