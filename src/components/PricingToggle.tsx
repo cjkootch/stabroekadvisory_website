@@ -3,79 +3,119 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { CheckCircle2, Headset } from "lucide-react";
 
 interface Plan {
   name: string;
+  bestFor: string;
   monthly: number | null;
+  annual: number | null;
   features: string[];
   cta: { label: string; href: string };
   highlighted?: boolean;
+  isService?: boolean;
+  aiBadge?: string;
 }
 
 const plans: Plan[] = [
   {
-    name: "Standard",
-    monthly: 500,
+    name: "Lite",
+    bestFor: "Small vendors / 1–10 employees",
+    monthly: 149,
+    annual: 1490,
     features: [
-      "1 company profile",
-      "All 5 submission types",
-      "CSV and text export",
-      "Filing deadline alerts",
+      "1 entity",
+      "1–2 users",
+      "Filing reminders",
+      "Guided reporting wizard",
+      "CSV upload",
+      "Filing export (PDF/Excel)",
       "Email support",
     ],
     cta: { label: "Get Started", href: "/contact" },
   },
   {
-    name: "Professional",
-    monthly: 750,
+    name: "Pro",
+    bestFor: "Growing contractors / 10–100 employees",
+    monthly: 599,
+    annual: 5990,
     highlighted: true,
+    aiBadge: "Includes AI Narrative Drafting",
     features: [
-      "3 company profiles",
-      "All submission types",
+      "Up to 5 entities / projects",
+      "5–10 users",
+      "AI narrative drafting (all report types)",
+      "Compliance gap detection",
+      "Historical reports",
+      "Workforce + procurement dashboards",
+      "Validation alerts",
+      "Audit log",
       "Priority support",
-      "Narrative guidance templates",
-      "Multi-period comparison",
-      "Historical data archive",
     ],
     cta: { label: "Get Started", href: "/contact" },
   },
   {
     name: "Enterprise",
-    monthly: null,
+    bestFor: "Large contractors / multi-entity",
+    monthly: 1999,
+    annual: 19990,
+    aiBadge: "Includes All AI Features + Document Intelligence",
     features: [
-      "Unlimited company profiles",
-      "Managed service add-on",
-      "Dedicated account manager",
-      "Custom onboarding",
-      "Georgetown representative access",
-      "API access",
+      "Unlimited entities",
+      "All AI features",
+      "Document upload & auto-extraction",
+      "In-app AI compliance assistant",
+      "Role-based permissions",
+      "API / ERP integrations",
+      "White-glove onboarding",
+      "Custom workflows",
+      "SLA support",
+    ],
+    cta: { label: "Contact Us", href: "/contact" },
+  },
+  {
+    name: "Full Service",
+    bestFor: "Done-for-you filings",
+    monthly: null,
+    annual: null,
+    isService: true,
+    features: [
+      "Software included",
+      "Filing preparation",
+      "Narrative drafting",
+      "Review / signoff support",
+      "Regulator follow-up",
+      "Audit defense",
     ],
     cta: { label: "Contact Us", href: "/contact" },
   },
 ];
 
-const DISCOUNT = 0.15;
-
 export default function PricingToggle() {
   const [annual, setAnnual] = useState(false);
 
-  const getPrice = (monthly: number | null) => {
-    if (monthly === null) return "Custom";
-    if (annual) {
-      const yearlyMonthly = Math.round(monthly * (1 - DISCOUNT));
-      return `$${yearlyMonthly}`;
+  const getPrice = (plan: Plan) => {
+    if (plan.isService) return "$2,500";
+    if (plan.monthly === null) return "Custom";
+    if (annual) return `$${Math.round(plan.annual! / 12).toLocaleString()}`;
+    return `$${plan.monthly.toLocaleString()}`;
+  };
+
+  const getPeriod = (plan: Plan) => {
+    if (plan.isService) return "mo";
+    if (plan.monthly === null) return undefined;
+    return "mo";
+  };
+
+  const getSubtext = (plan: Plan) => {
+    if (plan.isService) {
+      return annual ? "Custom annual contract" : "Starting at · custom quote";
     }
-    return `$${monthly}`;
-  };
-
-  const getPeriod = (monthly: number | null) => {
-    if (monthly === null) return undefined;
-    return "month";
-  };
-
-  const getSavings = (monthly: number) => {
-    const saved = monthly * 12 * DISCOUNT;
-    return `$${Math.round(saved).toLocaleString()}`;
+    if (plan.monthly === null) return "Tailored to your needs";
+    if (annual) {
+      return `$${plan.annual!.toLocaleString()}/yr · 2 months free`;
+    }
+    return "Billed monthly";
   };
 
   return (
@@ -107,24 +147,26 @@ export default function PricingToggle() {
             animate={{ opacity: 1, x: 0 }}
             className="text-xs font-medium text-accent bg-accent/10 px-2.5 py-1 rounded-full"
           >
-            Save 15%
+            2 months free
           </motion.span>
         )}
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {plans.map((plan) => (
           <motion.div
             key={plan.name}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
             className={`rounded-xl p-6 flex flex-col border transition-all ${
               plan.highlighted
                 ? "border-accent bg-card relative shadow-sm"
-                : "border-border bg-card"
+                : plan.isService
+                  ? "border-border bg-surface"
+                  : "border-border bg-card"
             }`}
           >
             {plan.highlighted && (
@@ -133,42 +175,44 @@ export default function PricingToggle() {
               </span>
             )}
 
+            {plan.isService && (
+              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+                <Headset size={16} className="text-accent" />
+              </div>
+            )}
+
             <h3 className="text-lg font-medium text-text-primary mb-1">{plan.name}</h3>
+            <p className="text-xs text-text-muted mb-2">{plan.bestFor}</p>
+            {plan.aiBadge && (
+              <p className="text-[10px] font-medium text-accent bg-accent/8 px-2 py-1 rounded inline-block mb-3">
+                {plan.aiBadge}
+              </p>
+            )}
+            {!plan.aiBadge && <div className="mb-2" />}
 
             <div className="mb-1">
               <motion.span
                 key={`${plan.name}-${annual}`}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-[family-name:var(--font-tech)] text-4xl font-bold text-text-primary"
+                className="font-[family-name:var(--font-tech)] text-3xl font-bold text-text-primary"
               >
-                {getPrice(plan.monthly)}
+                {getPrice(plan)}
               </motion.span>
-              {getPeriod(plan.monthly) && (
-                <span className="text-sm text-text-muted ml-1">/{getPeriod(plan.monthly)}</span>
+              {getPeriod(plan) && (
+                <span className="text-sm text-text-muted ml-1">/{getPeriod(plan)}</span>
+              )}
+              {plan.isService && (
+                <span className="text-sm text-text-muted">+</span>
               )}
             </div>
 
-            {plan.monthly && annual && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-xs text-accent mb-4"
-              >
-                Billed annually · Save {getSavings(plan.monthly)}/year
-              </motion.p>
-            )}
-            {plan.monthly && !annual && (
-              <p className="text-xs text-text-muted mb-4">Billed monthly</p>
-            )}
-            {!plan.monthly && (
-              <p className="text-xs text-text-muted mb-4">Tailored to your needs</p>
-            )}
+            <p className="text-xs text-text-muted mb-5">{getSubtext(plan)}</p>
 
-            <ul className="space-y-3 mb-8 flex-1">
+            <ul className="space-y-2.5 mb-8 flex-1">
               {plan.features.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <span className="text-accent mt-0.5 flex-shrink-0">&#10003;</span>
+                  <CheckCircle2 size={14} className="text-accent mt-0.5 flex-shrink-0" />
                   {f}
                 </li>
               ))}

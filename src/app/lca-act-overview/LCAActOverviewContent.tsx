@@ -111,7 +111,7 @@ export default function LCAActOverviewContent() {
       <HeroSection
         headline="Understanding the Local Content Act"
         sub="A guide to Guyana's Local Content Act 2021 (No. 18 of 2021) and what it means for petroleum sector companies."
-        backgroundImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
+        geometricVariant="hexagons"
       />
 
       {/* Introduction */}
@@ -154,9 +154,9 @@ export default function LCAActOverviewContent() {
             {keyProvisions.map((item) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6 flex gap-4"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -185,9 +185,9 @@ export default function LCAActOverviewContent() {
             {reportingObligations.map((r) => (
               <motion.div
                 key={r.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6 flex items-start gap-4"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -219,9 +219,9 @@ export default function LCAActOverviewContent() {
             {actSections.map((s) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4">

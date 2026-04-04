@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import SoftwareContent from "./SoftwareContent";
 
 export const metadata: Metadata = {
-  title: "LCA Desk — Local Content Act Compliance Software for Guyana's Oil Sector",
+  title: "LCA Desk | AI-Powered Local Content Compliance Software for Guyana",
   description:
-    "LCA Desk is the only software built specifically for Guyana's Local Content Act. Manage all five mandatory LCA submissions — Half-Yearly Reports, Annual Plans, Master Plans, and Performance Reports — from a single dashboard. Built on the official Version 4.1 guidelines.",
+    "LCA Desk uses AI to draft compliance narratives, detect filing risks, and automate data extraction for Guyana's Local Content Act reporting. The only AI-native LCA compliance platform.",
   alternates: {
     canonical: "https://stabroekadvisory.com/lcadesk",
   },
   openGraph: {
-    title: "LCA Desk | Local Content Compliance Software",
+    title: "LCA Desk | AI-Powered Local Content Compliance Software",
     description:
-      "The only compliance software built for Guyana's Local Content Act. Enter your data, generate submission-ready reports, stay compliant.",
+      "The first AI-native compliance platform built for Guyana's Local Content Act. AI narrative drafting, risk detection, and automated data extraction.",
     url: "https://stabroekadvisory.com/lcadesk",
   },
 };

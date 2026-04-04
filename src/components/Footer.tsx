@@ -30,6 +30,7 @@ const columns = [
   {
     title: "Resources",
     links: [
+      { label: "All Resources", href: "/resources" },
       { label: "Blog", href: "/blog" },
       { label: "LCA Filing Calendar", href: "/lca-filing-calendar" },
       { label: "LCA Act Overview", href: "/lca-act-overview" },
@@ -39,7 +40,9 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-border">
+    <footer className="bg-gray-50 border-t border-border relative overflow-hidden">
+      {/* Subtle gradient accent at top of footer */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
       <div className="mx-auto max-w-7xl px-6 py-16">
         {/* Top */}
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-12">

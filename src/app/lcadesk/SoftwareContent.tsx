@@ -3,13 +3,13 @@
 import PricingToggle from "@/components/PricingToggle";
 import CTABanner from "@/components/CTABanner";
 import UIFrame from "@/components/UIFrame";
+import GeometricBg from "@/components/GeometricBg";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowRight,
   Database,
   FileOutput,
-  Settings,
   Clock,
   ShieldCheck,
   BarChart3,
@@ -18,10 +18,15 @@ import {
   Users,
   FileText,
   Calendar,
+  PenLine,
+  ShieldAlert,
+  FileSearch,
+  MessageSquare,
+  Sparkles,
 } from "lucide-react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -32,15 +37,83 @@ const fadeUp = {
 const socialProof = [
   { value: "5", label: "Mandatory Submissions Covered" },
   { value: "40", label: "LCA Sector Categories" },
-  { value: "100%", label: "Secretariat Template Match" },
+  { value: "AI", label: "Narrative Drafting", sub: "Saves 4-6 hrs per filing" },
   { value: "v4.1", label: "Built on Latest Guidelines" },
+];
+
+const aiFeatures = [
+  {
+    icon: PenLine,
+    badge: "MOST REQUESTED",
+    badgeColor: "bg-gold text-white",
+    title: "AI Narrative Drafting",
+    desc: "The Comparative Analysis Report — the written narrative that must accompany every half-yearly submission — takes compliance officers 4-6 hours to write per period. LCA Desk reads your expenditure, employment, and capacity development data and drafts the entire narrative automatically, using correct LCA terminology and the formal tone the Secretariat expects.",
+    example: {
+      header: "AI Draft Generated ✓",
+      lines: [
+        { type: "label" as const, text: "Employment Narrative:" },
+        { type: "text" as const, text: "\"During the reporting period January to June 2026, [Company] employed 47 personnel in support of petroleum operations, of whom 34 (72.3%) were Guyanese nationals. Consistent with the Employment Sub-Plan submitted in the approved Annual Local Content Plan, first consideration was accorded to Guyanese nationals across all technical and non-technical positions advertised during the period...\"" },
+      ],
+      actions: ["Edit Draft", "Accept & Continue →"],
+    },
+  },
+  {
+    icon: ShieldAlert,
+    badge: "PROACTIVE",
+    badgeColor: "bg-accent text-white",
+    title: "Compliance Gap Detection",
+    desc: "Before you file, LCA Desk's AI scans your submission data and flags potential issues the Secretariat is likely to scrutinize — low Guyanese employment rates, missing sole-source codes, procurement gaps against Annual Plan commitments, and suppliers without valid LCS Certificate IDs. Fix problems before submission, not after.",
+    example: {
+      header: "⚠  3 issues detected before submission",
+      lines: [
+        { type: "warn" as const, text: "Guyanese management rate: 34%\n  (Required minimum: 75%)" },
+        { type: "warn" as const, text: "Supplier \"Gulf Freight Ltd\" has no LCS\n  Certificate ID — may not count toward\n  local content score" },
+        { type: "warn" as const, text: "Capacity development spend is 0 —\n  required section, Secretariat will query" },
+      ],
+      actions: ["Review Issues", "Dismiss"],
+    },
+  },
+  {
+    icon: FileSearch,
+    badge: "COMING SOON",
+    badgeColor: "bg-gray-400 text-white",
+    title: "Automatic Data Extraction",
+    desc: "Upload your payroll export or procurement records in any format — PDF, Excel, or CSV — and LCA Desk's AI reads the document, extracts the relevant fields, and maps them directly to the correct report sections. No manual re-entry. No reformatting. The AI handles the data transformation.",
+    example: {
+      header: "📄 Payroll_June2026.xlsx uploaded",
+      lines: [
+        { type: "text" as const, text: "AI extracted 47 employee records:" },
+        { type: "success" as const, text: "→ 34 Guyanese nationals identified" },
+        { type: "success" as const, text: "→ Job titles mapped to ISCO-08 categories" },
+        { type: "success" as const, text: "→ Remuneration totals calculated" },
+        { type: "success" as const, text: "→ Managerial / Technical / Non-Technical\n   split applied automatically" },
+      ],
+      actions: ["Review extracted data →"],
+    },
+  },
+  {
+    icon: MessageSquare,
+    badge: "AVAILABLE NOW",
+    badgeColor: "bg-accent text-white",
+    title: "Ask the LCA Expert",
+    desc: "Every LCA Desk account includes an AI assistant trained on the complete Local Content Act, all Secretariat guidelines (including Version 4.1), and your company's specific data. Ask any compliance question and get an accurate, cited answer — without calling a lawyer or waiting for a consultant to respond.",
+    example: {
+      header: null,
+      lines: [
+        { type: "user" as const, text: "You: Do I need to include sole-sourced contracts in my expenditure report?" },
+        { type: "ai" as const, text: "LCA Desk AI: Yes. All procurement — including sole-sourced contracts — must be reported in the Expenditure Sub-Report. For sole-sourced items, you must also include the LCS-assigned Sole Source Code in the \"Sole Source Code\" column. This requirement is set out in Section 3.2.3 of the Version 4.1 Submission Guideline." },
+        { type: "ref" as const, text: "Reference: LCA Version 4.1, Section 3.2.3" },
+      ],
+      actions: [],
+    },
+  },
 ];
 
 const features = [
   {
     icon: Database,
     title: "Multi-Client Dashboard",
-    desc: "Manage every company in your portfolio from a single view. Track local content percentages, expenditure totals, and upcoming deadlines at a glance.",
+    desc: "Manage every company in your portfolio from a single view. Track local content percentages, expenditure totals, and upcoming deadlines at a glance. AI surfaces which clients are at risk, which filings need attention, and where your aggregate local content performance stands — at a glance.",
   },
   {
     icon: FileOutput,
@@ -60,7 +133,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: "Submission Checklist",
-    desc: "A step-by-step guided checklist for every report type ensures nothing is missed before you export. Company info, expenditure, employment, narratives — all verified.",
+    desc: "A step-by-step guided checklist for every report type ensures nothing is missed before you export. AI pre-validates your data before you reach the checklist — catching errors in employment rates, missing supplier certificates, and narrative gaps before you export.",
   },
   {
     icon: Users,
@@ -119,25 +192,34 @@ export default function SoftwareContent() {
             <div>
               <motion.div
                 custom={0} initial="hidden" animate="visible" variants={fadeUp}
-                className="inline-flex items-center gap-2 bg-accent/10 text-accent text-xs font-medium px-3 py-1.5 rounded-full mb-6"
+                className="inline-flex items-center gap-2 bg-accent/10 text-accent text-xs font-medium px-3 py-1.5 rounded-full mb-4"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                LCA Desk — Compliance Software
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                LCA Desk — AI Compliance Platform
               </motion.div>
 
               <motion.h1
                 custom={1} initial="hidden" animate="visible" variants={fadeUp}
-                className="font-[family-name:var(--font-tech)] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-text-primary mb-6"
+                className="font-[family-name:var(--font-tech)] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-text-primary mb-4"
               >
-                The compliance platform built for Guyana&apos;s oil sector
+                AI-Powered LCA Compliance for Guyana&apos;s Oil Sector
               </motion.h1>
+
+              <motion.div
+                custom={1.5} initial="hidden" animate="visible" variants={fadeUp}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-800 text-xs font-bold px-3.5 py-1.5 rounded-full mb-5 border border-amber-200"
+              >
+                <Sparkles size={12} />
+                Powered by AI
+              </motion.div>
 
               <motion.p
                 custom={2} initial="hidden" animate="visible" variants={fadeUp}
                 className="text-base md:text-lg text-text-secondary max-w-lg mb-8 leading-relaxed"
               >
-                Manage all five mandatory Local Content Act submissions from a single dashboard.
-                Enter your data. Generate reports. Stay compliant — without the spreadsheets.
+                LCA Desk uses artificial intelligence to draft your compliance narratives, detect filing
+                risks before submission, and extract data from your payroll and procurement records
+                automatically. The first AI-native compliance platform built for Guyana&apos;s Local Content Act.
               </motion.p>
 
               <motion.div
@@ -146,14 +228,14 @@ export default function SoftwareContent() {
               >
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-7 py-3.5 text-sm font-medium text-white hover:bg-accent-hover hover:scale-[1.02] transition-all shadow-lg shadow-accent/20"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent to-teal px-7 py-3.5 text-sm font-medium text-white hover:shadow-lg hover:shadow-accent/25 hover:scale-[1.02] transition-all"
                 >
                   Request a Demo
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="#pricing"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-7 py-3.5 text-sm font-medium text-text-primary hover:border-accent hover:text-accent transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-7 py-3.5 text-sm font-medium text-accent hover:border-accent hover:bg-accent/5 transition-all"
                 >
                   View Pricing
                 </Link>
@@ -220,7 +302,7 @@ export default function SoftwareContent() {
       </section>
 
       {/* ───── SOCIAL PROOF BAR ───── */}
-      <section className="border-y border-border py-10 px-6">
+      <section className="border-y border-accent/10 py-10 px-6 bg-accent-light/30">
         <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8">
           {socialProof.map((s, i) => (
             <motion.div
@@ -231,10 +313,94 @@ export default function SoftwareContent() {
               transition={{ delay: i * 0.05 }}
               className="text-center"
             >
-              <p className="font-[family-name:var(--font-tech)] text-3xl text-accent mb-1">{s.value}</p>
+              <p className="font-[family-name:var(--font-tech)] text-3xl gradient-text mb-1">{s.value}</p>
               <p className="text-xs text-text-muted">{s.label}</p>
+              {"sub" in s && s.sub && (
+                <p className="text-[10px] text-accent mt-0.5">{s.sub}</p>
+              )}
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* ───── AI FEATURES ───── */}
+      <section className="relative py-24 px-6 overflow-hidden" style={{
+        background: "linear-gradient(135deg, #064E3B 0%, #065F46 30%, #047857 60%, #064E3B 100%)",
+      }}>
+        <GeometricBg variant="circuits" />
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-teal-400/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-emerald-300 mb-3">Artificial Intelligence</p>
+            <h2 className="font-[family-name:var(--font-tech)] text-3xl md:text-4xl text-white mb-4">
+              The AI That Does the Hard Work
+            </h2>
+            <p className="text-sm text-white/75 max-w-xl mx-auto leading-relaxed">
+              LCA compliance isn&apos;t just data entry — it&apos;s analysis, narrative writing, and risk management.
+              LCA Desk&apos;s AI handles the parts that take the most time.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {aiFeatures.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white/[0.25] backdrop-blur-md border border-white/30 rounded-2xl p-6 hover:bg-white/30 transition-all group shadow-lg"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                    <f.icon size={20} className="text-emerald-300" />
+                  </div>
+                  <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${f.badgeColor}`}>
+                    {f.badge}
+                  </span>
+                </div>
+                <h3 className="text-lg font-medium text-white mb-3">{f.title}</h3>
+                <p className="text-sm text-white/80 leading-relaxed mb-5">{f.desc}</p>
+
+                {/* Example block */}
+                <div className="bg-[#080E1A] rounded-xl border border-white/5 p-4 font-mono text-xs overflow-hidden">
+                  {f.example.header && (
+                    <p className="text-emerald-400 font-bold mb-3">{f.example.header}</p>
+                  )}
+                  <div className="space-y-2">
+                    {f.example.lines.map((line, j) => (
+                      <p key={j} className={`whitespace-pre-wrap leading-relaxed ${
+                        line.type === "label" ? "text-blue-300 font-bold" :
+                        line.type === "warn" ? "text-amber-300" :
+                        line.type === "success" ? "text-emerald-400" :
+                        line.type === "user" ? "text-blue-300" :
+                        line.type === "ai" ? "text-gray-300" :
+                        line.type === "ref" ? "text-gray-500 text-[10px] mt-2" :
+                        "text-gray-300"
+                      }`}>
+                        {line.text}
+                      </p>
+                    ))}
+                  </div>
+                  {f.example.actions.length > 0 && (
+                    <div className="flex gap-2 mt-4 pt-3 border-t border-white/5">
+                      {f.example.actions.map((a) => (
+                        <span key={a} className={`text-[10px] px-3 py-1.5 rounded-md cursor-default ${
+                          a.includes("→") || a.includes("Accept")
+                            ? "bg-emerald-600/30 text-emerald-300 border border-emerald-500/30"
+                            : "bg-white/5 text-gray-400 border border-white/10"
+                        }`}>
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -336,19 +502,19 @@ export default function SoftwareContent() {
           <div className="text-center mb-14">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Features</p>
             <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
-              Everything you need to file. Nothing you don&apos;t.
+              Built on AI. Grounded in the Official Guidelines.
             </h2>
             <p className="text-sm text-text-secondary max-w-lg mx-auto">
-              Purpose-built for Local Content Act compliance — not a generic reporting tool adapted for Guyana.
+              LCA Desk combines AI-powered automation with strict adherence to the Local Content Secretariat&apos;s official templates. The AI does the work. The output is always compliant.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
                 className="bg-card border border-border rounded-xl p-6 transition-all"
@@ -378,9 +544,9 @@ export default function SoftwareContent() {
             {howItWorks.map((step, i) => (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.1 }}
                 className="relative"
               >
@@ -444,7 +610,7 @@ export default function SoftwareContent() {
       <section className="py-16 px-6">
         <div className="mx-auto max-w-4xl">
           <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary text-center mb-10">
-            LCA Desk vs. doing it yourself
+            LCA Desk vs. the old way
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-surface border border-border rounded-xl p-6">
@@ -457,16 +623,19 @@ export default function SoftwareContent() {
                   "Tracking deadlines in calendar apps",
                   "Retyping data every reporting period",
                   "Risk of missing fields or errors",
+                  "Hours writing compliance narratives",
+                  "Errors caught by Secretariat after filing",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                    <span className="text-red-400 mt-0.5">&#10005;</span>
+                    <span className="text-red-400 mt-0.5 font-bold">&#10005;</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-card border border-accent/30 rounded-xl p-6 shadow-sm">
-              <p className="text-xs font-medium uppercase tracking-wider text-accent mb-4">With LCA Desk</p>
+            <div className="bg-card border border-accent/30 rounded-xl p-6 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-teal to-accent-hover" />
+              <p className="text-xs font-medium uppercase tracking-wider text-accent mb-4">With LCA Desk AI</p>
               <ul className="space-y-3">
                 {[
                   "Guided data entry with validation",
@@ -475,9 +644,11 @@ export default function SoftwareContent() {
                   "Automated deadline alerts",
                   "Historical data carried forward",
                   "Submission checklist catches errors",
+                  "AI drafts narratives from your data",
+                  "AI flags issues before submission",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                    <span className="text-accent mt-0.5">&#10003;</span>
+                    <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -500,13 +671,32 @@ export default function SoftwareContent() {
             </p>
           </div>
           <PricingToggle />
+
+          {/* Anthropic credibility strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 bg-gray-900 border border-gray-800 rounded-xl p-6 text-center"
+          >
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#CC785C" }}>
+                <Sparkles size={14} className="text-white" />
+              </div>
+              <span className="text-sm font-medium text-white">Powered by Claude — Anthropic&apos;s AI</span>
+            </div>
+            <p className="text-xs text-gray-400 max-w-lg mx-auto leading-relaxed">
+              LCA Desk&apos;s AI features are built on Claude, Anthropic&apos;s frontier AI model.
+              All AI outputs are reviewed by compliance professionals before submission.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* ───── FINAL CTA ───── */}
       <CTABanner
-        headline="Ready to streamline your LCA compliance?"
-        body="Request a demo and see how LCA Desk can simplify your mandatory filings."
+        headline="Let AI handle your LCA compliance."
+        body="See AI narrative drafting, compliance gap detection, and automated reporting in action. Request a demo and we'll show you a live LCA submission built from your company's data."
         primaryCTA={{ label: "Request a Demo", href: "/contact" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />

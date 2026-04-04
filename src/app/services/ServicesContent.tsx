@@ -130,7 +130,7 @@ export default function ServicesContent() {
       <HeroSection
         headline="Compliance Services for Guyana's Oil Sector"
         sub="From first-time filers to established contractors — we manage the full LCA reporting lifecycle."
-        backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+        geometricVariant="circuits"
       />
 
       {/* Service Cards */}
@@ -149,47 +149,48 @@ export default function ServicesContent() {
             Pricing That Scales With Your Needs
           </h2>
           <p className="text-sm text-text-secondary text-center mb-12 max-w-xl mx-auto">
-            Choose per-report pricing for occasional filings, or save with our annual retainer for full compliance coverage.
+            Done-for-you compliance filings. We handle everything — data collection, report preparation, narrative drafting, and Secretariat submission.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <PricingCard
-              name="Per-Report"
-              price="$3,500"
-              period="report"
+              name="Full Service — Standard"
+              price="$2,500"
+              period="month"
               features={[
-                "Single submission preparation",
-                "Expenditure, Employment & Capacity Sub-Reports",
-                "Comparative Analysis Narrative",
+                "Software included (Pro tier)",
+                "Filing preparation for 1 entity",
+                "Narrative drafting",
                 "Secretariat submission",
-                "5 business day turnaround",
+                "Regulator follow-up",
               ]}
               cta={{ label: "Get Started", href: "/contact" }}
             />
             <PricingCard
-              name="Annual Retainer"
-              price="$1,200"
+              name="Full Service — Growth"
+              price="$3,500"
               period="month"
               highlighted
               features={[
-                "All 5 mandatory submissions included",
-                "Deadline management and alerts",
-                "Ongoing data collection support",
-                "Secretariat liaison",
-                "Filing history maintenance",
-                "Priority support",
+                "Software included (Pro tier)",
+                "Up to 3 entities",
+                "All mandatory submissions",
+                "Review / signoff support",
+                "Audit defense",
+                "Priority turnaround",
               ]}
               cta={{ label: "Get Started", href: "/contact" }}
             />
             <PricingCard
-              name="Enterprise"
-              price="Custom"
+              name="Full Service — Enterprise"
+              price="$5,000+"
+              period="month"
               features={[
-                "Multi-entity compliance management",
-                "Dedicated account manager",
-                "Custom reporting cadence",
+                "Software included (Enterprise tier)",
+                "Unlimited entities",
+                "Dedicated compliance manager",
+                "Custom annual contract",
+                "Audit defense",
                 "Georgetown representative access",
-                "LCA Desk software included",
-                "US Market Entry add-on available",
               ]}
               cta={{ label: "Contact Us", href: "/contact" }}
             />

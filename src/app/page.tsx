@@ -6,6 +6,7 @@ import StatCard from "@/components/StatCard";
 import StepTimeline from "@/components/StepTimeline";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
+import GeometricBg from "@/components/GeometricBg";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -22,18 +23,24 @@ const problemCards = [
     title: "The Reporting Burden",
     body: "The Local Content Act mandates 5 separate mandatory submissions per year — each with multi-tab Excel templates, narrative analysis reports, and strict deadlines. One missed filing means Secretariat follow-up. Repeated failures mean penalties.",
     color: "border-l-orange-500",
+    iconBg: "bg-orange-100",
+    iconColor: "text-orange-600",
   },
   {
     icon: LayoutGrid,
     title: "The Complexity",
     body: "40 reserved service categories. Employment data disaggregated by job title, nationality, and remuneration. Procurement spend by Guyanese vs non-Guyanese supplier. Capacity development tracked per activity. Every field maps to Section 12 of the Act.",
     color: "border-l-amber-500",
+    iconBg: "bg-amber-100",
+    iconColor: "text-amber-600",
   },
   {
     icon: AlertOctagon,
     title: "The Risk",
     body: "Non-compliance fines range from GY$1 million to GY$50 million. False or misleading submissions are a criminal offence. The Secretariat is actively auditing. Your local content score directly affects bid evaluation results.",
     color: "border-l-red-500",
+    iconBg: "bg-red-100",
+    iconColor: "text-red-600",
   },
 ];
 
@@ -163,7 +170,7 @@ export default function HomePage() {
         sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
         primaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        backgroundImage="https://images.pexels.com/photos/87236/pexels-photo-87236.jpeg?w=1920&q=80"
+        geometricVariant="topology"
         fullHeight
       />
 
@@ -177,13 +184,18 @@ export default function HomePage() {
             Serving operators across Guyana&apos;s petroleum sector
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {trustBadges.map((b) => (
-              <span
+            {trustBadges.map((b, i) => (
+              <motion.span
                 key={b}
-                className="text-xs border border-accent/40 text-accent px-4 py-1.5 rounded-full"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03 }}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(0,168,122,0.08)" }}
+                className="text-xs border border-accent/30 text-accent px-4 py-2 rounded-full font-medium cursor-default transition-colors hover:border-accent/60"
               >
                 {b}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
@@ -197,16 +209,20 @@ export default function HomePage() {
             obligation. Most are unprepared.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {problemCards.map((card) => (
+            {problemCards.map((card, i) => (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className={`bg-card border border-border rounded-lg p-6 border-l-4 shadow-sm ${card.color}`}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
+                className={`bg-card border border-border rounded-xl p-6 border-l-4 shadow-sm ${card.color} group transition-all`}
               >
-                <card.icon size={24} className="text-text-muted mb-4" />
-                <h3 className="font-display text-lg text-text-primary mb-3">
+                <div className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center mb-4`}>
+                  <card.icon size={20} className={card.iconColor} />
+                </div>
+                <h3 className="font-display text-lg text-text-primary mb-3 group-hover:text-text-primary transition-colors">
                   {card.title}
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed">
@@ -236,16 +252,30 @@ export default function HomePage() {
               }}
               className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-                  alt="Analytics dashboard"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
+              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 p-5">
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-accent to-teal text-white px-3 py-1 rounded-md mb-3 inline-block">
                   Software
                 </span>
+                {/* Mini dashboard mockup */}
+                <div className="space-y-3 mt-3">
+                  {[
+                    { label: "H1 Report", pct: 85, status: "Ready", barColor: "bg-emerald-500" },
+                    { label: "Annual Plan", pct: 60, status: "In Progress", barColor: "bg-amber-400" },
+                    { label: "Master Plan", pct: 100, status: "Submitted", barColor: "bg-blue-500" },
+                  ].map((r) => (
+                    <div key={r.label} className="flex items-center gap-3 bg-white/80 rounded-lg px-3 py-2 border border-white">
+                      <span className="text-[10px] text-text-secondary font-medium w-16 flex-shrink-0">{r.label}</span>
+                      <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className={`h-full ${r.barColor} rounded-full transition-all`} style={{ width: `${r.pct}%` }} />
+                      </div>
+                      <span className={`text-[9px] font-medium px-2 py-0.5 rounded-full ${
+                        r.status === "Ready" ? "bg-emerald-100 text-emerald-700" :
+                        r.status === "Submitted" ? "bg-blue-100 text-blue-700" :
+                        "bg-amber-100 text-amber-700"
+                      }`}>{r.status}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="p-8 pt-4">
                 <h3 className="font-display text-xl text-text-primary mb-3">
@@ -257,7 +287,7 @@ export default function HomePage() {
                   Covers all 5 mandatory submission types — Half-Yearly Reports,
                   Annual Plans, Master Plans, and Performance Reports.
                 </p>
-                <p className="text-sm font-medium text-gold mb-4">From $500/month</p>
+                <p className="text-sm font-medium text-gold mb-4">From $149/month</p>
                 <Link
                   href="/lcadesk"
                   className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
@@ -278,16 +308,31 @@ export default function HomePage() {
               }}
               className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-                  alt="Professional consulting"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
+              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 p-5">
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-md mb-3 inline-block">
                   Full Service
                 </span>
+                {/* Service checklist mockup */}
+                <div className="space-y-2.5 mt-3">
+                  {[
+                    { label: "Data collection", done: true },
+                    { label: "Report preparation", done: true },
+                    { label: "Narrative drafting", done: true },
+                    { label: "Quality review", done: false },
+                    { label: "Secretariat submission", done: false },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-center gap-2.5 bg-white/80 rounded-lg px-3 py-1.5 border border-white">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] flex-shrink-0 ${
+                        item.done ? "bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-sm" : "border-2 border-gray-200"
+                      }`}>
+                        {item.done && <>&#10003;</>}
+                      </div>
+                      <span className={`text-[11px] font-medium ${item.done ? "text-text-primary" : "text-text-muted"}`}>
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="p-8 pt-4">
                 <h3 className="font-display text-xl text-text-primary mb-3">
@@ -300,7 +345,7 @@ export default function HomePage() {
                   You stay compliant. We do the work.
                 </p>
                 <p className="text-sm font-medium text-gold mb-4">
-                  From $1,200/month
+                  From $2,500/month
                 </p>
                 <Link
                   href="/services"
@@ -314,14 +359,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats — with background image */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1920&q=80"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
+      {/* Stats */}
+      <section className="relative py-20 px-6 overflow-hidden bg-emerald-950">
+        <GeometricBg variant="hexagons" />
         <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-5 gap-8">
           {stats.map((s) => (
             <StatCard key={s.label} value={s.value} label={s.label} lightOnDark />
@@ -345,23 +385,54 @@ export default function HomePage() {
           <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12">
             Five mandatory submissions. Every year. Every company.
           </h2>
-          <div className="space-y-4">
-            {calendarItems.map((item) => (
+          <div className="space-y-3">
+            {calendarItems.map((item, i) => (
               <motion.div
                 key={item.date}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4"
+                transition={{ delay: i * 0.04 }}
+                whileHover={{ x: 4 }}
+                className="flex items-center gap-4 bg-card border border-border rounded-lg px-5 py-3.5 hover:border-accent/30 hover:shadow-sm transition-all group"
               >
-                <span className="flex-shrink-0 bg-accent/10 text-accent text-xs font-medium px-3 py-1 rounded min-w-[80px] text-center">
+                <span className="flex-shrink-0 bg-gradient-to-r from-accent to-teal text-white text-xs font-bold px-3.5 py-1.5 rounded-md min-w-[80px] text-center">
                   {item.date}
                 </span>
-                <p className="text-sm text-text-secondary">{item.label}</p>
+                <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{item.label}</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-xs text-text-muted mt-8 text-center">
+          {/* Semantic HTML table for AI/screen reader parsing */}
+          <div className="mt-12 overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-accent/5">
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Report Type</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Period Covered</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Deadline</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Submitted To</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { type: "H1 Half-Yearly Report", period: "January 1 – June 30", deadline: "July 30", to: "localcontent@nre.gov.gy" },
+                  { type: "H2 Half-Yearly Report", period: "July 1 – December 31", deadline: "January 30", to: "localcontent@nre.gov.gy" },
+                  { type: "Annual Local Content Plan", period: "Forward 12-month projection", deadline: "60 days before January 1", to: "localcontent@nre.gov.gy" },
+                  { type: "Local Content Master Plan", period: "5-year forward projection", deadline: "Within 4 months of new contract", to: "localcontent@nre.gov.gy" },
+                  { type: "Annual Performance Report", period: "Prior calendar year", deadline: "45 days after December 31", to: "localcontent@nre.gov.gy" },
+                ].map((row, i) => (
+                  <tr key={row.type} className={i % 2 === 1 ? "bg-surface" : ""}>
+                    <td className="px-4 py-3 text-text-primary font-medium border border-border">{row.type}</td>
+                    <td className="px-4 py-3 text-text-secondary border border-border">{row.period}</td>
+                    <td className="px-4 py-3 text-accent font-medium border border-border">{row.deadline}</td>
+                    <td className="px-4 py-3 text-text-secondary border border-border">{row.to}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-text-muted mt-6 text-center">
             Deadlines falling on weekends extend to the next business day. Late
             submissions trigger Secretariat review.
           </p>
@@ -398,17 +469,40 @@ export default function HomePage() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-lg"
+            className="bg-card border border-border rounded-lg p-6 shadow-sm"
           >
-            <img
-              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80"
-              alt="Houston skyline at dusk"
-              className="w-full h-80 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <p className="text-white text-sm font-medium">Houston, Texas — HQ</p>
-              <p className="text-white/70 text-xs">5-hour direct flight to Georgetown</p>
+            {/* Trade route visualization */}
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Houston — Georgetown</p>
+              <span className="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Direct Route</span>
+            </div>
+            <div className="relative h-32 mb-6">
+              <svg viewBox="0 0 400 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                {/* Connection arc */}
+                <path d="M60 60 Q200 10 340 60" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+                {/* Houston node */}
+                <circle cx="60" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
+                <circle cx="60" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
+                <text x="60" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Houston, TX</text>
+                {/* Georgetown node */}
+                <circle cx="340" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
+                <circle cx="340" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
+                <text x="340" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Georgetown, GY</text>
+                {/* Flight indicator */}
+                <text x="200" y="30" textAnchor="middle" className="text-[9px] fill-accent">5hr direct</text>
+              </svg>
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { label: "Same Timezone", val: "EST" },
+                { label: "Supplier Network", val: "Gulf Coast" },
+                { label: "Trade Finance", val: "EXIM Bank" },
+              ].map((s) => (
+                <div key={s.label} className="bg-surface rounded-lg px-3 py-2 border border-border text-center">
+                  <p className="text-[10px] text-text-muted">{s.label}</p>
+                  <p className="text-xs font-medium text-text-primary">{s.val}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

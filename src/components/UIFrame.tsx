@@ -10,9 +10,10 @@ interface UIFrameProps {
 export default function UIFrame({ title, children }: UIFrameProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.4 }}
       className="rounded-lg border border-border overflow-hidden bg-card shadow-md"
     >
       {/* Browser chrome */}

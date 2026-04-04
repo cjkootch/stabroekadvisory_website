@@ -1,6 +1,7 @@
 "use client";
 
 import ContactForm from "@/components/ContactForm";
+import GeometricBg from "@/components/GeometricBg";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Clock, Link2 } from "lucide-react";
 
@@ -8,16 +9,11 @@ export default function ContactContent() {
   return (
     <>
       {/* Hero banner */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white" />
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-surface">
+        <GeometricBg variant="grid" />
         <div className="relative mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >

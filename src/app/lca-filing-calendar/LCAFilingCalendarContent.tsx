@@ -98,7 +98,7 @@ export default function LCAFilingCalendarContent() {
       <HeroSection
         headline="LCA Filing Calendar"
         sub="Every mandatory deadline under Guyana's Local Content Act — in one place."
-        backgroundImage="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1920&q=80"
+        geometricVariant="waves"
       />
 
       {/* Year-at-a-Glance */}
@@ -114,9 +114,9 @@ export default function LCAFilingCalendarContent() {
             {yearCalendar.map((m) => (
               <motion.div
                 key={m.month}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className={`bg-card border rounded-lg p-4 ${
                   m.events.some((e) => e.type === "deadline")
                     ? "border-accent/50 shadow-sm"
@@ -165,9 +165,9 @@ export default function LCAFilingCalendarContent() {
             {filings.map((f) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 className="bg-card border border-border rounded-lg p-6"
               >
                 <div className="flex items-start gap-4">
