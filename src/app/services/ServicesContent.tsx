@@ -211,7 +211,7 @@ export default function ServicesContent() {
         headline="Ready to delegate your LCA compliance?"
         body="Let us handle your next filing. Book a consultation and we'll assess your compliance status within 24 hours."
         primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
+        secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
       />
     </>
   );

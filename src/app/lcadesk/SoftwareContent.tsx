@@ -127,7 +127,7 @@ export default function SoftwareContent() {
 
               <motion.h1
                 custom={1} initial="hidden" animate="visible" variants={fadeUp}
-                className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-text-primary mb-6"
+                className="font-[family-name:var(--font-tech)] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-text-primary mb-6"
               >
                 The compliance platform built for Guyana&apos;s oil sector
               </motion.h1>
@@ -231,7 +231,7 @@ export default function SoftwareContent() {
               transition={{ delay: i * 0.05 }}
               className="text-center"
             >
-              <p className="font-display text-3xl text-accent mb-1">{s.value}</p>
+              <p className="font-[family-name:var(--font-tech)] text-3xl text-accent mb-1">{s.value}</p>
               <p className="text-xs text-text-muted">{s.label}</p>
             </motion.div>
           ))}
@@ -243,7 +243,7 @@ export default function SoftwareContent() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Product</p>
-            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
               See LCA Desk in action
             </h2>
             <p className="text-sm text-text-secondary max-w-lg mx-auto">
@@ -335,7 +335,7 @@ export default function SoftwareContent() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Features</p>
-            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
               Everything you need to file. Nothing you don&apos;t.
             </h2>
             <p className="text-sm text-text-secondary max-w-lg mx-auto">
@@ -369,7 +369,7 @@ export default function SoftwareContent() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">How It Works</p>
-            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
               From data entry to submission in four steps
             </h2>
           </div>
@@ -408,7 +408,7 @@ export default function SoftwareContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Credibility</p>
-              <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
+              <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-6">
                 Every field maps to the official Secretariat template
               </h2>
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
@@ -443,7 +443,7 @@ export default function SoftwareContent() {
       {/* ───── COMPARISON STRIP ───── */}
       <section className="py-16 px-6">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-10">
+          <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary text-center mb-10">
             LCA Desk vs. doing it yourself
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -492,7 +492,7 @@ export default function SoftwareContent() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Pricing</p>
-            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+            <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
               Simple, transparent pricing
             </h2>
             <p className="text-sm text-text-secondary">

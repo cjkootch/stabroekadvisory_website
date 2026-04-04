@@ -204,7 +204,7 @@ export default function AboutContent() {
         headline="Ready to work with a compliance partner who understands Guyana's oil sector?"
         body="Book a consultation with our Houston team. We'll assess your LCA filing status within 24 hours."
         primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
+        secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
       />
     </>
   );

@@ -22,8 +22,8 @@ const columns = [
   {
     title: "Software",
     links: [
-      { label: "LCA Desk", href: "/software" },
-      { label: "Pricing", href: "/software#pricing" },
+      { label: "LCA Desk", href: "/lcadesk" },
+      { label: "Pricing", href: "/lcadesk#pricing" },
       { label: "Request a Demo", href: "/contact" },
     ],
   },

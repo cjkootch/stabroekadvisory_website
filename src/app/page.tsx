@@ -144,7 +144,7 @@ export default function HomePage() {
         eyebrow="LOCAL CONTENT ACT COMPLIANCE · GUYANA OIL SECTOR"
         headline="Local Content Compliance, Built for Guyana's Oil Sector."
         sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
-        primaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
+        primaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
         backgroundImage="https://images.pexels.com/photos/87236/pexels-photo-87236.jpeg?w=1920&q=80"
         fullHeight
@@ -242,7 +242,7 @@ export default function HomePage() {
                 </p>
                 <p className="text-sm font-medium text-gold mb-4">From $500/month</p>
                 <Link
-                  href="/software"
+                  href="/lcadesk"
                   className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
                 >
                   Explore LCA Desk &rarr;
@@ -411,7 +411,7 @@ export default function HomePage() {
       <CTABanner
         headline="Your next LCA filing deadline is closer than you think."
         body="H1 reports are due July 30. H2 reports are due January 30. Don't leave compliance to the last minute."
-        primaryCTA={{ label: "Start with LCA Desk", href: "/software" }}
+        primaryCTA={{ label: "Start with LCA Desk", href: "/lcadesk" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />
     </>

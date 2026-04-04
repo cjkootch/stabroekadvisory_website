@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "LCA Desk | Stabroek Advisory",
     description:
       "Compliance software for Guyana's Local Content Act. Built on the official Version 4.1 guidelines.",
-    url: "https://stabroekadvisory.com/software",
+    url: "https://stabroekadvisory.com/lcadesk",
     siteName: "Stabroek Advisory",
   },
 };
