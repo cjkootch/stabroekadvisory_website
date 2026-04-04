@@ -49,7 +49,7 @@ export default function NavBar() {
           ))}
           <Link
             href="/contact"
-            className="ml-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-bg hover:bg-accent-hover transition-colors"
+            className="ml-2 rounded-md bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
           >
             Book a Consultation
           </Link>
@@ -88,7 +88,7 @@ export default function NavBar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-bg text-center hover:bg-accent-hover transition-colors"
+                className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-white text-center hover:bg-accent-hover transition-colors"
               >
                 Book a Consultation
               </Link>

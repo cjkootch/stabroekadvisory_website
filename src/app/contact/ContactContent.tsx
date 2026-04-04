@@ -105,7 +105,7 @@ export default function ContactContent() {
             <p className="text-sm text-text-muted mb-4">Calendly scheduling embed</p>
             <a
               href="YOUR_CALENDLY_LINK"
-              className="inline-flex items-center justify-center rounded-md bg-accent px-7 py-3 text-sm font-medium text-bg hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-7 py-3 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
             >
               Schedule a Call
             </a>

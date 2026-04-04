@@ -142,7 +142,7 @@ export default function SoftwareContent() {
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3">
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center text-xs ${
-                    item.done ? "bg-accent text-bg" : "border border-border text-transparent"
+                    item.done ? "bg-accent text-white" : "border border-border text-transparent"
                   }`}>
                     &#10003;
                   </div>

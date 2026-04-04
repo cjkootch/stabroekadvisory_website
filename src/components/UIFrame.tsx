@@ -13,7 +13,7 @@ export default function UIFrame({ title, children }: UIFrameProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="rounded-lg border border-border overflow-hidden bg-card"
+      className="rounded-lg border border-border overflow-hidden bg-card shadow-md"
     >
       {/* Browser chrome */}
       <div className="flex items-center gap-2 px-4 py-3 bg-surface border-b border-border">

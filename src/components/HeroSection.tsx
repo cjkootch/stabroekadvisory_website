@@ -37,7 +37,7 @@ export default function HeroSection({
       } pt-24 pb-16`}
       style={{
         backgroundImage:
-          "radial-gradient(circle, rgba(26,45,74,0.3) 1px, transparent 1px)",
+          "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
         backgroundSize: "24px 24px",
       }}
     >
@@ -82,7 +82,7 @@ export default function HeroSection({
             {primaryCTA && (
               <Link
                 href={primaryCTA.href}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-7 py-3 text-sm font-medium text-bg hover:bg-accent-hover hover:scale-[1.02] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-7 py-3 text-sm font-medium text-white hover:bg-accent-hover hover:scale-[1.02] transition-all"
               >
                 {primaryCTA.label}
                 <ArrowRight size={16} />

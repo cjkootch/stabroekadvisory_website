@@ -159,7 +159,7 @@ export default function AboutContent() {
       </section>
 
       {/* Values */}
-      <section className="py-20 px-6 bg-card">
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-6xl">
           <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-12 text-center">
             Our Values
@@ -171,7 +171,7 @@ export default function AboutContent() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-surface border border-border rounded-lg p-6"
+                className="bg-card border border-border rounded-lg p-6 shadow-sm"
               >
                 <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4">
                   <v.icon size={20} className="text-accent" />

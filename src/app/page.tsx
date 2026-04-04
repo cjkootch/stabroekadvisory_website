@@ -172,7 +172,7 @@ export default function HomePage() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 px-6 bg-card">
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-6xl">
           <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12 max-w-3xl mx-auto">
             Every company in Guyana&apos;s oil sector has a compliance
@@ -185,7 +185,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className={`bg-surface border border-border rounded-lg p-6 border-l-4 ${card.color}`}
+                className={`bg-card border border-border rounded-lg p-6 border-l-4 shadow-sm ${card.color}`}
               >
                 <card.icon size={24} className="text-text-muted mb-4" />
                 <h3 className="font-display text-lg text-text-primary mb-3">
@@ -306,7 +306,7 @@ export default function HomePage() {
       </section>
 
       {/* Compliance Calendar */}
-      <section className="py-20 px-6 bg-card">
+      <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12">
             Five mandatory submissions. Every year. Every company.

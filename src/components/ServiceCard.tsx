@@ -30,7 +30,7 @@ export default function ServiceCard({
       viewport={{ once: true }}
       whileHover={{ y: -4, boxShadow: "0 0 20px rgba(0,200,150,0.12)" }}
       transition={{ duration: 0.3 }}
-      className="bg-card border border-border rounded-lg p-6 flex flex-col"
+      className="bg-card border border-border rounded-lg p-6 flex flex-col shadow-sm"
     >
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center">

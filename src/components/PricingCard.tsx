@@ -33,7 +33,7 @@ export default function PricingCard({
       }`}
     >
       {highlighted && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-bg text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded-full">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded-full">
           Recommended
         </span>
       )}
@@ -54,7 +54,7 @@ export default function PricingCard({
         href={cta.href}
         className={`rounded-md px-6 py-3 text-sm font-medium text-center transition-all hover:scale-[1.02] ${
           highlighted
-            ? "bg-accent text-bg hover:bg-accent-hover"
+            ? "bg-accent text-white hover:bg-accent-hover"
             : "border border-accent text-accent hover:bg-accent/10"
         }`}
       >
