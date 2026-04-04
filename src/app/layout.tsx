@@ -27,6 +27,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stabroekadvisory.com"),
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   title: {
     default: "Stabroek Advisory | Local Content Act Compliance Software & Advisory — Guyana Oil Sector",
     template: "%s | Stabroek Advisory",
@@ -134,15 +138,22 @@ const jsonLd = {
       offers: [
         {
           "@type": "Offer",
-          name: "Standard",
-          price: "500",
+          name: "Lite",
+          price: "149",
           priceCurrency: "USD",
           billingIncrement: "P1M",
         },
         {
           "@type": "Offer",
-          name: "Professional",
-          price: "750",
+          name: "Pro",
+          price: "599",
+          priceCurrency: "USD",
+          billingIncrement: "P1M",
+        },
+        {
+          "@type": "Offer",
+          name: "Enterprise",
+          price: "1999",
           priceCurrency: "USD",
           billingIncrement: "P1M",
         },
