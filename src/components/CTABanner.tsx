@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GeometricBg from "./GeometricBg";
 
 interface CTABannerProps {
   headline: string;
@@ -14,13 +15,8 @@ export default function CTABanner({
   secondaryCTA,
 }: CTABannerProps) {
   return (
-    <section className="relative py-20 overflow-hidden">
-      <img
-        src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?w=1920&q=80"
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/85 to-teal-900/90" />
+    <section className="relative py-20 overflow-hidden bg-emerald-950">
+      <GeometricBg variant="nodes" />
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="font-display text-2xl md:text-3xl text-white mb-4">{headline}</h2>
         <p className="text-white/80 text-sm md:text-base mb-8 max-w-xl mx-auto">{body}</p>

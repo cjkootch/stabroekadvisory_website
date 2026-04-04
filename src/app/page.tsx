@@ -6,6 +6,7 @@ import StatCard from "@/components/StatCard";
 import StepTimeline from "@/components/StepTimeline";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
+import GeometricBg from "@/components/GeometricBg";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -163,7 +164,7 @@ export default function HomePage() {
         sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
         primaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        backgroundImage="https://images.pexels.com/photos/87236/pexels-photo-87236.jpeg?w=1920&q=80"
+        geometricVariant="topology"
         fullHeight
       />
 
@@ -236,16 +237,30 @@ export default function HomePage() {
               }}
               className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-                  alt="Analytics dashboard"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
+              <div className="relative h-48 overflow-hidden bg-surface p-5">
+                <span className="text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded mb-3 inline-block">
                   Software
                 </span>
+                {/* Mini dashboard mockup */}
+                <div className="space-y-2 mt-2">
+                  {[
+                    { label: "H1 Report", pct: 85, status: "Ready" },
+                    { label: "Annual Plan", pct: 60, status: "In Progress" },
+                    { label: "Master Plan", pct: 100, status: "Submitted" },
+                  ].map((r) => (
+                    <div key={r.label} className="flex items-center gap-3">
+                      <span className="text-[10px] text-text-muted w-16 flex-shrink-0">{r.label}</span>
+                      <div className="flex-1 h-1.5 bg-border rounded-full overflow-hidden">
+                        <div className="h-full bg-accent rounded-full" style={{ width: `${r.pct}%` }} />
+                      </div>
+                      <span className={`text-[9px] px-1.5 py-0.5 rounded ${
+                        r.status === "Ready" ? "bg-accent/10 text-accent" :
+                        r.status === "Submitted" ? "bg-blue-50 text-blue-600" :
+                        "bg-amber-50 text-amber-600"
+                      }`}>{r.status}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="p-8 pt-4">
                 <h3 className="font-display text-xl text-text-primary mb-3">
@@ -278,16 +293,31 @@ export default function HomePage() {
               }}
               className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-                  alt="Professional consulting"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-                <span className="absolute bottom-4 left-6 text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded">
+              <div className="relative h-48 overflow-hidden bg-surface p-5">
+                <span className="text-[10px] font-medium uppercase tracking-wider bg-accent text-white px-3 py-1 rounded mb-3 inline-block">
                   Full Service
                 </span>
+                {/* Service checklist mockup */}
+                <div className="space-y-2 mt-2">
+                  {[
+                    { label: "Data collection", done: true },
+                    { label: "Report preparation", done: true },
+                    { label: "Narrative drafting", done: true },
+                    { label: "Quality review", done: false },
+                    { label: "Secretariat submission", done: false },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-center gap-2">
+                      <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[8px] flex-shrink-0 ${
+                        item.done ? "bg-accent text-white" : "border border-border"
+                      }`}>
+                        {item.done && <>&#10003;</>}
+                      </div>
+                      <span className={`text-[11px] ${item.done ? "text-text-primary" : "text-text-muted"}`}>
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="p-8 pt-4">
                 <h3 className="font-display text-xl text-text-primary mb-3">
@@ -314,14 +344,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats — with background image */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1920&q=80"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
+      {/* Stats */}
+      <section className="relative py-20 px-6 overflow-hidden bg-emerald-950">
+        <GeometricBg variant="hexagons" />
         <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-5 gap-8">
           {stats.map((s) => (
             <StatCard key={s.label} value={s.value} label={s.label} lightOnDark />
@@ -398,17 +423,40 @@ export default function HomePage() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-lg"
+            className="bg-card border border-border rounded-lg p-6 shadow-sm"
           >
-            <img
-              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80"
-              alt="Houston skyline at dusk"
-              className="w-full h-80 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <p className="text-white text-sm font-medium">Houston, Texas — HQ</p>
-              <p className="text-white/70 text-xs">5-hour direct flight to Georgetown</p>
+            {/* Trade route visualization */}
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Houston — Georgetown</p>
+              <span className="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Direct Route</span>
+            </div>
+            <div className="relative h-32 mb-6">
+              <svg viewBox="0 0 400 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                {/* Connection arc */}
+                <path d="M60 60 Q200 10 340 60" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+                {/* Houston node */}
+                <circle cx="60" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
+                <circle cx="60" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
+                <text x="60" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Houston, TX</text>
+                {/* Georgetown node */}
+                <circle cx="340" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
+                <circle cx="340" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
+                <text x="340" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Georgetown, GY</text>
+                {/* Flight indicator */}
+                <text x="200" y="30" textAnchor="middle" className="text-[9px] fill-accent">5hr direct</text>
+              </svg>
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { label: "Same Timezone", val: "EST" },
+                { label: "Supplier Network", val: "Gulf Coast" },
+                { label: "Trade Finance", val: "EXIM Bank" },
+              ].map((s) => (
+                <div key={s.label} className="bg-surface rounded-lg px-3 py-2 border border-border text-center">
+                  <p className="text-[10px] text-text-muted">{s.label}</p>
+                  <p className="text-xs font-medium text-text-primary">{s.val}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

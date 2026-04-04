@@ -78,7 +78,7 @@ export default function AboutContent() {
       <HeroSection
         headline="The US-Guyana Compliance Bridge"
         sub="Houston expertise. Georgetown presence. Built for Guyana's oil boom."
-        backgroundImage="https://images.unsplash.com/photo-1513828583688-c52571e73e83?w=1920&q=80"
+        geometricVariant="nodes"
       />
 
       {/* Our Story */}
@@ -88,14 +88,28 @@ export default function AboutContent() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-lg overflow-hidden shadow-lg"
+            className="bg-card border border-border rounded-lg p-6 shadow-sm"
           >
-            <img
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
-              alt="Offshore energy operations"
-              className="w-full h-80 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            {/* Key metrics visualization */}
+            <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-6">Guyana Oil Sector at a Glance</p>
+            <div className="space-y-5">
+              {[
+                { label: "Companies Filing Under LCA", value: "1,300+", pct: 85 },
+                { label: "Mandatory Submissions / Year", value: "5", pct: 100 },
+                { label: "LCA Sector Categories", value: "40", pct: 70 },
+                { label: "Max Non-Compliance Fine", value: "GY$50M", pct: 95 },
+              ].map((m) => (
+                <div key={m.label}>
+                  <div className="flex justify-between mb-1.5">
+                    <span className="text-xs text-text-secondary">{m.label}</span>
+                    <span className="text-xs font-medium text-text-primary">{m.value}</span>
+                  </div>
+                  <div className="h-2 bg-surface rounded-full overflow-hidden">
+                    <div className="h-full bg-accent/60 rounded-full" style={{ width: `${m.pct}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
           <div>
           <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">

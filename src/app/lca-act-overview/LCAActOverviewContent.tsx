@@ -111,7 +111,7 @@ export default function LCAActOverviewContent() {
       <HeroSection
         headline="Understanding the Local Content Act"
         sub="A guide to Guyana's Local Content Act 2021 (No. 18 of 2021) and what it means for petroleum sector companies."
-        backgroundImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
+        geometricVariant="hexagons"
       />
 
       {/* Introduction */}

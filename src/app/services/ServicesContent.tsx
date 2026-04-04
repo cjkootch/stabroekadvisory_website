@@ -130,7 +130,7 @@ export default function ServicesContent() {
       <HeroSection
         headline="Compliance Services for Guyana's Oil Sector"
         sub="From first-time filers to established contractors — we manage the full LCA reporting lifecycle."
-        backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+        geometricVariant="circuits"
       />
 
       {/* Service Cards */}

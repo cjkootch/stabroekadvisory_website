@@ -98,7 +98,7 @@ export default function LCAFilingCalendarContent() {
       <HeroSection
         headline="LCA Filing Calendar"
         sub="Every mandatory deadline under Guyana's Local Content Act — in one place."
-        backgroundImage="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1920&q=80"
+        geometricVariant="waves"
       />
 
       {/* Year-at-a-Glance */}

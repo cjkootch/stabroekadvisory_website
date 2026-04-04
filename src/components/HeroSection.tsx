@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import GeometricBg from "./GeometricBg";
 
 interface HeroProps {
   eyebrow?: string;
@@ -11,8 +12,7 @@ interface HeroProps {
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
   fullHeight?: boolean;
-  backgroundImage?: string;
-  overlay?: "dark" | "light";
+  geometricVariant?: "grid" | "topology" | "nodes" | "waves" | "hexagons" | "circuits";
 }
 
 const fadeUp = {
@@ -31,49 +31,15 @@ export default function HeroSection({
   primaryCTA,
   secondaryCTA,
   fullHeight = false,
-  backgroundImage,
-  overlay = "dark",
+  geometricVariant = "grid",
 }: HeroProps) {
-  const hasBg = !!backgroundImage;
-  const textColor = hasBg && overlay === "dark" ? "text-white" : "text-text-primary";
-  const subColor = hasBg && overlay === "dark" ? "text-white/80" : "text-text-secondary";
-  const eyebrowColor = hasBg && overlay === "dark" ? "text-emerald-300" : "text-accent";
-
   return (
     <section
-      className={`relative flex items-center justify-center overflow-hidden ${
+      className={`relative flex items-center justify-center overflow-hidden bg-surface ${
         fullHeight ? "min-h-screen" : "min-h-[60vh]"
       } pt-24 pb-16`}
     >
-      {/* Background image */}
-      {hasBg && (
-        <>
-          <img
-            src={backgroundImage}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            className={`absolute inset-0 ${
-              overlay === "dark"
-                ? "bg-gradient-to-b from-black/70 via-black/50 to-black/70"
-                : "bg-gradient-to-b from-white/80 via-white/60 to-white/80"
-            }`}
-          />
-        </>
-      )}
-
-      {/* Dot pattern fallback when no image */}
-      {!hasBg && (
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
-      )}
+      <GeometricBg variant={geometricVariant} />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center z-10">
         {eyebrow && (
@@ -82,7 +48,7 @@ export default function HeroSection({
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className={`${eyebrowColor} text-xs font-medium tracking-[0.2em] uppercase mb-6`}
+            className="text-accent text-xs font-medium tracking-[0.2em] uppercase mb-6"
           >
             {eyebrow}
           </motion.p>
@@ -92,7 +58,7 @@ export default function HeroSection({
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className={`font-display text-5xl md:text-7xl leading-[1.1] ${textColor} mb-6`}
+          className="font-display text-5xl md:text-7xl leading-[1.1] text-text-primary mb-6"
         >
           {headline}
         </motion.h1>
@@ -101,7 +67,7 @@ export default function HeroSection({
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className={`text-lg md:text-xl ${subColor} max-w-2xl mx-auto mb-10 leading-relaxed`}
+          className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           {sub}
         </motion.p>
@@ -125,11 +91,7 @@ export default function HeroSection({
             {secondaryCTA && (
               <Link
                 href={secondaryCTA.href}
-                className={`inline-flex items-center justify-center gap-2 rounded-md border px-7 py-3 text-sm font-medium hover:scale-[1.02] transition-all ${
-                  hasBg && overlay === "dark"
-                    ? "border-white/40 text-white hover:bg-white/10"
-                    : "border-accent text-accent hover:bg-accent/10"
-                }`}
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-accent text-accent px-7 py-3 text-sm font-medium hover:bg-accent/10 hover:scale-[1.02] transition-all"
               >
                 {secondaryCTA.label}
               </Link>
@@ -152,7 +114,7 @@ export default function HeroSection({
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className={hasBg && overlay === "dark" ? "text-white/50" : "text-text-muted"}
+            className="text-text-muted"
           >
             <path d="M6 9l6 6 6-6" />
           </svg>
