@@ -31,8 +31,8 @@ const columns = [
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
-      { label: "LCA Filing Calendar", href: "/services" },
-      { label: "LCA Act Overview", href: "/about" },
+      { label: "LCA Filing Calendar", href: "/lca-filing-calendar" },
+      { label: "LCA Act Overview", href: "/lca-act-overview" },
     ],
   },
 ];
