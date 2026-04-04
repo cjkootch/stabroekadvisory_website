@@ -1,6 +1,6 @@
 "use client";
 
-import PricingCard from "@/components/PricingCard";
+import PricingToggle from "@/components/PricingToggle";
 import CTABanner from "@/components/CTABanner";
 import UIFrame from "@/components/UIFrame";
 import { motion } from "framer-motion";
@@ -490,58 +490,16 @@ export default function SoftwareContent() {
       {/* ───── PRICING ───── */}
       <section className="py-20 px-6 bg-surface" id="pricing">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Pricing</p>
             <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
               Simple, transparent pricing
             </h2>
             <p className="text-sm text-text-secondary">
-              Save 15% with annual billing. No setup fees. Cancel anytime.
+              No setup fees. Cancel anytime.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <PricingCard
-              name="Standard"
-              price="$500"
-              period="month"
-              features={[
-                "1 company profile",
-                "All 5 submission types",
-                "CSV and text export",
-                "Filing deadline alerts",
-                "Email support",
-              ]}
-              cta={{ label: "Get Started", href: "/contact" }}
-            />
-            <PricingCard
-              name="Professional"
-              price="$750"
-              period="month"
-              highlighted
-              features={[
-                "3 company profiles",
-                "All submission types",
-                "Priority support",
-                "Narrative guidance templates",
-                "Multi-period comparison",
-                "Historical data archive",
-              ]}
-              cta={{ label: "Get Started", href: "/contact" }}
-            />
-            <PricingCard
-              name="Enterprise"
-              price="Custom"
-              features={[
-                "Unlimited company profiles",
-                "Managed service add-on",
-                "Dedicated account manager",
-                "Custom onboarding",
-                "Georgetown representative access",
-                "API access",
-              ]}
-              cta={{ label: "Contact Us", href: "/contact" }}
-            />
-          </div>
+          <PricingToggle />
         </div>
       </section>
 
