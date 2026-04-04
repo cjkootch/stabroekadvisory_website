@@ -30,6 +30,7 @@ const columns = [
   {
     title: "Resources",
     links: [
+      { label: "All Resources", href: "/resources" },
       { label: "Blog", href: "/blog" },
       { label: "LCA Filing Calendar", href: "/lca-filing-calendar" },
       { label: "LCA Act Overview", href: "/lca-act-overview" },
