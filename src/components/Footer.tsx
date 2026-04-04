@@ -99,6 +99,15 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-border pt-8">
+          <div className="flex justify-center gap-4 mb-4">
+            <Link href="/privacy" className="text-xs text-text-muted hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-xs text-text-muted">&middot;</span>
+            <Link href="/terms" className="text-xs text-text-muted hover:text-accent transition-colors">
+              Terms and Conditions
+            </Link>
+          </div>
           <p className="text-xs text-text-muted text-center mb-2">
             &copy; 2026 Stabroek Advisory LLC &middot; Houston, Texas &middot; stabroekadvisory.com
           </p>
