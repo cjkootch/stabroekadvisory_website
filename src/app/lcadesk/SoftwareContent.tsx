@@ -192,10 +192,13 @@ export default function SoftwareContent() {
             <div>
               <motion.div
                 custom={0} initial="hidden" animate="visible" variants={fadeUp}
-                className="inline-flex items-center gap-2 bg-accent/10 text-accent text-xs font-medium px-3 py-1.5 rounded-full mb-4"
+                className="mb-6"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                LCA Desk — AI Compliance Platform
+                <img
+                  src="/lcadesk-logo.png"
+                  alt="LCA Desk"
+                  className="h-10 w-auto"
+                />
               </motion.div>
 
               <motion.h1
