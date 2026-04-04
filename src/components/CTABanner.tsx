@@ -14,21 +14,27 @@ export default function CTABanner({
   secondaryCTA,
 }: CTABannerProps) {
   return (
-    <section className="bg-accent py-16">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+    <section className="relative py-20 overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?w=1920&q=80"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/85 to-teal-900/90" />
+      <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="font-display text-2xl md:text-3xl text-white mb-4">{headline}</h2>
         <p className="text-white/80 text-sm md:text-base mb-8 max-w-xl mx-auto">{body}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={primaryCTA.href}
-            className="rounded-md bg-text-primary px-7 py-3 text-sm font-medium text-white hover:bg-text-primary/90 transition-colors"
+            className="rounded-md bg-white px-7 py-3 text-sm font-medium text-emerald-900 hover:bg-white/90 transition-colors shadow-lg"
           >
             {primaryCTA.label}
           </Link>
           {secondaryCTA && (
             <Link
               href={secondaryCTA.href}
-              className="rounded-md border border-white px-7 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+              className="rounded-md border border-white/40 px-7 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors"
             >
               {secondaryCTA.label}
             </Link>

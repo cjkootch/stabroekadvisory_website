@@ -78,12 +78,27 @@ export default function AboutContent() {
       <HeroSection
         headline="The US-Guyana Compliance Bridge"
         sub="Houston expertise. Georgetown presence. Built for Guyana's oil boom."
+        backgroundImage="https://images.unsplash.com/photo-1513828583688-c52571e73e83?w=1920&q=80"
       />
 
       {/* Our Story */}
       <section className="py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8 text-center">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
+              alt="Offshore energy operations"
+              className="w-full h-80 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+          </motion.div>
+          <div>
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-8">
             Our Story
           </h2>
           <div className="space-y-6 text-sm text-text-secondary leading-relaxed">
@@ -101,6 +116,7 @@ export default function AboutContent() {
             <p>
               We built LCA Desk because we needed it ourselves, and because no one else had.
             </p>
+          </div>
           </div>
         </div>
       </section>
@@ -188,7 +204,7 @@ export default function AboutContent() {
         headline="Ready to work with a compliance partner who understands Guyana's oil sector?"
         body="Book a consultation with our Houston team. We'll assess your LCA filing status within 24 hours."
         primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore LCA Desk", href: "/software" }}
+        secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
       />
     </>
   );

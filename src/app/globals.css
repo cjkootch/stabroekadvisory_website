@@ -26,6 +26,7 @@
   --color-text-muted: var(--text-muted);
   --font-display: 'Playfair Display', serif;
   --font-sans: 'DM Sans', sans-serif;
+  --font-tech: 'Inter', sans-serif;
 }
 
 body {

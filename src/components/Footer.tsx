@@ -22,14 +22,15 @@ const columns = [
   {
     title: "Software",
     links: [
-      { label: "LCA Desk", href: "/software" },
-      { label: "Pricing", href: "/software#pricing" },
-      { label: "Free Trial", href: "/software" },
+      { label: "LCA Desk", href: "/lcadesk" },
+      { label: "Pricing", href: "/lcadesk#pricing" },
+      { label: "Request a Demo", href: "/contact" },
     ],
   },
   {
     title: "Resources",
     links: [
+      { label: "Blog", href: "/blog" },
       { label: "LCA Filing Calendar", href: "/services" },
       { label: "LCA Act Overview", href: "/about" },
     ],
@@ -99,6 +100,15 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-border pt-8">
+          <div className="flex justify-center gap-4 mb-4">
+            <Link href="/privacy" className="text-xs text-text-muted hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-xs text-text-muted">&middot;</span>
+            <Link href="/terms" className="text-xs text-text-muted hover:text-accent transition-colors">
+              Terms and Conditions
+            </Link>
+          </div>
           <p className="text-xs text-text-muted text-center mb-2">
             &copy; 2026 Stabroek Advisory LLC &middot; Houston, Texas &middot; stabroekadvisory.com
           </p>
