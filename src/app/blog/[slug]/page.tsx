@@ -17,13 +17,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Stabroek Advisory Blog`,
+    title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://stabroekadvisory.com/blog/${post.slug}`,
+    },
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.excerpt,
       url: `https://stabroekadvisory.com/blog/${post.slug}`,
       siteName: "Stabroek Advisory",
+      images: [{ url: post.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
     },
   };
 }
@@ -33,9 +44,35 @@ export default async function BlogPostPage({ params }: Props) {
   const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: "Stabroek Advisory LLC",
+      url: "https://stabroekadvisory.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Stabroek Advisory LLC",
+      url: "https://stabroekadvisory.com",
+    },
+    image: post.image,
+    url: `https://stabroekadvisory.com/blog/${post.slug}`,
+    mainEntityOfPage: `https://stabroekadvisory.com/blog/${post.slug}`,
+  };
+
   const otherPosts = posts.filter((p) => p.slug !== slug).slice(0, 2);
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
     <section className="pt-32 pb-20 px-6">
       <div className="mx-auto max-w-3xl">
         {/* Breadcrumb */}
@@ -130,5 +167,6 @@ export default async function BlogPostPage({ params }: Props) {
         )}
       </div>
     </section>
+    </>
   );
 }
