@@ -31,13 +31,11 @@ export default function NavBar() {
     >
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-accent" />
-          </span>
-          <span className="font-display text-sm tracking-[0.25em] uppercase text-text-primary group-hover:text-accent transition-colors">
-            Stabroek Advisory
-          </span>
+          <img
+            src="/logo-black.png"
+            alt="Stabroek Advisory"
+            className="h-6 w-auto"
+          />
         </Link>
 
         {/* Desktop */}

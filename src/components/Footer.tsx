@@ -47,11 +47,12 @@ export default function Footer() {
         {/* Top */}
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-12">
           <div className="max-w-xs">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-accent text-xl">&#9679;</span>
-              <span className="font-display text-sm tracking-[0.25em] uppercase text-text-primary">
-                Stabroek Advisory
-              </span>
+            <div className="mb-4">
+              <img
+                src="/logo-black.png"
+                alt="Stabroek Advisory"
+                className="h-5 w-auto"
+              />
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">
               Compliance technology and advisory services for Guyana&apos;s oil and gas sector.
