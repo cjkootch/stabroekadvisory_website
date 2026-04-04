@@ -403,7 +403,36 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
-          <p className="text-xs text-text-muted mt-8 text-center">
+          {/* Semantic HTML table for AI/screen reader parsing */}
+          <div className="mt-12 overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-accent/5">
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Report Type</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Period Covered</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Deadline</th>
+                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Submitted To</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { type: "H1 Half-Yearly Report", period: "January 1 – June 30", deadline: "July 30", to: "localcontent@nre.gov.gy" },
+                  { type: "H2 Half-Yearly Report", period: "July 1 – December 31", deadline: "January 30", to: "localcontent@nre.gov.gy" },
+                  { type: "Annual Local Content Plan", period: "Forward 12-month projection", deadline: "60 days before January 1", to: "localcontent@nre.gov.gy" },
+                  { type: "Local Content Master Plan", period: "5-year forward projection", deadline: "Within 4 months of new contract", to: "localcontent@nre.gov.gy" },
+                  { type: "Annual Performance Report", period: "Prior calendar year", deadline: "45 days after December 31", to: "localcontent@nre.gov.gy" },
+                ].map((row, i) => (
+                  <tr key={row.type} className={i % 2 === 1 ? "bg-surface" : ""}>
+                    <td className="px-4 py-3 text-text-primary font-medium border border-border">{row.type}</td>
+                    <td className="px-4 py-3 text-text-secondary border border-border">{row.period}</td>
+                    <td className="px-4 py-3 text-accent font-medium border border-border">{row.deadline}</td>
+                    <td className="px-4 py-3 text-text-secondary border border-border">{row.to}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-text-muted mt-6 text-center">
             Deadlines falling on weekends extend to the next business day. Late
             submissions trigger Secretariat review.
           </p>

@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/local-content-act-penalties-guyana`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/resources`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${base}/guides/complete-guide-lca-reporting-guyana-2026`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/lca-compliance-guide`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
     { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
   ];

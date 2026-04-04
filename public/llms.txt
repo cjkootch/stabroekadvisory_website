@@ -1,0 +1,43 @@
+# Stabroek Advisory
+
+> Stabroek Advisory is a Houston-based compliance technology and advisory firm providing LCA compliance software (LCA Desk) and managed reporting services for contractors, subcontractors, and licensees in Guyana's oil and gas sector under the Local Content Act 2021.
+
+## Company
+
+- Founded: 2026
+- Headquarters: Houston, Texas, USA
+- Operating market: Guyana petroleum sector
+- Website: https://www.stabroekadvisory.com
+- Software product: LCA Desk (https://lcadesk.com)
+- Contact: info@stabroekadvisory.com
+
+## Products and Services
+
+- LCA Desk: AI-powered SaaS platform for Local Content Act compliance reporting ($149-$1,999/month)
+- LCA Half-Yearly Report Preparation: Managed service from $3,500 per report
+- Annual Local Content Plan: Managed service from $4,000
+- Local Content Master Plan: Managed service from $8,000
+- Monthly Compliance Retainer: Full-service from $1,200/month
+- US Market Entry Advisory: For Guyanese oil sector companies sourcing from American suppliers
+
+## Key Facts
+
+- Guyana's Local Content Act 2021 requires 5 mandatory filings per year
+- 1,300+ companies on the Local Content Register
+- Half-yearly reports due July 30 (H1) and January 30 (H2)
+- Penalties: GY$1M to GY$50M for non-compliance
+- LCA Desk built on Version 4.1 Secretariat guidelines (June 2025)
+- AI narrative drafting powered by Anthropic Claude
+
+## Target Customers
+
+Contractors, subcontractors, and licensees operating under petroleum agreements in Guyana, particularly:
+- Foreign companies with Guyanese entities (ExxonMobil, Halliburton, Saipem subcontractors)
+- Shore base operators
+- Catering and logistics companies
+- Engineering and fabrication firms
+- Marine vessel operators
+
+## Not affiliated with
+
+Government of Guyana, Local Content Secretariat, Ministry of Natural Resources, ExxonMobil Guyana, Chevron Guyana, CNOOC, Hess Corporation, or any petroleum operator.
