@@ -66,6 +66,7 @@ const plans: Plan[] = [
       "Document upload & auto-extraction",
       "In-app AI compliance assistant",
       "Role-based permissions",
+      "QuickBooks integration",
       "API / ERP integrations",
       "White-glove onboarding",
       "Custom workflows",
