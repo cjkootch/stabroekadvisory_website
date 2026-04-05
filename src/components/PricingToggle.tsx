@@ -32,7 +32,7 @@ const plans: Plan[] = [
       "Filing export (PDF/Excel)",
       "Email support",
     ],
-    cta: { label: "Get Started", href: "/contact" },
+    cta: { label: "Get Started", href: "https://lcadesk.com" },
   },
   {
     name: "Pro",
@@ -52,7 +52,7 @@ const plans: Plan[] = [
       "Audit log",
       "Priority support",
     ],
-    cta: { label: "Get Started", href: "/contact" },
+    cta: { label: "Get Started", href: "https://lcadesk.com" },
   },
   {
     name: "Enterprise",

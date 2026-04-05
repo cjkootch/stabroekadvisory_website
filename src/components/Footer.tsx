@@ -24,7 +24,7 @@ const columns = [
     links: [
       { label: "LCA Desk", href: "/lcadesk" },
       { label: "Pricing", href: "/lcadesk#pricing" },
-      { label: "Request a Demo", href: "/contact" },
+      { label: "Request a Demo", href: "https://lcadesk.com" },
     ],
   },
   {

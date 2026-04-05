@@ -230,10 +230,12 @@ export default function SoftwareContent() {
                 className="flex flex-col sm:flex-row gap-3"
               >
                 <Link
-                  href="/contact"
+                  href="https://lcadesk.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent to-teal px-7 py-3.5 text-sm font-medium text-white hover:shadow-lg hover:shadow-accent/25 hover:scale-[1.02] transition-all"
                 >
-                  Request a Demo
+                  Get Started
                   <ArrowRight size={16} />
                 </Link>
                 <Link
@@ -787,7 +789,7 @@ export default function SoftwareContent() {
       <CTABanner
         headline="Let AI handle your LCA compliance."
         body="See AI narrative drafting, compliance gap detection, and automated reporting in action. Request a demo and we'll show you a live LCA submission built from your company's data."
-        primaryCTA={{ label: "Request a Demo", href: "/contact" }}
+        primaryCTA={{ label: "Get Started Free", href: "https://lcadesk.com" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />
     </>
