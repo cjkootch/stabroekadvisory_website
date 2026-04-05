@@ -612,75 +612,32 @@ export default function SoftwareContent() {
       </section>
 
       {/* ───── INTEGRATIONS ───── */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Integrations</p>
-              <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-6">
-                Connect your accounting data directly
-              </h2>
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                LCA Desk integrates with QuickBooks to automatically pull your procurement and payroll data
-                into your compliance reports. No more manual re-entry from accounting exports — your expenditure
-                items, supplier classifications, and employee records sync directly into the LCA reporting format.
-              </p>
-              <ul className="space-y-3 mb-6">
-                {[
-                  "Auto-import expenditure data from QuickBooks",
-                  "Map vendors to Guyanese / non-Guyanese classifications",
-                  "Sync payroll records for employment reporting",
-                  "Reconcile procurement totals automatically",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                    <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-text-muted">
-                More integrations coming soon — Xero, Sage, and direct ERP connectors for Enterprise clients.
-              </p>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              className="flex flex-col items-center"
-            >
-              <div className="bg-card border border-border rounded-2xl p-8 shadow-sm w-full max-w-sm">
-                <div className="flex items-center justify-center mb-6">
-                  <img src="/quickbooks-logo.png" alt="Intuit QuickBooks" className="h-10 w-auto" />
-                </div>
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-surface flex items-center justify-center">
-                    <img src="/quickbooks-icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                    <div className="w-8 h-px bg-accent" />
-                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: "0.3s" }} />
-                    <div className="w-8 h-px bg-accent" />
-                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: "0.6s" }} />
-                  </div>
-                  <div className="w-10 h-10 rounded-xl bg-surface flex items-center justify-center">
-                    <img src="/lcadesk-logo.png" alt="" className="h-5 w-auto" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  {[
-                    { label: "Vendors synced", val: "47", status: "text-accent" },
-                    { label: "Transactions mapped", val: "312", status: "text-accent" },
-                    { label: "Last sync", val: "2 min ago", status: "text-text-muted" },
-                  ].map((row) => (
-                    <div key={row.label} className="flex items-center justify-between bg-surface rounded-lg px-3 py-2 border border-border">
-                      <span className="text-xs text-text-secondary">{row.label}</span>
-                      <span className={`text-xs font-medium ${row.status}`}>{row.val}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+      <section className="py-16 px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">Integrations</p>
+          <h2 className="font-[family-name:var(--font-tech)] text-2xl md:text-3xl text-text-primary mb-4">
+            Connects with the tools you already use
+          </h2>
+          <p className="text-sm text-text-secondary mb-10 max-w-lg mx-auto">
+            Import your accounting and payroll data directly into LCA Desk — no manual re-entry.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {[
+              { src: "/quickbooks-logo.png", alt: "QuickBooks", h: "h-8" },
+              { src: "/xero-logo.png", alt: "Xero", h: "h-9" },
+              { src: "/zapier-logo.svg", alt: "Zapier", h: "h-7" },
+            ].map((logo) => (
+              <motion.div
+                key={logo.alt}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-card border border-border rounded-xl px-8 py-5 shadow-sm hover:border-accent/30 transition-all"
+              >
+                <img src={logo.src} alt={logo.alt} className={`${logo.h} w-auto`} />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
