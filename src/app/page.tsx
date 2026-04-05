@@ -128,12 +128,12 @@ const faqItems = [
     question:
       "What is the difference between LCA Desk and the managed service?",
     answer:
-      "LCA Desk is self-serve software — you enter your own data and generate submission-ready reports. The managed service means Stabroek Advisory handles everything: data collection, entry, narrative writing, quality review, and submission to the Secretariat on your behalf.",
+      "LCA Desk is a self-serve compliance platform — you enter your own data and generate submission-ready reports. Stabroek Advisory's managed service means we handle everything using LCA Desk on your behalf: data collection, entry, narrative writing, quality review, and submission to the Secretariat.",
   },
   {
     question: "Can you help with the Comparative Analysis narrative sections?",
     answer:
-      "Yes. Both LCA Desk and our managed service include the Comparative Analysis Narrative required alongside the Half-Yearly Report. This narrative explains variances between planned and actual local content performance across expenditure, employment, and capacity development.",
+      "Yes. LCA Desk includes AI-powered Comparative Analysis Narrative drafting, and our managed service team uses the platform to prepare this section on your behalf. The narrative explains variances between planned and actual local content performance across expenditure, employment, and capacity development.",
   },
   {
     question:
@@ -279,13 +279,13 @@ export default function HomePage() {
               </div>
               <div className="p-8 pt-4">
                 <h3 className="font-display text-xl text-text-primary mb-3">
-                  Self-Serve Compliance Software
+                  LCA Desk — Compliance Platform
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                  Log in, enter your data, generate submission-ready reports in the
+                  Subscribe directly or get access through our managed service.
+                  Enter your data, generate submission-ready reports in the
                   official Secretariat format. Built on the Version 4.1 guidelines.
-                  Covers all 5 mandatory submission types — Half-Yearly Reports,
-                  Annual Plans, Master Plans, and Performance Reports.
+                  Covers all 5 mandatory submission types.
                 </p>
                 <p className="text-sm font-medium text-gold mb-4">From $149/month</p>
                 <Link

@@ -1,6 +1,6 @@
 # Stabroek Advisory
 
-> Stabroek Advisory is a Houston-based compliance technology and advisory firm providing LCA compliance software (LCA Desk) and managed reporting services for contractors, subcontractors, and licensees in Guyana's oil and gas sector under the Local Content Act 2021.
+> Stabroek Advisory is a Houston-based compliance advisory firm and authorized implementation partner of LCA Desk, providing managed LCA compliance reporting services for contractors, subcontractors, and licensees in Guyana's oil and gas sector under the Local Content Act 2021. Stabroek Advisory licenses LCA Desk for its managed service clients and serves as a reseller of the platform.
 
 ## Company
 
@@ -13,7 +13,7 @@
 
 ## Products and Services
 
-- LCA Desk: AI-powered SaaS platform for Local Content Act compliance reporting ($149-$1,999/month)
+- LCA Desk (licensed platform): AI-powered SaaS platform for Local Content Act compliance reporting ($149-$1,999/month). Stabroek Advisory is an authorized reseller and implementation partner.
 - LCA Half-Yearly Report Preparation: Managed service from $3,500 per report
 - Annual Local Content Plan: Managed service from $4,000
 - Local Content Master Plan: Managed service from $8,000

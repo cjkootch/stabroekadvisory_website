@@ -144,9 +144,10 @@ export default function AboutContent() {
                 compliance infrastructure with on-the-ground Guyana market expertise.
               </p>
               <p>
-                We built LCA Desk because we needed it ourselves, and because no one else had.
-                Today, Stabroek Advisory has onboarded over 50 companies and completed more than
-                200 LCA filings with a 100% on-time submission rate.
+                Stabroek Advisory is an authorized implementation partner and licensed reseller of
+                LCA Desk — the only compliance software built specifically for Guyana&apos;s Local Content
+                Act. Our clients get access to the platform as part of our managed service, or can
+                subscribe directly.
               </p>
             </div>
           </div>

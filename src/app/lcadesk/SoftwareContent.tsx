@@ -703,7 +703,7 @@ export default function SoftwareContent() {
               Your compliance data is protected
             </h2>
             <p className="text-sm text-text-secondary max-w-lg mx-auto">
-              LCA filings contain sensitive payroll, procurement, and supplier data. We built LCA Desk with security as a foundation — not an afterthought.
+              LCA filings contain sensitive payroll, procurement, and supplier data. LCA Desk is built with security as a foundation — not an afterthought.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

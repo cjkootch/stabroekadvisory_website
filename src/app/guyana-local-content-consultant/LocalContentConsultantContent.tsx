@@ -300,8 +300,8 @@ export default function LocalContentConsultantContent({
             </h2>
             <p className="text-sm text-text-secondary leading-relaxed mb-6">
               Stabroek Advisory pairs expert consulting with{" "}
-              <strong className="text-text-primary">LCA Desk</strong>, our
-              purpose-built compliance platform. Your data lives in a structured
+              <strong className="text-text-primary">LCA Desk</strong>, the
+              purpose-built compliance platform we license for all managed clients. Your data lives in a structured
               system, reports are generated automatically, and our consultants
               review every filing before submission. It&apos;s the best of both
               worlds — human expertise backed by software that eliminates manual
