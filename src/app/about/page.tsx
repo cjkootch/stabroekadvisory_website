@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Stabroek Advisory | Built so Guyanese companies win",
     description:
-      "Bid services and local content advisory, backed by a three-brand execution suite for Guyana's petroleum sector.",
+      "Bid services and local content advisory, backed by a coordinated execution suite for Guyana's petroleum sector.",
     url: "https://stabroekadvisory.com/about",
   },
 };

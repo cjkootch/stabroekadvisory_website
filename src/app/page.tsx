@@ -140,7 +140,7 @@ const faqItems = [
   {
     question: "How does the execution suite work?",
     answer:
-      "Stabroek Advisory is the front door to three brands under common ownership: Stabroek for bid services and advisory, LCA Desk for compliance software, and Vector Trade Capital for principal trade and supply execution. You can engage Stabroek alone, or use the suite together. Each engagement is independent and at arm's length.",
+      "Stabroek Advisory is the front door to a coordinated execution suite: Stabroek for bid services and advisory, the LCA Desk compliance platform that Stabroek is licensed to resell and implement, and Vector Trade Capital, our affiliate under common ownership, for principal trade and supply execution. You can engage Stabroek alone, or use the suite together. Each engagement is independent and at arm's length.",
   },
   {
     question: "What is the relationship between Stabroek and Vector Trade Capital?",
@@ -317,10 +317,11 @@ export default function HomePage() {
               One front door. A full execution suite.
             </h2>
             <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Engage Stabroek alone, or use the full suite. Three brands under
-              common ownership, each engaged independently and at arm&apos;s
-              length. Use the suite together, or use Stabroek alone. We work the
-              way you need us to.
+              Engage Stabroek alone, or use the full suite. Our bid advisory,
+              trade execution through our affiliate Vector Trade Capital, and
+              compliance automation on the LCA Desk platform we implement, each
+              engaged independently and at arm&apos;s length. Use the suite
+              together, or use Stabroek alone. We work the way you need us to.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -20,7 +20,7 @@ const brands = [
     name: "Stabroek Advisory",
     domain: "stabroekadvisory.com",
     role: "Bid services and local content advisory",
-    revenue: "Advisory revenue",
+    revenue: "This firm",
     body: "The front door to the suite. We help LCA-registered Guyanese companies win bids with bid strategy, pricing analysis, and document preparation built for the Local Content Act. You are always the principal bidder.",
     href: "/bid-services",
     cta: "Explore bid services",
@@ -30,9 +30,9 @@ const brands = [
     icon: MonitorSmartphone,
     name: "LCA Desk",
     domain: "lcadesk.com",
-    role: "AI-native compliance software",
-    revenue: "SaaS revenue",
-    body: "Compliance software that handles your Local Content Act filings automatically. Once you win work, LCA Desk keeps your mandatory reporting accurate and on time without it becoming a recurring fire drill.",
+    role: "AI-native compliance platform",
+    revenue: "Partner platform",
+    body: "A compliance platform that automates Local Content Act filings. Stabroek is an authorized reseller and implementation partner, so we can stand up LCA Desk for you and keep the reporting that follows a win accurate and on time.",
     href: "/lcadesk",
     cta: "See LCA Desk",
     external: false,
@@ -42,7 +42,7 @@ const brands = [
     name: "Vector Trade Capital",
     domain: "vectortradecapital.com",
     role: "Principal trade and supply execution",
-    revenue: "Transactional revenue",
+    revenue: "Affiliate, common ownership",
     body: "When a bid you win requires delivered supply, VTC can act as your principal trade partner, delivering commodities CIF Guyana on terms structured to your operator receivables. You select your own execution partners.",
     href: "https://vectortradecapital.com",
     cta: "Visit vectortradecapital.com",
@@ -79,18 +79,18 @@ export default function ExecutionSuiteContent() {
       <HeroSection
         eyebrow="HOW WE WORK"
         headline="One front door. A full execution suite."
-        sub="Stabroek Advisory is part of a three-brand execution suite under common ownership. Engage Stabroek alone, or use the full suite together. Each engagement is independent and at arm's length. We work the way you need us to."
+        sub="Stabroek brings together everything a Guyanese company needs to win and deliver: our own bid advisory, trade execution through our affiliate Vector Trade Capital, and compliance automation on the LCA Desk platform we implement. Engage Stabroek alone, or use the full suite together. Each engagement is independent and at arm's length."
         primaryCTA={{ label: "Start with Bid Services", href: "/bid-services" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
         geometricVariant="nodes"
       />
 
-      {/* Three brands */}
+      {/* The suite */}
       <section className="py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
-              Three brands. One coordinated capability.
+              Three capabilities. One coordinated front door.
             </h2>
             <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
               This is the difference between Stabroek and every other local
@@ -186,17 +186,19 @@ export default function ExecutionSuiteContent() {
               </h3>
             </div>
             <p className="text-sm text-text-secondary leading-relaxed mb-4">
-              Each brand is engaged on its own terms. A bid services engagement
-              with Stabroek does not obligate you to use LCA Desk or Vector Trade
-              Capital. A trade with VTC is a commercial transaction on its own
-              merits. You remain the principal in every contract you sign with an
-              operator, and you retain full discretion over which partners you
-              work with.
+              Each part of the suite is engaged on its own terms. A bid services
+              engagement with Stabroek does not obligate you to use LCA Desk or
+              Vector Trade Capital. A trade with VTC is a commercial transaction on
+              its own merits. You remain the principal in every contract you sign
+              with an operator, and you retain full discretion over which partners
+              you work with.
             </p>
             <p className="text-sm text-text-secondary leading-relaxed">
-              We disclose the common ownership openly because it is a strength.
-              The same people who understand your bid understand what it takes to
-              supply and stay compliant once you win.
+              Stabroek Advisory and Vector Trade Capital are affiliated under
+              common ownership, which we disclose openly. LCA Desk is a third-party
+              platform that Stabroek is licensed to resell and implement. The same
+              team that understands your bid understands what it takes to supply
+              and stay compliant once you win.
             </p>
           </div>
           <Disclosure />

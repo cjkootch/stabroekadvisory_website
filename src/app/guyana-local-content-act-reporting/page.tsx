@@ -35,7 +35,7 @@ const faqItems = [
   {
     question: "How can Stabroek Advisory help with LCA reporting?",
     answer:
-      "Stabroek Advisory provides end-to-end LCA reporting services including data collection and validation, report preparation and narrative drafting, filing with the Local Content Secretariat, and ongoing compliance monitoring through our LCA Desk platform.",
+      "Stabroek Advisory provides end-to-end LCA reporting services including data collection and validation, report preparation and narrative drafting, filing with the Local Content Secretariat, and ongoing compliance monitoring powered by the LCA Desk platform.",
   },
 ];
 

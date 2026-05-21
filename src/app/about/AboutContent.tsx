@@ -30,8 +30,8 @@ const suite = [
   {
     icon: MonitorSmartphone,
     name: "LCA Desk",
-    role: "AI-native compliance software",
-    body: "Software that automates your Local Content Act filings, so compliance stays accurate and on time once you are winning and delivering work.",
+    role: "AI-native compliance platform",
+    body: "A compliance platform that automates your Local Content Act filings. Stabroek is an authorized reseller and implementation partner, keeping compliance accurate and on time once you are winning and delivering work.",
     href: "/lcadesk",
     external: false,
   },
@@ -91,27 +91,37 @@ export default function AboutContent() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-card border border-border rounded-lg p-6 shadow-sm"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex flex-col items-center text-center"
           >
-            <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-6">
-              Guyana Petroleum Sector at a Glance
-            </p>
-            <div className="space-y-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/cole-kutschinski.jpeg"
+              alt="Cole Kutschinski, Founder and CEO of Stabroek Advisory"
+              className="w-48 h-48 rounded-2xl object-cover shadow-lg mb-6"
+            />
+            <h3 className="font-display text-xl text-text-primary mb-1">Cole Kutschinski</h3>
+            <p className="text-sm text-accent font-medium mb-3">Founder and CEO</p>
+            <a
+              href="https://www.linkedin.com/in/cole-kutschinski/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-text-muted hover:text-accent transition-colors mb-6"
+            >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              Connect on LinkedIn
+            </a>
+            <div className="grid grid-cols-3 gap-3 w-full max-w-xs">
               {[
-                { label: "Companies on the Local Content Register", value: "1,300+", pct: 85 },
-                { label: "Reserved Service Categories", value: "40", pct: 70 },
-                { label: "Local content weighting in bid evaluation", value: "High", pct: 90 },
-                { label: "Max Non-Compliance Fine", value: "GY$50M", pct: 95 },
-              ].map((m) => (
-                <div key={m.label}>
-                  <div className="flex justify-between mb-1.5">
-                    <span className="text-xs text-text-secondary">{m.label}</span>
-                    <span className="text-xs font-medium text-text-primary">{m.value}</span>
-                  </div>
-                  <div className="h-2 bg-surface rounded-full overflow-hidden">
-                    <div className="h-full bg-accent/60 rounded-full" style={{ width: `${m.pct}%` }} />
-                  </div>
+                { value: "50+", label: "Companies Onboarded" },
+                { value: "200+", label: "Filings Completed" },
+                { value: "100%", label: "On-Time Rate" },
+              ].map((s) => (
+                <div key={s.label} className="bg-surface rounded-lg px-2 py-3 border border-border">
+                  <p className="text-sm font-bold gradient-text">{s.value}</p>
+                  <p className="text-[10px] text-text-muted">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -129,17 +139,21 @@ export default function AboutContent() {
                 compete against larger, better-resourced fields.
               </p>
               <p>
-                Stabroek Advisory exists to close that gap. We bring bid strategy,
-                pricing analysis, and document preparation honed for the realities
-                of the Local Content Act. You stay the principal bidder. We are the
-                infrastructure behind your bid.
+                Stabroek Advisory was founded by{" "}
+                <strong className="text-text-primary">Cole Kutschinski</strong>, a
+                Caribbean commodity trade, compliance, and SaaS technology
+                specialist based in Houston, Texas, to close that gap. We bring
+                bid strategy, pricing analysis, and document preparation honed for
+                the realities of the Local Content Act. You stay the principal
+                bidder. We are the infrastructure behind your bid.
               </p>
               <p>
-                We are part of a three-brand execution suite under common
-                ownership. When a win requires delivered supply, Vector Trade
-                Capital can act as your principal trade partner. When ongoing
-                compliance follows, LCA Desk automates your filings. Use the suite
-                together, or use Stabroek alone.
+                We sit at the front of a coordinated execution suite. When a win
+                requires delivered supply, our affiliate Vector Trade Capital,
+                held under common ownership, can act as your principal trade
+                partner. When ongoing compliance follows, we implement LCA Desk,
+                the compliance platform we are licensed to resell, to automate
+                your filings. Use the suite together, or use Stabroek alone.
               </p>
             </div>
           </div>
@@ -154,7 +168,8 @@ export default function AboutContent() {
               The Execution Suite
             </h2>
             <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Three brands, one ownership, each engaged independently and at
+              Our advisory, an affiliate held under common ownership, and a
+              compliance platform we implement, each engaged independently and at
               arm&apos;s length.
             </p>
           </div>

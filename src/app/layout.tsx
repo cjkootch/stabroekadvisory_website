@@ -27,6 +27,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stabroekadvisory.com"),
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   title: {
     default: "Stabroek Advisory | Bid Services for LCA-Registered Guyanese Companies in the Petroleum Sector",
     template: "%s | Stabroek Advisory",
@@ -98,7 +102,7 @@ const jsonLd = {
       name: "Stabroek Advisory LLC",
       url: "https://stabroekadvisory.com",
       description:
-        "Bid services and local content advisory firm helping LCA-registered Guyanese companies win bids in Guyana's petroleum sector. Part of a three-brand execution suite under common ownership with LCA Desk and Vector Trade Capital LLC.",
+        "Bid services and local content advisory firm helping LCA-registered Guyanese companies win bids in Guyana's petroleum sector. Affiliated under common ownership with Vector Trade Capital LLC, and an authorized reseller and implementation partner of the LCA Desk compliance platform.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Houston",
@@ -134,15 +138,22 @@ const jsonLd = {
       offers: [
         {
           "@type": "Offer",
-          name: "Standard",
-          price: "500",
+          name: "Lite",
+          price: "149",
           priceCurrency: "USD",
           billingIncrement: "P1M",
         },
         {
           "@type": "Offer",
-          name: "Professional",
-          price: "750",
+          name: "Pro",
+          price: "599",
+          priceCurrency: "USD",
+          billingIncrement: "P1M",
+        },
+        {
+          "@type": "Offer",
+          name: "Enterprise",
+          price: "1999",
           priceCurrency: "USD",
           billingIncrement: "P1M",
         },

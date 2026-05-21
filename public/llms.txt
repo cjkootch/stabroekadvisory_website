@@ -1,6 +1,6 @@
 # Stabroek Advisory
 
-> Stabroek Advisory is a bid services and local content advisory firm that helps LCA-registered Guyanese companies win local content bids in Guyana's petroleum sector. It is the front door to a three-brand execution suite under common ownership: Stabroek Advisory (advisory), LCA Desk (compliance software), and Vector Trade Capital (principal trade and supply execution).
+> Stabroek Advisory is a bid services and local content advisory firm that helps LCA-registered Guyanese companies win local content bids in Guyana's petroleum sector. It is the front door to a coordinated execution suite: Stabroek Advisory (bid advisory), Vector Trade Capital (principal trade and supply execution, an affiliate under common ownership), and the LCA Desk compliance platform, which Stabroek is licensed to resell and implement.
 
 ## Company
 
@@ -8,7 +8,8 @@
 - Operating market: Guyana petroleum sector
 - Website: https://www.stabroekadvisory.com
 - Contact: info@stabroekadvisory.com
-- Affiliated entities (common ownership): LCA Desk (https://lcadesk.com), Vector Trade Capital LLC (https://vectortradecapital.com)
+- Affiliated entity (common ownership): Vector Trade Capital LLC (https://vectortradecapital.com)
+- Licensed software partner: LCA Desk (https://lcadesk.com), which Stabroek Advisory is authorized to resell and implement
 
 ## Primary Service: Bid Services
 
@@ -29,7 +30,7 @@ Paid professional bid services for LCA-registered Guyanese companies. Stabroek i
 ## The Execution Suite
 
 - Stabroek Advisory: bid services and local content advisory (advisory revenue)
-- LCA Desk: AI-native compliance software for Local Content Act filings (SaaS revenue), https://lcadesk.com
+- LCA Desk: AI-native compliance platform for Local Content Act filings, which Stabroek Advisory is licensed to resell and implement for clients, https://lcadesk.com
 - Vector Trade Capital: principal trade and supply execution, delivering commodities CIF Guyana on terms structured to operator receivables (transactional revenue), https://vectortradecapital.com
 
 Operational flow: a Guyanese company engages Stabroek for bid services, wins a bid, optionally engages Vector Trade Capital for trade execution, and uses LCA Desk for ongoing compliance. Each engagement is independent and at arm's length.

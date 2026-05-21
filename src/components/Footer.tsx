@@ -52,11 +52,13 @@ export default function Footer() {
         {/* Top */}
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-12">
           <div className="max-w-xs">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-accent text-xl">&#9679;</span>
-              <span className="font-display text-sm tracking-[0.25em] uppercase text-text-primary">
-                Stabroek Advisory
-              </span>
+            <div className="mb-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-black.png"
+                alt="Stabroek Advisory"
+                className="h-9 w-auto"
+              />
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">
               Bid services and local content advisory for LCA-registered Guyanese
@@ -137,9 +139,10 @@ export default function Footer() {
           <p className="text-xs text-text-muted text-center mb-2">
             &copy; 2026 Stabroek Advisory LLC &middot; Houston, Texas &middot; stabroekadvisory.com
           </p>
-          <p className="text-xs text-text-muted text-center italic max-w-2xl mx-auto">
-            Stabroek Advisory is an independent advisory firm. Not affiliated with the Government of
-            Guyana, the Local Content Secretariat, or any petroleum operator.
+          <p className="text-xs text-text-muted text-center max-w-2xl mx-auto">
+            <span className="text-text-secondary font-medium not-italic">Independent. Unbiased. On your side.</span>{" "}
+            <span className="italic">Stabroek Advisory is an independent advisory firm, not affiliated with the Government of
+            Guyana, the Local Content Secretariat, or any petroleum operator.</span>
           </p>
         </div>
       </div>
