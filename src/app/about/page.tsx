@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
 
 export const metadata: Metadata = {
-  title: "About Stabroek Advisory — Houston-Based LCA Compliance Firm for Guyana's Oil Sector",
+  title: "About Stabroek Advisory: Bid Services for LCA-Registered Guyanese Companies",
   description:
-    "Stabroek Advisory is a Houston-based compliance technology and advisory firm serving Guyana's oil and gas sector. Founded by US Gulf Coast energy professionals to bridge the compliance gap for 1,300+ companies filing under the Local Content Act.",
+    "Stabroek Advisory helps LCA-registered Guyanese companies win local content bids in the petroleum sector, backed by an integrated execution suite: LCA Desk compliance software and Vector Trade Capital supply execution.",
   alternates: {
     canonical: "https://stabroekadvisory.com/about",
   },
   openGraph: {
-    title: "About Stabroek Advisory | The US-Guyana Compliance Bridge",
+    title: "About Stabroek Advisory | Built so Guyanese companies win",
     description:
-      "Houston expertise. Georgetown presence. Built for Guyana's oil boom.",
+      "Bid services and local content advisory, backed by a three-brand execution suite for Guyana's petroleum sector.",
     url: "https://stabroekadvisory.com/about",
   },
 };

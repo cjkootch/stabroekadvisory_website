@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import ServicesContent from "./ServicesContent";
 
 export const metadata: Metadata = {
-  title: "LCA Compliance Services — Half-Yearly Reports, Annual Plans & Managed Reporting",
+  title: "Advisory and Compliance Services: Support for Your Bid Pipeline",
   description:
-    "Full-service Local Content Act compliance reporting for Guyana's oil and gas sector. We prepare and submit Half-Yearly Reports, Annual Local Content Plans, Master Plans, and handle Secretariat liaison. Full service from $2,500/month.",
+    "Advisory and compliance services that support bid services for LCA-registered Guyanese companies: local content advisory, bid post-mortems, operator relationship support, and managed LCA compliance from $2,500/month.",
   alternates: {
     canonical: "https://stabroekadvisory.com/services",
   },
   openGraph: {
-    title: "LCA Compliance Services | Stabroek Advisory",
+    title: "Advisory and Compliance Services | Stabroek Advisory",
     description:
-      "Managed Local Content Act reporting for contractors and subcontractors in Guyana's petroleum sector. Half-Yearly Reports, Annual Plans, Master Plans.",
+      "Local content advisory, bid post-mortems, operator relationship support, and managed Local Content Act compliance for Guyana's petroleum sector.",
     url: "https://stabroekadvisory.com/services",
   },
 };
