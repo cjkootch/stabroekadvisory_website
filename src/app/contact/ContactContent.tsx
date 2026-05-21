@@ -21,13 +21,13 @@ export default function ContactContent() {
               Get in Touch
             </h1>
             <p className="text-lg text-text-secondary max-w-xl mx-auto">
-              Whether you need compliance support, want to try LCA Desk, or are exploring US market
-              entry — we&apos;re here to help.
+              Whether you have a bid on the table, need local content advisory, or
+              want to put the full execution suite to work, we&apos;re here to help.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left — Contact Info */}
+            {/* Left: Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -83,7 +83,7 @@ export default function ContactContent() {
               </div>
             </motion.div>
 
-            {/* Right — Form */}
+            {/* Right: Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}

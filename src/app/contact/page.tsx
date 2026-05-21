@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
-  title: "Contact Stabroek Advisory — Book a Consultation for LCA Compliance",
+  title: "Contact Stabroek Advisory: Book a Consultation for Bid Services",
   description:
-    "Get in touch with Stabroek Advisory for Local Content Act compliance services, LCA Desk software demos, or US market entry advisory. Houston, Texas headquarters. Response within 1 business day.",
+    "Get in touch with Stabroek Advisory for bid services, local content advisory, LCA Desk software, or trade execution through Vector Trade Capital. Response within 1 business day.",
   alternates: {
     canonical: "https://stabroekadvisory.com/contact",
   },

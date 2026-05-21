@@ -1,43 +1,55 @@
 # Stabroek Advisory
 
-> Stabroek Advisory is a Houston-based compliance technology and advisory firm providing LCA compliance software (LCA Desk) and managed reporting services for contractors, subcontractors, and licensees in Guyana's oil and gas sector under the Local Content Act 2021.
+> Stabroek Advisory is a bid services and local content advisory firm that helps LCA-registered Guyanese companies win local content bids in Guyana's petroleum sector. It is the front door to a three-brand execution suite under common ownership: Stabroek Advisory (advisory), LCA Desk (compliance software), and Vector Trade Capital (principal trade and supply execution).
 
 ## Company
 
-- Founded: 2026
 - Headquarters: Houston, Texas, USA
 - Operating market: Guyana petroleum sector
 - Website: https://www.stabroekadvisory.com
-- Software product: LCA Desk (https://lcadesk.com)
 - Contact: info@stabroekadvisory.com
+- Affiliated entities (common ownership): LCA Desk (https://lcadesk.com), Vector Trade Capital LLC (https://vectortradecapital.com)
 
-## Products and Services
+## Primary Service: Bid Services
 
-- LCA Desk: AI-powered SaaS platform for Local Content Act compliance reporting ($149-$1,999/month)
-- LCA Half-Yearly Report Preparation: Managed service from $3,500 per report
-- Annual Local Content Plan: Managed service from $4,000
-- Local Content Master Plan: Managed service from $8,000
-- Monthly Compliance Retainer: Full-service from $1,200/month
-- US Market Entry Advisory: For Guyanese oil sector companies sourcing from American suppliers
+Paid professional bid services for LCA-registered Guyanese companies. Stabroek is paid for its expertise, win or lose. The Guyanese client is always the principal bidder and contracting party.
+
+- Tier 1, Bid Readiness Review: Diagnostic and document preparation for a single bid. Starting at $2,500 per bid.
+- Tier 2, Bid Strategy and Pricing: Opportunity analysis, competing bid modeling, pricing strategy, and bid design for competitive opportunities. Starting at $10,000 per bid.
+- Tier 3, Full Bid Retainer: Continuous bid support, pipeline development, and operator relationship support for companies pursuing multiple bids. Starting at $4,500/month.
+
+## Secondary Services
+
+- Local content advisory and compliance consulting
+- Bid post-mortems and capability development
+- Operator relationship support
+- Managed services for ongoing LCA compliance (the bridge to LCA Desk software)
+- Compliance filing preparation: Half-Yearly Reports (from $3,500), Annual Plans (from $4,000), Master Plans (from $8,000), LCA Registration support (from $3,500)
+
+## The Execution Suite
+
+- Stabroek Advisory: bid services and local content advisory (advisory revenue)
+- LCA Desk: AI-native compliance software for Local Content Act filings (SaaS revenue), https://lcadesk.com
+- Vector Trade Capital: principal trade and supply execution, delivering commodities CIF Guyana on terms structured to operator receivables (transactional revenue), https://vectortradecapital.com
+
+Operational flow: a Guyanese company engages Stabroek for bid services, wins a bid, optionally engages Vector Trade Capital for trade execution, and uses LCA Desk for ongoing compliance. Each engagement is independent and at arm's length.
+
+## Affiliated-Party Disclosure
+
+Stabroek Advisory LLC and Vector Trade Capital LLC are affiliated entities under common ownership. When Stabroek's advisory engagements result in trade execution work performed by VTC, Stabroek may receive a referral fee from VTC. Clients retain full discretion in selecting trade execution partners and are under no obligation to use VTC. All relationships are governed by the engagement letter signed at the start of each project.
 
 ## Key Facts
 
-- Guyana's Local Content Act 2021 requires 5 mandatory filings per year
+- Guyana's Local Content Act 2021 governs local content bids and compliance in the petroleum sector
 - 1,300+ companies on the Local Content Register
-- Half-yearly reports due July 30 (H1) and January 30 (H2)
-- Penalties: GY$1M to GY$50M for non-compliance
-- LCA Desk built on Version 4.1 Secretariat guidelines (June 2025)
-- AI narrative drafting powered by Anthropic Claude
+- The local content score is a weighted factor in bid evaluation under the Act
+- 40 reserved service categories
+- LCA Desk built on Version 4.1 Secretariat guidelines, AI features powered by Anthropic Claude
 
 ## Target Customers
 
-Contractors, subcontractors, and licensees operating under petroleum agreements in Guyana, particularly:
-- Foreign companies with Guyanese entities (ExxonMobil, Halliburton, Saipem subcontractors)
-- Shore base operators
-- Catering and logistics companies
-- Engineering and fabrication firms
-- Marine vessel operators
+LCA-registered Guyanese companies competing for petroleum sector contracts, including shore base operators, drilling support, catering and logistics, engineering and fabrication firms, marine vessel operators, manpower and crewing, and fuel and supply companies.
 
 ## Not affiliated with
 
-Government of Guyana, Local Content Secretariat, Ministry of Natural Resources, ExxonMobil Guyana, Chevron Guyana, CNOOC, Hess Corporation, or any petroleum operator.
+Government of Guyana, Local Content Secretariat, Ministry of Natural Resources, or any petroleum operator.
