@@ -3,7 +3,7 @@ import Link from "next/link";
 import { posts } from "./posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Stabroek Advisory — Guyana LCA Compliance Insights",
+  title: "Blog | Stabroek Advisory, Guyana LCA Compliance Insights",
   description:
     "Expert insights on Local Content Act compliance, filing deadlines, penalty risk, and oil sector regulatory updates for Guyana's petroleum industry.",
   openGraph: {

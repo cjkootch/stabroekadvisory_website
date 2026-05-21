@@ -29,10 +29,10 @@ export default function TermsPage() {
             <h2 className="font-display text-lg text-text-primary mb-3">2. Services</h2>
             <p className="mb-3">Stabroek Advisory provides the following services:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong className="text-text-primary">LCA Desk Software</strong> — A cloud-based compliance software platform for managing mandatory Local Content Act submissions in Guyana&apos;s oil and gas sector</li>
-              <li><strong className="text-text-primary">Managed Compliance Reporting</strong> — Preparation and submission of Half-Yearly Reports, Annual Local Content Plans, Master Plans, and Performance Reports to the Local Content Secretariat</li>
-              <li><strong className="text-text-primary">US Market Entry Advisory</strong> — Supplier sourcing, freight coordination, export documentation, and trade finance advisory for companies operating in Guyana&apos;s petroleum sector</li>
-              <li><strong className="text-text-primary">LCA Registration Support</strong> — Assistance with Local Content Register applications and Secretariat liaison</li>
+              <li><strong className="text-text-primary">LCA Desk Software</strong>, A cloud-based compliance software platform for managing mandatory Local Content Act submissions in Guyana&apos;s oil and gas sector</li>
+              <li><strong className="text-text-primary">Managed Compliance Reporting</strong>, Preparation and submission of Half-Yearly Reports, Annual Local Content Plans, Master Plans, and Performance Reports to the Local Content Secretariat</li>
+              <li><strong className="text-text-primary">US Market Entry Advisory</strong>, Supplier sourcing, freight coordination, export documentation, and trade finance advisory for companies operating in Guyana&apos;s petroleum sector</li>
+              <li><strong className="text-text-primary">LCA Registration Support</strong>, Assistance with Local Content Register applications and Secretariat liaison</li>
             </ul>
           </div>
 
@@ -87,8 +87,8 @@ export default function TermsPage() {
           <div>
             <h2 className="font-display text-lg text-text-primary mb-3">7. Confidentiality</h2>
             <p>
-              We treat all client data — including payroll records, procurement figures, supplier information,
-              and compliance filings — as strictly confidential. We will not disclose your confidential information
+              We treat all client data, including payroll records, procurement figures, supplier information,
+              and compliance filings, as strictly confidential. We will not disclose your confidential information
               to any third party except as required to perform our services (e.g., submission to the Local Content
               Secretariat with your authorization), as required by law, or with your prior written consent.
               This confidentiality obligation survives termination of our engagement.

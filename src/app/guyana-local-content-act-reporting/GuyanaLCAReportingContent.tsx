@@ -53,7 +53,7 @@ const serviceSteps = [
   {
     icon: Users,
     title: "Data Collection & Validation",
-    body: "We work with your procurement, HR, and finance teams to collect the required data — expenditure breakdowns, headcount by nationality, training records, and vendor details — then validate it against Secretariat requirements.",
+    body: "We work with your procurement, HR, and finance teams to collect the required data, expenditure breakdowns, headcount by nationality, training records, and vendor details, then validate it against Secretariat requirements.",
   },
   {
     icon: FileText,
@@ -133,7 +133,7 @@ export default function GuyanaLCAReportingContent({
       <HeroSection
         eyebrow="LCA Reporting Services"
         headline="Local Content Act Reporting for Guyana's Petroleum Sector"
-        sub="End-to-end reporting services for the 5 mandatory Local Content Act submissions. We collect, prepare, file, and track — so you never miss a deadline."
+        sub="End-to-end reporting services for the 5 mandatory Local Content Act submissions. We collect, prepare, file, and track, so you never miss a deadline."
         geometricVariant="grid"
         primaryCTA={{ label: "Book a Consultation", href: "/contact" }}
         secondaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
@@ -157,8 +157,8 @@ export default function GuyanaLCAReportingContent({
               Secretariat under the Local Content Act 2021 (No. 18 of 2021). These
               filings cover expenditure breakdowns, employment data by nationality,
               capacity development activities, and forward-looking procurement plans.
-              The five required submissions — two half-yearly reports, an annual plan,
-              an annual performance report, and a master plan — form the cornerstone of
+              The five required submissions, two half-yearly reports, an annual plan,
+              an annual performance report, and a master plan, form the cornerstone of
               Guyana&apos;s local content compliance framework.
             </p>
           </motion.div>

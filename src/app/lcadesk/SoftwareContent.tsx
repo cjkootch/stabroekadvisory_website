@@ -47,7 +47,7 @@ const aiFeatures = [
     badge: "MOST REQUESTED",
     badgeColor: "bg-gold text-white",
     title: "AI Narrative Drafting",
-    desc: "The Comparative Analysis Report — the written narrative that must accompany every half-yearly submission — takes compliance officers 4-6 hours to write per period. LCA Desk reads your expenditure, employment, and capacity development data and drafts the entire narrative automatically, using correct LCA terminology and the formal tone the Secretariat expects.",
+    desc: "The Comparative Analysis Report, the written narrative that must accompany every half-yearly submission, takes compliance officers 4-6 hours to write per period. LCA Desk reads your expenditure, employment, and capacity development data and drafts the entire narrative automatically, using correct LCA terminology and the formal tone the Secretariat expects.",
     example: {
       header: "AI Draft Generated ✓",
       lines: [
@@ -62,13 +62,13 @@ const aiFeatures = [
     badge: "PROACTIVE",
     badgeColor: "bg-accent text-white",
     title: "Compliance Gap Detection",
-    desc: "Before you file, LCA Desk's AI scans your submission data and flags potential issues the Secretariat is likely to scrutinize — low Guyanese employment rates, missing sole-source codes, procurement gaps against Annual Plan commitments, and suppliers without valid LCS Certificate IDs. Fix problems before submission, not after.",
+    desc: "Before you file, LCA Desk's AI scans your submission data and flags potential issues the Secretariat is likely to scrutinize, low Guyanese employment rates, missing sole-source codes, procurement gaps against Annual Plan commitments, and suppliers without valid LCS Certificate IDs. Fix problems before submission, not after.",
     example: {
       header: "⚠  3 issues detected before submission",
       lines: [
         { type: "warn" as const, text: "Guyanese management rate: 34%\n  (Required minimum: 75%)" },
-        { type: "warn" as const, text: "Supplier \"Gulf Freight Ltd\" has no LCS\n  Certificate ID — may not count toward\n  local content score" },
-        { type: "warn" as const, text: "Capacity development spend is 0 —\n  required section, Secretariat will query" },
+        { type: "warn" as const, text: "Supplier \"Gulf Freight Ltd\" has no LCS\n  Certificate ID, may not count toward\n  local content score" },
+        { type: "warn" as const, text: "Capacity development spend is 0.\n  Required section, Secretariat will query" },
       ],
       actions: ["Review Issues", "Dismiss"],
     },
@@ -78,7 +78,7 @@ const aiFeatures = [
     badge: "COMING SOON",
     badgeColor: "bg-gray-400 text-white",
     title: "Automatic Data Extraction",
-    desc: "Upload your payroll export or procurement records in any format — PDF, Excel, or CSV — and LCA Desk's AI reads the document, extracts the relevant fields, and maps them directly to the correct report sections. No manual re-entry. No reformatting. The AI handles the data transformation.",
+    desc: "Upload your payroll export or procurement records in any format, PDF, Excel, or CSV, and LCA Desk's AI reads the document, extracts the relevant fields, and maps them directly to the correct report sections. No manual re-entry. No reformatting. The AI handles the data transformation.",
     example: {
       header: "📄 Payroll_June2026.xlsx uploaded",
       lines: [
@@ -96,12 +96,12 @@ const aiFeatures = [
     badge: "AVAILABLE NOW",
     badgeColor: "bg-accent text-white",
     title: "Ask the LCA Expert",
-    desc: "Every LCA Desk account includes an AI assistant trained on the complete Local Content Act, all Secretariat guidelines (including Version 4.1), and your company's specific data. Ask any compliance question and get an accurate, cited answer — without calling a lawyer or waiting for a consultant to respond.",
+    desc: "Every LCA Desk account includes an AI assistant trained on the complete Local Content Act, all Secretariat guidelines (including Version 4.1), and your company's specific data. Ask any compliance question and get an accurate, cited answer, without calling a lawyer or waiting for a consultant to respond.",
     example: {
       header: null,
       lines: [
         { type: "user" as const, text: "You: Do I need to include sole-sourced contracts in my expenditure report?" },
-        { type: "ai" as const, text: "LCA Desk AI: Yes. All procurement — including sole-sourced contracts — must be reported in the Expenditure Sub-Report. For sole-sourced items, you must also include the LCS-assigned Sole Source Code in the \"Sole Source Code\" column. This requirement is set out in Section 3.2.3 of the Version 4.1 Submission Guideline." },
+        { type: "ai" as const, text: "LCA Desk AI: Yes. All procurement, including sole-sourced contracts, must be reported in the Expenditure Sub-Report. For sole-sourced items, you must also include the LCS-assigned Sole Source Code in the \"Sole Source Code\" column. This requirement is set out in Section 3.2.3 of the Version 4.1 Submission Guideline." },
         { type: "ref" as const, text: "Reference: LCA Version 4.1, Section 3.2.3" },
       ],
       actions: [],
@@ -113,17 +113,17 @@ const features = [
   {
     icon: Database,
     title: "Multi-Client Dashboard",
-    desc: "Manage every company in your portfolio from a single view. Track local content percentages, expenditure totals, and upcoming deadlines at a glance. AI surfaces which clients are at risk, which filings need attention, and where your aggregate local content performance stands — at a glance.",
+    desc: "Manage every company in your portfolio from a single view. Track local content percentages, expenditure totals, and upcoming deadlines at a glance. AI surfaces which clients are at risk, which filings need attention, and where your aggregate local content performance stands, at a glance.",
   },
   {
     icon: FileOutput,
     title: "One-Click Report Generation",
-    desc: "Generate submission-ready Half-Yearly Reports, Annual Plans, Master Plans, and Performance Reports — all formatted to the official Secretariat Excel and PDF templates.",
+    desc: "Generate submission-ready Half-Yearly Reports, Annual Plans, Master Plans, and Performance Reports, all formatted to the official Secretariat Excel and PDF templates.",
   },
   {
     icon: Calendar,
     title: "Deadline Alerts & Calendar",
-    desc: "Never miss a filing deadline. Automated alerts for H1, H2, Annual Plan, and Performance Report due dates — with configurable lead times.",
+    desc: "Never miss a filing deadline. Automated alerts for H1, H2, Annual Plan, and Performance Report due dates, with configurable lead times.",
   },
   {
     icon: BarChart3,
@@ -133,7 +133,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: "Submission Checklist",
-    desc: "A step-by-step guided checklist for every report type ensures nothing is missed before you export. AI pre-validates your data before you reach the checklist — catching errors in employment rates, missing supplier certificates, and narrative gaps before you export.",
+    desc: "A step-by-step guided checklist for every report type ensures nothing is missed before you export. AI pre-validates your data before you reach the checklist, catching errors in employment rates, missing supplier certificates, and narrative gaps before you export.",
   },
   {
     icon: Users,
@@ -152,7 +152,7 @@ const howItWorks = [
   {
     step: "02",
     title: "Enter your compliance data",
-    desc: "Add expenditure items, employment records, and capacity development activities — guided by the official template structure.",
+    desc: "Add expenditure items, employment records, and capacity development activities, guided by the official template structure.",
     icon: FileText,
   },
   {
@@ -164,7 +164,7 @@ const howItWorks = [
   {
     step: "04",
     title: "Submit with confidence",
-    desc: "Download your reports and submit directly to localcontent@nre.gov.gy — or let our managed service team handle it for you.",
+    desc: "Download your reports and submit directly to localcontent@nre.gov.gy, or let our managed service team handle it for you.",
     icon: Zap,
   },
 ];
@@ -188,14 +188,14 @@ export default function SoftwareContent() {
 
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left — copy */}
+            {/* Left, copy */}
             <div>
               <motion.div
                 custom={0} initial="hidden" animate="visible" variants={fadeUp}
                 className="inline-flex items-center gap-2 bg-accent/10 text-accent text-xs font-medium px-3 py-1.5 rounded-full mb-4"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                LCA Desk — AI Compliance Platform
+                LCA Desk, AI Compliance Platform
               </motion.div>
 
               <motion.h1
@@ -242,7 +242,7 @@ export default function SoftwareContent() {
               </motion.div>
             </div>
 
-            {/* Right — product mockup */}
+            {/* Right, product mockup */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -338,7 +338,7 @@ export default function SoftwareContent() {
               The AI That Does the Hard Work
             </h2>
             <p className="text-sm text-white/75 max-w-xl mx-auto leading-relaxed">
-              LCA compliance isn&apos;t just data entry — it&apos;s analysis, narrative writing, and risk management.
+              LCA compliance isn&apos;t just data entry, it&apos;s analysis, narrative writing, and risk management.
               LCA Desk&apos;s AI handles the parts that take the most time.
             </p>
           </div>
@@ -413,7 +413,7 @@ export default function SoftwareContent() {
               See LCA Desk in action
             </h2>
             <p className="text-sm text-text-secondary max-w-lg mx-auto">
-              Every screen is designed around the official Secretariat template — so your data entry maps directly to your submission.
+              Every screen is designed around the official Secretariat template, so your data entry maps directly to your submission.
             </p>
           </div>
 
@@ -488,7 +488,7 @@ export default function SoftwareContent() {
                   <div className="w-full h-2 bg-border rounded-full overflow-hidden">
                     <div className="h-full bg-accent rounded-full" style={{ width: "60%" }} />
                   </div>
-                  <p className="text-[10px] text-text-muted mt-1.5">60% complete — 2 sections remaining</p>
+                  <p className="text-[10px] text-text-muted mt-1.5">60% complete, 2 sections remaining</p>
                 </div>
               </div>
             </UIFrame>
@@ -683,7 +683,7 @@ export default function SoftwareContent() {
               <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#CC785C" }}>
                 <Sparkles size={14} className="text-white" />
               </div>
-              <span className="text-sm font-medium text-white">Powered by Claude — Anthropic&apos;s AI</span>
+              <span className="text-sm font-medium text-white">Powered by Claude, Anthropic&apos;s AI</span>
             </div>
             <p className="text-xs text-gray-400 max-w-lg mx-auto leading-relaxed">
               LCA Desk&apos;s AI features are built on Claude, Anthropic&apos;s frontier AI model.

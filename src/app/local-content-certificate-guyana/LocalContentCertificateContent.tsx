@@ -56,7 +56,7 @@ const howWeHelp = [
   {
     icon: FileCheck,
     title: "Application Preparation",
-    body: "We review your eligibility, prepare all required documentation, and ensure your application meets Secretariat standards before submission — avoiding costly delays from incomplete filings.",
+    body: "We review your eligibility, prepare all required documentation, and ensure your application meets Secretariat standards before submission, avoiding costly delays from incomplete filings.",
   },
   {
     icon: Building2,
@@ -66,7 +66,7 @@ const howWeHelp = [
   {
     icon: ShieldCheck,
     title: "Ongoing Register Maintenance",
-    body: "After registration, we help you maintain your listing — updating capability categories, renewing certificates, and ensuring your information remains current with the Secretariat.",
+    body: "After registration, we help you maintain your listing, updating capability categories, renewing certificates, and ensuring your information remains current with the Secretariat.",
   },
 ];
 
@@ -252,7 +252,7 @@ export default function LocalContentCertificateContent({
               <p className="text-sm text-text-secondary leading-relaxed">
                 Petroleum operators are legally required to give first consideration
                 to companies on the Local Content Register. If your company is not
-                registered, you are effectively invisible to the procurement process —
+                registered, you are effectively invisible to the procurement process,
                 regardless of your capabilities or track record.
               </p>
             </div>

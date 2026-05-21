@@ -43,13 +43,13 @@ const subReports = [
 const deadlines = [
   {
     period: "H1 Report",
-    covers: "January 1 — June 30",
+    covers: "January 1, June 30",
     due: "July 30",
     description: "First half of the calendar year. Data must capture all petroleum-sector activity from January through June.",
   },
   {
     period: "H2 Report",
-    covers: "July 1 — December 31",
+    covers: "July 1, December 31",
     due: "January 30 (following year)",
     description: "Second half of the calendar year. Due 30 days after the reporting period ends.",
   },
@@ -59,7 +59,7 @@ const automationFeatures = [
   {
     icon: Zap,
     title: "Automated Data Ingestion",
-    body: "LCA Desk pulls expenditure, payroll, and training data from your existing systems — no manual spreadsheets required.",
+    body: "LCA Desk pulls expenditure, payroll, and training data from your existing systems, no manual spreadsheets required.",
   },
   {
     icon: Users,
@@ -139,7 +139,7 @@ export default function HalfYearlyReportContent({
       <HeroSection
         eyebrow="Half-Yearly LCA Reports"
         headline="Half-Yearly Local Content Reporting for Guyana"
-        sub="Detailed expenditure, employment, and capacity development reports filed on time — every H1 and H2 cycle. Powered by LCA Desk automation."
+        sub="Detailed expenditure, employment, and capacity development reports filed on time, every H1 and H2 cycle. Powered by LCA Desk automation."
         geometricVariant="topology"
         primaryCTA={{ label: "Start Free Trial", href: "/contact" }}
         secondaryCTA={{ label: "View Filing Calendar", href: "/lca-filing-calendar" }}
@@ -160,8 +160,8 @@ export default function HalfYearlyReportContent({
             <p className="text-sm text-text-secondary leading-relaxed">
               A Half-Yearly LCA Report is a mandatory filing required under Guyana&apos;s
               Local Content Act 2021 for every company engaged in petroleum operations.
-              Filed twice per year — H1 covering January through June, H2 covering July
-              through December — each report contains sub-reports on expenditure,
+              Filed twice per year, H1 covering January through June, H2 covering July
+              through December, each report contains sub-reports on expenditure,
               employment, and capacity development, along with a comparative analysis
               narrative. These reports allow the Local Content Secretariat to monitor
               whether companies are meeting their local content obligations.
