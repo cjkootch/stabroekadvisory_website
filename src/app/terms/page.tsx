@@ -29,11 +29,14 @@ export default function TermsPage() {
             <h2 className="font-display text-lg text-text-primary mb-3">2. Services</h2>
             <p className="mb-3">Stabroek Advisory provides the following services:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong className="text-text-primary">LCA Desk Software</strong>, A cloud-based compliance software platform for managing mandatory Local Content Act submissions in Guyana&apos;s oil and gas sector</li>
-              <li><strong className="text-text-primary">Managed Compliance Reporting</strong>, Preparation and submission of Half-Yearly Reports, Annual Local Content Plans, Master Plans, and Performance Reports to the Local Content Secretariat</li>
-              <li><strong className="text-text-primary">US Market Entry Advisory</strong>, Supplier sourcing, freight coordination, export documentation, and trade finance advisory for companies operating in Guyana&apos;s petroleum sector</li>
+              <li><strong className="text-text-primary">Bid Services</strong>, Bid strategy, pricing analysis, and document preparation for LCA-registered Guyanese companies competing for petroleum sector contracts, across Bid Readiness Review, Bid Strategy and Pricing, and Full Bid Retainer engagements. The client is always the principal bidder and contracting party</li>
+              <li><strong className="text-text-primary">Local Content Advisory and Managed Compliance</strong>, Compliance consulting, bid post-mortems, operator relationship support, and preparation and submission of Half-Yearly Reports, Annual Local Content Plans, Master Plans, and Performance Reports to the Local Content Secretariat</li>
+              <li><strong className="text-text-primary">LCA Desk Software</strong>, A cloud-based compliance software platform for managing mandatory Local Content Act submissions in Guyana&apos;s petroleum sector</li>
               <li><strong className="text-text-primary">LCA Registration Support</strong>, Assistance with Local Content Register applications and Secretariat liaison</li>
             </ul>
+            <p className="mt-3">
+              Trade and supply execution is provided by our affiliate, Vector Trade Capital LLC, under separate engagement. Stabroek Advisory LLC and Vector Trade Capital LLC are affiliated entities under common ownership. When Stabroek&apos;s advisory engagements result in trade execution work performed by VTC, Stabroek may receive a referral fee from VTC. Clients retain full discretion in selecting trade execution partners and are under no obligation to use VTC. All relationships are governed by the engagement letter signed at the start of each project.
+            </p>
           </div>
 
           <div>
