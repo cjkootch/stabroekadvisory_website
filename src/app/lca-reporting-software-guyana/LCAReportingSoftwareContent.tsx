@@ -22,7 +22,7 @@ const aiFeatures = [
   {
     icon: FileText,
     title: "AI Narrative Drafting",
-    body: "LCA Desk analyzes your expenditure, employment, and capacity data to draft the comparative analysis narrative required in every Half-Yearly Report. Highlights period-over-period trends, flags variances, and suggests corrective action language — all ready for your review.",
+    body: "LCA Desk analyzes your expenditure, employment, and capacity data to draft the comparative analysis narrative required in every Half-Yearly Report. Highlights period-over-period trends, flags variances, and suggests corrective action language, all ready for your review.",
   },
   {
     icon: AlertTriangle,
@@ -299,7 +299,7 @@ export default function LCAReportingSoftwareContent({
 
       <CTABanner
         headline="See LCA Desk in action"
-        body="Book a demo and we'll show you how LCA Desk automates your entire compliance workflow — from data collection to Secretariat submission."
+        body="Book a demo and we'll show you how LCA Desk automates your entire compliance workflow, from data collection to Secretariat submission."
         primaryCTA={{ label: "Book a Demo", href: "/contact" }}
         secondaryCTA={{ label: "Full Platform Details", href: "/lcadesk" }}
       />

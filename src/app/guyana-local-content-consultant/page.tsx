@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: "Where is Stabroek Advisory located?",
     answer:
-      "Stabroek Advisory is headquartered in Houston, Texas — the center of the global oil and gas industry — with operational presence in Georgetown, Guyana. This dual presence allows us to serve clients where their corporate offices and operational headquarters are located while maintaining direct relationships with the Local Content Secretariat.",
+      "Stabroek Advisory is headquartered in Houston, Texas, the center of the global oil and gas industry, with operational presence in Georgetown, Guyana. This dual presence allows us to serve clients where their corporate offices and operational headquarters are located while maintaining direct relationships with the Local Content Secretariat.",
   },
   {
     question: "What services does a local content consultant provide?",

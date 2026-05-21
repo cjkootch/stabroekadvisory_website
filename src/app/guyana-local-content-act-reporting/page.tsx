@@ -4,7 +4,7 @@ import GuyanaLCAReportingContent from "./GuyanaLCAReportingContent";
 export const metadata: Metadata = {
   title: "Guyana Local Content Act Reporting Services | Stabroek Advisory",
   description:
-    "Expert Guyana Local Content Act reporting services. We handle all 5 mandatory LCA submissions — half-yearly reports, annual plans, performance reports, and master plans — so you stay compliant.",
+    "Expert Guyana Local Content Act reporting services. We handle all 5 mandatory LCA submissions, half-yearly reports, annual plans, performance reports, and master plans, so you stay compliant.",
   alternates: {
     canonical: "https://stabroekadvisory.com/guyana-local-content-act-reporting",
   },

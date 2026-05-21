@@ -64,10 +64,10 @@ export default function PrivacyPage() {
             <h2 className="font-display text-lg text-text-primary mb-3">4. Data Sharing and Disclosure</h2>
             <p className="mb-3">We do not sell your personal information. We may share your information with:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong className="text-text-primary">The Local Content Secretariat</strong> — only when submitting compliance reports on your behalf as part of our managed service, and only with your authorization</li>
-              <li><strong className="text-text-primary">Service providers</strong> — trusted third-party vendors who assist us in operating our business (hosting, payment processing, email delivery), bound by confidentiality obligations</li>
-              <li><strong className="text-text-primary">Legal authorities</strong> — when required by law, regulation, legal process, or governmental request</li>
-              <li><strong className="text-text-primary">Business transfers</strong> — in connection with a merger, acquisition, or sale of assets, with appropriate notice</li>
+              <li><strong className="text-text-primary">The Local Content Secretariat</strong>, only when submitting compliance reports on your behalf as part of our managed service, and only with your authorization</li>
+              <li><strong className="text-text-primary">Service providers</strong>, trusted third-party vendors who assist us in operating our business (hosting, payment processing, email delivery), bound by confidentiality obligations</li>
+              <li><strong className="text-text-primary">Legal authorities</strong>, when required by law, regulation, legal process, or governmental request</li>
+              <li><strong className="text-text-primary">Business transfers</strong>, in connection with a merger, acquisition, or sale of assets, with appropriate notice</li>
             </ul>
           </div>
 

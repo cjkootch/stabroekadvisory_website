@@ -30,7 +30,7 @@ const faqItems = [
   {
     question: "What is the difference between the Annual Plan and the Annual Performance Report?",
     answer:
-      "The Annual Local Content Plan is forward-looking — it sets targets for employment, procurement, and capacity building for the upcoming year. The Annual Performance Report is backward-looking — it measures actual performance against the prior year's plan, explains variances, and details corrective actions taken.",
+      "The Annual Local Content Plan is forward-looking, it sets targets for employment, procurement, and capacity building for the upcoming year. The Annual Performance Report is backward-looking, it measures actual performance against the prior year's plan, explains variances, and details corrective actions taken.",
   },
   {
     question: "What sub-plans are required in the Annual Local Content Plan?",

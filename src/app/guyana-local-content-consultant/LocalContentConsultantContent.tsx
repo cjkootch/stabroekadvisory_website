@@ -22,7 +22,7 @@ const services = [
   {
     icon: FileText,
     title: "LCA Report Preparation & Filing",
-    body: "We prepare and file all five mandatory LCA submissions — half-yearly reports, annual plans, performance reports, and master plans — ensuring accuracy and on-time delivery to the Secretariat.",
+    body: "We prepare and file all five mandatory LCA submissions, half-yearly reports, annual plans, performance reports, and master plans, ensuring accuracy and on-time delivery to the Secretariat.",
   },
   {
     icon: ShieldCheck,
@@ -42,18 +42,18 @@ const services = [
   {
     icon: Users,
     title: "Secretariat Liaison",
-    body: "We act as your interface with the Local Content Secretariat — handling queries, responding to information requests, and managing any enforcement correspondence on your behalf.",
+    body: "We act as your interface with the Local Content Secretariat, handling queries, responding to information requests, and managing any enforcement correspondence on your behalf.",
   },
   {
     icon: Scale,
     title: "Strategic Local Content Advisory",
-    body: "Beyond compliance, we help you develop a genuine local content strategy that creates business value — identifying local suppliers, building workforce pipelines, and strengthening your social license to operate.",
+    body: "Beyond compliance, we help you develop a genuine local content strategy that creates business value, identifying local suppliers, building workforce pipelines, and strengthening your social license to operate.",
   },
 ];
 
 const whyDedicated = [
   "The LCA has filing nuances that general compliance firms consistently miss",
-  "The Secretariat's expectations evolve — staying current requires dedicated attention",
+  "The Secretariat's expectations evolve, staying current requires dedicated attention",
   "Target-setting requires industry benchmarks that only come from deep sector experience",
   "Enforcement is increasing, with fines up to GY$50 million for non-compliance",
   "Narrative sections must demonstrate genuine commitment, not just checkbox compliance",
@@ -304,7 +304,7 @@ export default function LocalContentConsultantContent({
               purpose-built compliance platform we license for all managed clients. Your data lives in a structured
               system, reports are generated automatically, and our consultants
               review every filing before submission. It&apos;s the best of both
-              worlds — human expertise backed by software that eliminates manual
+              worlds, human expertise backed by software that eliminates manual
               work.
             </p>
             <Link

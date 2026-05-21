@@ -118,7 +118,7 @@ export default function LCAComplianceGuideContent() {
       <HeroSection
         eyebrow="The Definitive Resource"
         headline="Guyana LCA Compliance Guide"
-        sub="Everything contractors, subcontractors, and licensees need to know about the Local Content Act 2021 — filings, deadlines, penalties, and best practices for 2026."
+        sub="Everything contractors, subcontractors, and licensees need to know about the Local Content Act 2021, filings, deadlines, penalties, and best practices for 2026."
         geometricVariant="topology"
         primaryCTA={{ label: "Get Compliant with LCA Desk", href: "/lcadesk" }}
         secondaryCTA={{ label: "Talk to an Advisor", href: "/contact" }}

@@ -3,143 +3,159 @@
 import HeroSection from "@/components/HeroSection";
 import Ticker from "@/components/Ticker";
 import StatCard from "@/components/StatCard";
-import StepTimeline from "@/components/StepTimeline";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
 import GeometricBg from "@/components/GeometricBg";
+import Disclosure from "@/components/Disclosure";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  FileWarning,
-  LayoutGrid,
-  AlertOctagon,
-  Monitor,
-  ShieldCheck,
+  ClipboardCheck,
+  Target,
+  Repeat,
+  Building2,
+  MonitorSmartphone,
+  Ship,
+  ArrowRight,
+  Scale,
+  Users,
+  BookOpen,
+  Layers,
 } from "lucide-react";
 
-const problemCards = [
+const bidTiers = [
   {
-    icon: FileWarning,
-    title: "The Reporting Burden",
-    body: "The Local Content Act mandates 5 separate mandatory submissions per year — each with multi-tab Excel templates, narrative analysis reports, and strict deadlines. One missed filing means Secretariat follow-up. Repeated failures mean penalties.",
-    color: "border-l-orange-500",
-    iconBg: "bg-orange-100",
-    iconColor: "text-orange-600",
+    icon: ClipboardCheck,
+    tier: "Tier 1",
+    title: "Bid Readiness Review",
+    body: "Diagnostic and document preparation for a single bid. We make sure your submission is complete, compliant, and competitive before it goes in.",
+    price: "Starting at $2,500 per bid",
+    items: [
+      "Bid materials review",
+      "LCS standing verification",
+      "Technical and commercial response preparation",
+      "Quality check before submission",
+    ],
   },
   {
-    icon: LayoutGrid,
-    title: "The Complexity",
-    body: "40 reserved service categories. Employment data disaggregated by job title, nationality, and remuneration. Procurement spend by Guyanese vs non-Guyanese supplier. Capacity development tracked per activity. Every field maps to Section 12 of the Act.",
-    color: "border-l-amber-500",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-600",
+    icon: Target,
+    tier: "Tier 2",
+    badge: "MOST POPULAR",
+    title: "Bid Strategy and Pricing",
+    body: "A higher-value engagement for competitive opportunities. We model the field, price to win, and design a bid that competes on more than price alone.",
+    price: "Starting at $10,000 per bid",
+    items: [
+      "Opportunity analysis",
+      "Competing bid modeling",
+      "Pricing strategy with landed supply cost inputs",
+      "Bid design optimized to win beyond price",
+    ],
   },
   {
-    icon: AlertOctagon,
-    title: "The Risk",
-    body: "Non-compliance fines range from GY$1 million to GY$50 million. False or misleading submissions are a criminal offence. The Secretariat is actively auditing. Your local content score directly affects bid evaluation results.",
-    color: "border-l-red-500",
-    iconBg: "bg-red-100",
-    iconColor: "text-red-600",
+    icon: Repeat,
+    tier: "Tier 3",
+    title: "Full Bid Retainer",
+    body: "A monthly retainer for companies pursuing multiple bids. Continuous support across your pipeline, with execution-suite integration where it fits.",
+    price: "Starting at $4,500/month",
+    items: [
+      "Continuous bid support",
+      "Pipeline development",
+      "Operator relationship support",
+      "Preferred-supplier integration with VTC where it fits",
+    ],
   },
 ];
 
-const trustBadges = [
-  "FPSO Operators",
-  "Shore Base Companies",
-  "Drilling Contractors",
-  "Catering & Logistics",
-  "Engineering Firms",
-  "Marine Vessel Services",
-  "Manpower & Crewing",
-  "Environmental Services",
+const suiteBrands = [
+  {
+    icon: Building2,
+    name: "Stabroek Advisory",
+    role: "Bid services and local content advisory",
+    body: "The front door. Bid strategy, pricing analysis, and document preparation built for the realities of the Local Content Act.",
+    href: "/bid-services",
+    cta: "Explore bid services",
+    external: false,
+  },
+  {
+    icon: MonitorSmartphone,
+    name: "LCA Desk",
+    role: "AI-native compliance software",
+    body: "Compliance software that handles your Local Content Act filings automatically, so ongoing reporting never becomes a fire drill.",
+    href: "/lcadesk",
+    cta: "See LCA Desk",
+    external: false,
+  },
+  {
+    icon: Ship,
+    name: "Vector Trade Capital",
+    role: "Principal trade and supply execution",
+    body: "When supply execution is required, VTC can act as your principal trade partner, delivering commodities CIF Guyana on terms structured to your operator receivables.",
+    href: "https://vectortradecapital.com",
+    cta: "Visit vectortradecapital.com",
+    external: true,
+  },
+];
+
+const secondaryServices = [
+  {
+    icon: Scale,
+    title: "Local content advisory and compliance consulting",
+    body: "Standing guidance on Local Content Act obligations, registration, and reporting strategy for companies in the petroleum sector.",
+  },
+  {
+    icon: BookOpen,
+    title: "Bid post-mortems and capability development",
+    body: "Structured review of bids won and lost, with a development plan that makes your next submission stronger.",
+  },
+  {
+    icon: Users,
+    title: "Operator relationship support",
+    body: "Help building and maintaining the operator relationships that drive a credible, repeatable bid pipeline.",
+  },
+  {
+    icon: Layers,
+    title: "Managed services for ongoing LCA compliance",
+    body: "Hands-on management of your mandatory filings, and the bridge to running compliance on autopilot with LCA Desk.",
+  },
 ];
 
 const stats = [
-  { value: "1,300+", label: "Companies Required to File" },
-  { value: "5x", label: "Annual Mandatory Submissions" },
+  { value: "1,300+", label: "Companies on the Local Content Register" },
+  { value: "40", label: "Reserved Service Categories" },
   { value: "2+", label: "Billion in LCA Procurement to Date" },
-  { value: "20+", label: "New LCA Categories Being Added" },
   { value: "900K+", label: "Barrels Per Day (and growing)" },
-];
-
-const steps = [
-  {
-    title: "Onboard",
-    description:
-      "We collect your company details, contract references, co-venturer info, and reporting period parameters. Setup takes one working day.",
-  },
-  {
-    title: "Collect",
-    description:
-      "Before each deadline, we send you a structured data request. You provide your payroll export and procurement records. We know exactly what we need.",
-  },
-  {
-    title: "Prepare",
-    description:
-      "We build your Half-Yearly Expenditure Report, Employment Sub-Report, Capacity Development Sub-Report, and Comparative Analysis Narrative — all in the official Secretariat Excel and PDF formats.",
-  },
-  {
-    title: "Submit",
-    description:
-      "We file to localcontent@nre.gov.gy with the correct subject line format, track acknowledgement of receipt, and handle any Secretariat information requests.",
-  },
-];
-
-const calendarItems = [
-  { date: "ONGOING", label: "Master Plan — within 4 months of new contract" },
-  { date: "DEC-NOV", label: "Annual Plan — 60 days before January 1" },
-  { date: "JUL 30", label: "H1 Half-Yearly Report — January to June period" },
-  { date: "JAN 30", label: "H2 Half-Yearly Report — July to December period" },
-  {
-    date: "FEB 14",
-    label: "Annual Performance Report — 45 days after year end",
-  },
 ];
 
 const faqItems = [
   {
-    question: "Who is required to file LCA half-yearly reports?",
+    question: "What does Stabroek Advisory actually do?",
     answer:
-      "Every contractor, sub-contractor, and licensee operating under a petroleum agreement in Guyana is required to file half-yearly reports with the Local Content Secretariat. This applies to all companies registered on the Local Content Register, regardless of size or nationality.",
+      "We help LCA-registered Guyanese companies win local content bids in the petroleum sector. We provide bid strategy, pricing analysis, and document preparation. We are paid for that expertise whether you win or lose. We are professional services, not a contingent arrangement.",
   },
   {
-    question: "What are the penalties for non-compliance?",
+    question: "Who is the bidder in an engagement with Stabroek?",
     answer:
-      "Non-compliance penalties range from GY$1 million to GY$50 million per offence under the Local Content Act. False or misleading submissions are a criminal offence. The Secretariat is actively auditing filed reports and following up on late or missing submissions.",
+      "You are. The Guyanese company is always the principal bidder, the contracting party, and the holder of the operator relationship. Stabroek is the infrastructure behind your bid. We never step in front of you as the bidder.",
   },
   {
-    question: "What is the deadline for the H1 and H2 half-yearly reports?",
+    question: "How does the execution suite work?",
     answer:
-      "The H1 Half-Yearly Report (covering January to June) is due by July 30. The H2 Half-Yearly Report (covering July to December) is due by January 30. Deadlines falling on weekends extend to the next business day.",
+      "Stabroek Advisory is the front door to a coordinated execution suite: Stabroek for bid services and advisory, the LCA Desk compliance platform that Stabroek is licensed to resell and implement, and Vector Trade Capital, our affiliate under common ownership, for principal trade and supply execution. You can engage Stabroek alone, or use the suite together. Each engagement is independent and at arm's length.",
   },
   {
-    question: "What data do I need to provide for the managed service?",
+    question: "What is the relationship between Stabroek and Vector Trade Capital?",
     answer:
-      "You provide your payroll export (employee names, job titles, nationalities, remuneration) and procurement records (supplier names, amounts, categories, Guyanese/non-Guyanese status). We handle all data entry, narrative writing, and submission formatting.",
+      "Stabroek Advisory LLC and Vector Trade Capital LLC are affiliated entities under common ownership. When a Stabroek advisory engagement leads to trade execution work performed by VTC, Stabroek may receive a referral fee from VTC. You retain full discretion in selecting trade execution partners and are under no obligation to use VTC.",
   },
   {
-    question:
-      "Does my company need to be registered on the Local Content Register?",
+    question: "Do I have to use Vector Trade Capital if I work with Stabroek?",
     answer:
-      "Yes. Under Section 15 of the Local Content Act, every contractor, sub-contractor, and licensee must be registered on the Local Content Register maintained by the Secretariat. Registration is a prerequisite for operating in Guyana's petroleum sector.",
+      "No. VTC is one option for supply execution when a bid you win requires delivered commodities. You choose your own trade counterparties. The affiliation is disclosed openly because it is a feature, not a hidden arrangement.",
   },
   {
-    question:
-      "What is the difference between LCA Desk and the managed service?",
+    question: "What does bid pricing include?",
     answer:
-      "LCA Desk is a self-serve compliance platform — you enter your own data and generate submission-ready reports. Stabroek Advisory's managed service means we handle everything using LCA Desk on your behalf: data collection, entry, narrative writing, quality review, and submission to the Secretariat.",
-  },
-  {
-    question: "Can you help with the Comparative Analysis narrative sections?",
-    answer:
-      "Yes. LCA Desk includes AI-powered Comparative Analysis Narrative drafting, and our managed service team uses the platform to prepare this section on your behalf. The narrative explains variances between planned and actual local content performance across expenditure, employment, and capacity development.",
-  },
-  {
-    question:
-      "Do you serve companies in Suriname, Trinidad, or other Caribbean jurisdictions?",
-    answer:
-      "Currently, our compliance software and managed services are built specifically for Guyana's Local Content Act. We are monitoring local content legislation developments in Suriname and Trinidad and may expand coverage as those frameworks mature.",
+      "All bid services use Starting at pricing. Exact pricing is set per engagement once we understand the bid, the timeline, and the scope of support you need. Tier 1 starts at $2,500 per bid, Tier 2 at $10,000 per bid, and the Full Bid Retainer at $4,500 per month.",
   },
 ];
 
@@ -165,10 +181,10 @@ export default function HomePage() {
       />
       {/* Hero */}
       <HeroSection
-        eyebrow="LOCAL CONTENT ACT COMPLIANCE · GUYANA OIL SECTOR"
-        headline="Local Content Compliance, Built for Guyana's Oil Sector."
-        sub="Stabroek Advisory provides compliance technology and managed reporting services for contractors, subcontractors, and licensees operating under Guyana's Local Content Act."
-        primaryCTA={{ label: "Explore LCA Desk", href: "/lcadesk" }}
+        eyebrow="BID SERVICES · GUYANA PETROLEUM SECTOR"
+        headline="Win local content bids in Guyana's petroleum sector."
+        sub="Stabroek Advisory helps LCA-registered Guyanese companies win bids in the petroleum sector. We bring bid strategy, pricing analysis, and document preparation honed for the realities of the Local Content Act. When you win, our execution suite delivers."
+        primaryCTA={{ label: "Explore Bid Services", href: "/bid-services" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
         geometricVariant="topology"
         fullHeight
@@ -181,10 +197,20 @@ export default function HomePage() {
       <section className="py-16 px-6">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted mb-8">
-            Serving operators across Guyana&apos;s petroleum sector
+            Built for LCA-registered companies bidding across Guyana&apos;s
+            petroleum sector
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {trustBadges.map((b, i) => (
+            {[
+              "Shore Base Companies",
+              "Drilling Support",
+              "Catering & Logistics",
+              "Engineering Firms",
+              "Marine Vessel Services",
+              "Manpower & Crewing",
+              "Fuel & Supply",
+              "Environmental Services",
+            ].map((b, i) => (
               <motion.span
                 key={b}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -201,160 +227,157 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Problem Section */}
+      {/* Bid Services Tiers */}
       <section className="py-20 px-6 bg-surface">
         <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12 max-w-3xl mx-auto">
-            Every company in Guyana&apos;s oil sector has a compliance
-            obligation. Most are unprepared.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {problemCards.map((card, i) => (
+          <div className="text-center mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">
+              Primary Service
+            </p>
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              Bid services, structured to how you compete.
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Stabroek is paid for its expertise, win or lose. You are always the
+              principal bidder. We are the infrastructure behind your bid.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {bidTiers.map((t, i) => (
               <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 12 }}
+                key={t.title}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
-                className={`bg-card border border-border rounded-xl p-6 border-l-4 shadow-sm ${card.color} group transition-all`}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,168,122,0.12)" }}
+                className={`bg-card border rounded-xl p-6 flex flex-col shadow-sm relative overflow-hidden ${
+                  t.badge ? "border-accent" : "border-border"
+                }`}
               >
-                <div className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center mb-4`}>
-                  <card.icon size={20} className={card.iconColor} />
+                {t.badge && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-teal to-accent-hover" />
+                )}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-teal/10 flex items-center justify-center">
+                    <t.icon size={20} className="text-accent" />
+                  </div>
+                  {t.badge ? (
+                    <span className="text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-accent to-teal text-white px-2.5 py-1 rounded-full">
+                      {t.badge}
+                    </span>
+                  ) : (
+                    <span className="text-xs font-medium uppercase tracking-wider text-text-muted">
+                      {t.tier}
+                    </span>
+                  )}
                 </div>
-                <h3 className="font-display text-lg text-text-primary mb-3 group-hover:text-text-primary transition-colors">
-                  {card.title}
+                <h3 className="font-display text-lg text-text-primary mb-2">
+                  {t.title}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  {card.body}
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                  {t.body}
                 </p>
+                <ul className="text-sm text-text-secondary space-y-1.5 mb-4 flex-1">
+                  {t.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-accent mt-0.5 font-bold">&#10003;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm font-semibold text-accent mb-4">{t.price}</p>
+                <Link
+                  href="/bid-services"
+                  className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent-hover transition-colors font-medium group/link"
+                >
+                  Tier details
+                  <span className="group-hover/link:translate-x-1 transition-transform">
+                    &rarr;
+                  </span>
+                </Link>
               </motion.div>
             ))}
           </div>
+          <p className="text-xs text-text-muted text-center mt-8">
+            All bid services use Starting at pricing. Exact pricing is set per
+            engagement.
+          </p>
         </div>
       </section>
 
-      {/* Solution Section */}
+      {/* Execution Suite */}
       <section className="py-20 px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12">
-            Two ways to stay compliant. Zero room for error.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Track 1 — Software */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -4,
-                boxShadow: "0 0 20px rgba(0,200,150,0.12)",
-              }}
-              className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
-            >
-              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 p-5">
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-accent to-teal text-white px-3 py-1 rounded-md mb-3 inline-block">
-                  Software
-                </span>
-                {/* Mini dashboard mockup */}
-                <div className="space-y-3 mt-3">
-                  {[
-                    { label: "H1 Report", pct: 85, status: "Ready", barColor: "bg-emerald-500" },
-                    { label: "Annual Plan", pct: 60, status: "In Progress", barColor: "bg-amber-400" },
-                    { label: "Master Plan", pct: 100, status: "Submitted", barColor: "bg-blue-500" },
-                  ].map((r) => (
-                    <div key={r.label} className="flex items-center gap-3 bg-white/80 rounded-lg px-3 py-2 border border-white">
-                      <span className="text-[10px] text-text-secondary font-medium w-16 flex-shrink-0">{r.label}</span>
-                      <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <div className={`h-full ${r.barColor} rounded-full transition-all`} style={{ width: `${r.pct}%` }} />
-                      </div>
-                      <span className={`text-[9px] font-medium px-2 py-0.5 rounded-full ${
-                        r.status === "Ready" ? "bg-emerald-100 text-emerald-700" :
-                        r.status === "Submitted" ? "bg-blue-100 text-blue-700" :
-                        "bg-amber-100 text-amber-700"
-                      }`}>{r.status}</span>
-                    </div>
-                  ))}
+          <div className="text-center mb-12">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">
+              The Execution Suite
+            </p>
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              One front door. A full execution suite.
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Engage Stabroek alone, or use the full suite. Our bid advisory,
+              trade execution through our affiliate Vector Trade Capital, and
+              compliance automation on the LCA Desk platform we implement, each
+              engaged independently and at arm&apos;s length. Use the suite
+              together, or use Stabroek alone. We work the way you need us to.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {suiteBrands.map((b, i) => (
+              <motion.div
+                key={b.name}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-card border border-border rounded-xl p-6 flex flex-col shadow-sm"
+              >
+                <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                  <b.icon size={20} className="text-accent" />
                 </div>
-              </div>
-              <div className="p-8 pt-4">
-                <h3 className="font-display text-xl text-text-primary mb-3">
-                  LCA Desk — Compliance Platform
+                <h3 className="font-display text-lg text-text-primary mb-1">
+                  {b.name}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                  Subscribe directly or get access through our managed service.
-                  Enter your data, generate submission-ready reports in the
-                  official Secretariat format. Built on the Version 4.1 guidelines.
-                  Covers all 5 mandatory submission types.
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-3">
+                  {b.role}
                 </p>
-                <p className="text-sm font-medium text-gold mb-4">From $149/month</p>
-                <Link
-                  href="/lcadesk"
-                  className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
-                >
-                  Explore LCA Desk &rarr;
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Track 2 — Managed Service */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -4,
-                boxShadow: "0 0 20px rgba(0,200,150,0.12)",
-              }}
-              className="bg-card border border-border rounded-lg overflow-hidden shadow-sm"
+                <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">
+                  {b.body}
+                </p>
+                {b.external ? (
+                  <a
+                    href={b.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent-hover transition-colors font-medium"
+                  >
+                    {b.cta}
+                    <ArrowRight size={14} />
+                  </a>
+                ) : (
+                  <Link
+                    href={b.href}
+                    className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent-hover transition-colors font-medium group/link"
+                  >
+                    {b.cta}
+                    <span className="group-hover/link:translate-x-1 transition-transform">
+                      &rarr;
+                    </span>
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/execution-suite"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-accent/30 text-accent px-6 py-3 text-sm font-medium hover:bg-accent/5 hover:border-accent transition-all"
             >
-              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 p-5">
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-md mb-3 inline-block">
-                  Full Service
-                </span>
-                {/* Service checklist mockup */}
-                <div className="space-y-2.5 mt-3">
-                  {[
-                    { label: "Data collection", done: true },
-                    { label: "Report preparation", done: true },
-                    { label: "Narrative drafting", done: true },
-                    { label: "Quality review", done: false },
-                    { label: "Secretariat submission", done: false },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-center gap-2.5 bg-white/80 rounded-lg px-3 py-1.5 border border-white">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] flex-shrink-0 ${
-                        item.done ? "bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-sm" : "border-2 border-gray-200"
-                      }`}>
-                        {item.done && <>&#10003;</>}
-                      </div>
-                      <span className={`text-[11px] font-medium ${item.done ? "text-text-primary" : "text-text-muted"}`}>
-                        {item.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="p-8 pt-4">
-                <h3 className="font-display text-xl text-text-primary mb-3">
-                  Managed Compliance Reporting
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                  Send us your payroll and procurement data each period. We handle
-                  everything — data collection, entry, narrative writing, quality
-                  review, submission to the Secretariat, and any follow-up requests.
-                  You stay compliant. We do the work.
-                </p>
-                <p className="text-sm font-medium text-gold mb-4">
-                  From $2,500/month
-                </p>
-                <Link
-                  href="/services"
-                  className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
-                >
-                  Learn More &rarr;
-                </Link>
-              </div>
-            </motion.div>
+              See how the suite works
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
@@ -362,149 +385,70 @@ export default function HomePage() {
       {/* Stats */}
       <section className="relative py-20 px-6 overflow-hidden bg-emerald-950">
         <GeometricBg variant="hexagons" />
-        <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="relative mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <StatCard key={s.label} value={s.value} label={s.label} lightOnDark />
           ))}
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-14">
-            We handle your LCA compliance. End to end.
-          </h2>
-          <StepTimeline steps={steps} />
-        </div>
-      </section>
-
-      {/* Compliance Calendar */}
+      {/* Secondary Services */}
       <section className="py-20 px-6 bg-surface">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl text-text-primary text-center mb-12">
-            Five mandatory submissions. Every year. Every company.
-          </h2>
-          <div className="space-y-3">
-            {calendarItems.map((item, i) => (
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-3">
+              Supporting Services
+            </p>
+            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+              Everything that keeps your bid pipeline strong.
+            </h2>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              Bid services come first. These offerings support them, before and
+              after you submit.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {secondaryServices.map((s, i) => (
               <motion.div
-                key={item.date}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                whileHover={{ x: 4 }}
-                className="flex items-center gap-4 bg-card border border-border rounded-lg px-5 py-3.5 hover:border-accent/30 hover:shadow-sm transition-all group"
+                key={s.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.05 }}
+                className="bg-card border border-border rounded-lg p-6 flex gap-4"
               >
-                <span className="flex-shrink-0 bg-gradient-to-r from-accent to-teal text-white text-xs font-bold px-3.5 py-1.5 rounded-md min-w-[80px] text-center">
-                  {item.date}
-                </span>
-                <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{item.label}</p>
+                <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <s.icon size={20} className="text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-display text-base text-text-primary mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {s.body}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
-          {/* Semantic HTML table for AI/screen reader parsing */}
-          <div className="mt-12 overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="bg-accent/5">
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Report Type</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Period Covered</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Deadline</th>
-                  <th className="text-left px-4 py-3 font-medium text-text-primary border border-border">Submitted To</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: "H1 Half-Yearly Report", period: "January 1 – June 30", deadline: "July 30", to: "localcontent@nre.gov.gy" },
-                  { type: "H2 Half-Yearly Report", period: "July 1 – December 31", deadline: "January 30", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Local Content Plan", period: "Forward 12-month projection", deadline: "60 days before January 1", to: "localcontent@nre.gov.gy" },
-                  { type: "Local Content Master Plan", period: "5-year forward projection", deadline: "Within 4 months of new contract", to: "localcontent@nre.gov.gy" },
-                  { type: "Annual Performance Report", period: "Prior calendar year", deadline: "45 days after December 31", to: "localcontent@nre.gov.gy" },
-                ].map((row, i) => (
-                  <tr key={row.type} className={i % 2 === 1 ? "bg-surface" : ""}>
-                    <td className="px-4 py-3 text-text-primary font-medium border border-border">{row.type}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.period}</td>
-                    <td className="px-4 py-3 text-accent font-medium border border-border">{row.deadline}</td>
-                    <td className="px-4 py-3 text-text-secondary border border-border">{row.to}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="text-center mt-10">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent-hover transition-colors font-medium group/link"
+            >
+              See all advisory and compliance services
+              <span className="group-hover/link:translate-x-1 transition-transform">
+                &rarr;
+              </span>
+            </Link>
           </div>
-          <p className="text-xs text-text-muted mt-6 text-center">
-            Deadlines falling on weekends extend to the next business day. Late
-            submissions trigger Secretariat review.
-          </p>
         </div>
       </section>
 
-      {/* US Market Entry — with photo */}
+      {/* Disclosure */}
       <section className="py-20 px-6">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-4">
-              US Market Entry Advisory
-            </p>
-            <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-6">
-              Guyanese oil sector companies need US suppliers. We&apos;re already
-              there.
-            </h2>
-            <p className="text-sm text-text-secondary leading-relaxed mb-6">
-              Based in Houston, Texas — the center of the global energy industry
-              — Stabroek Advisory connects Guyanese contractors and
-              subcontractors to American suppliers, freight operators, and trade
-              financing. We source goods, manage export documentation, and
-              provide US market entry advisory for companies scaling their
-              operations.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-2.5 text-sm text-white font-medium hover:bg-accent-hover transition-colors"
-            >
-              Talk to Our Houston Team &rarr;
-            </Link>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-card border border-border rounded-lg p-6 shadow-sm"
-          >
-            {/* Trade route visualization */}
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Houston — Georgetown</p>
-              <span className="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded">Direct Route</span>
-            </div>
-            <div className="relative h-32 mb-6">
-              <svg viewBox="0 0 400 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                {/* Connection arc */}
-                <path d="M60 60 Q200 10 340 60" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-                {/* Houston node */}
-                <circle cx="60" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
-                <circle cx="60" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
-                <text x="60" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Houston, TX</text>
-                {/* Georgetown node */}
-                <circle cx="340" cy="60" r="20" fill="var(--color-accent)" opacity="0.08" />
-                <circle cx="340" cy="60" r="6" fill="var(--color-accent)" opacity="0.3" />
-                <text x="340" y="95" textAnchor="middle" className="text-[10px] fill-text-muted">Georgetown, GY</text>
-                {/* Flight indicator */}
-                <text x="200" y="30" textAnchor="middle" className="text-[9px] fill-accent">5hr direct</text>
-              </svg>
-            </div>
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { label: "Same Timezone", val: "EST" },
-                { label: "Supplier Network", val: "Gulf Coast" },
-                { label: "Trade Finance", val: "EXIM Bank" },
-              ].map((s) => (
-                <div key={s.label} className="bg-surface rounded-lg px-3 py-2 border border-border text-center">
-                  <p className="text-[10px] text-text-muted">{s.label}</p>
-                  <p className="text-xs font-medium text-text-primary">{s.val}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        <div className="mx-auto max-w-3xl">
+          <Disclosure />
         </div>
       </section>
 
@@ -520,9 +464,9 @@ export default function HomePage() {
 
       {/* CTA Banner */}
       <CTABanner
-        headline="Your next LCA filing deadline is closer than you think."
-        body="H1 reports are due July 30. H2 reports are due January 30. Don't leave compliance to the last minute."
-        primaryCTA={{ label: "Start with LCA Desk", href: "/lcadesk" }}
+        headline="Bidding on a petroleum sector contract? Let's make it win."
+        body="Bring us the opportunity. We will assess your bid readiness and map the support you need within one business day."
+        primaryCTA={{ label: "Explore Bid Services", href: "/bid-services" }}
         secondaryCTA={{ label: "Book a Consultation", href: "/contact" }}
       />
     </>

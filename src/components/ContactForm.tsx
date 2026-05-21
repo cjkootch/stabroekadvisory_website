@@ -3,21 +3,22 @@
 import { useState, FormEvent } from "react";
 
 const companyTypes = [
+  "LCA-Registered Guyanese Company",
   "Contractor",
   "Sub-Contractor",
   "Licensee",
   "Guyanese Supplier",
-  "International Company",
   "Other",
 ];
 
 const serviceInterests = [
-  "LCA Half-Yearly Report",
-  "Annual Local Content Plan",
-  "Master Plan",
-  "Monthly Retainer",
+  "Bid Readiness Review (Tier 1)",
+  "Bid Strategy and Pricing (Tier 2)",
+  "Full Bid Retainer (Tier 3)",
+  "Local Content Advisory",
+  "Managed LCA Compliance",
   "LCA Desk Software",
-  "US Market Entry Advisory",
+  "Trade Execution (Vector Trade Capital)",
   "General Inquiry",
 ];
 
@@ -125,7 +126,7 @@ export default function ContactForm() {
           name="message"
           rows={4}
           className="w-full rounded-md bg-card border border-border px-4 py-2.5 text-sm text-text-primary focus:border-accent focus:outline-none resize-none"
-          placeholder="Tell us about your compliance needs..."
+          placeholder="Tell us about the bid you are chasing, or the support you need..."
         />
       </div>
 
