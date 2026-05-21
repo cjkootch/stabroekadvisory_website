@@ -6,10 +6,11 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { href: "/services", label: "Services" },
+  { href: "/bid-services", label: "Bid Services" },
+  { href: "/execution-suite", label: "Execution Suite" },
   { href: "/lcadesk", label: "LCA Desk" },
+  { href: "/services", label: "Advisory" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

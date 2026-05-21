@@ -1,39 +1,44 @@
 import Link from "next/link";
+import Disclosure from "./Disclosure";
 
 const columns = [
   {
-    title: "Company",
+    title: "Bid Services",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Book a Call", href: "/contact" },
+      { label: "Bid Readiness Review", href: "/bid-services" },
+      { label: "Bid Strategy and Pricing", href: "/bid-services" },
+      { label: "Full Bid Retainer", href: "/bid-services" },
+      { label: "Book a Consultation", href: "/contact" },
     ],
   },
   {
-    title: "Services",
+    title: "Execution Suite",
     links: [
-      { label: "Half-Yearly Reports", href: "/services" },
-      { label: "Annual Plans", href: "/services" },
-      { label: "Master Plans", href: "/services" },
-      { label: "Monthly Retainer", href: "/services" },
-      { label: "US Market Entry", href: "/services" },
-    ],
-  },
-  {
-    title: "Software",
-    links: [
+      { label: "How We Work", href: "/execution-suite" },
       { label: "LCA Desk", href: "/lcadesk" },
-      { label: "Pricing", href: "/lcadesk#pricing" },
-      { label: "Request a Demo", href: "/contact" },
+      {
+        label: "Vector Trade Capital",
+        href: "https://vectortradecapital.com",
+        external: true,
+      },
+    ],
+  },
+  {
+    title: "Advisory",
+    links: [
+      { label: "Local Content Advisory", href: "/services" },
+      { label: "Bid Post-Mortems", href: "/services" },
+      { label: "Operator Relationship Support", href: "/services" },
+      { label: "Managed LCA Compliance", href: "/services" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "All Resources", href: "/resources" },
+      { label: "About", href: "/about" },
       { label: "Blog", href: "/blog" },
+      { label: "All Resources", href: "/resources" },
       { label: "LCA Filing Calendar", href: "/lca-filing-calendar" },
-      { label: "LCA Act Overview", href: "/lca-act-overview" },
     ],
   },
 ];
@@ -54,7 +59,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Compliance technology and advisory services for Guyana&apos;s oil and gas sector.
+              Bid services and local content advisory for LCA-registered Guyanese
+              companies competing in the petroleum sector.
             </p>
             <div className="flex gap-4 mt-4">
               <a
@@ -87,18 +93,34 @@ export default function Footer() {
                 <ul className="space-y-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-text-secondary hover:text-accent transition-colors"
-                      >
-                        {link.label}
-                      </Link>
+                      {"external" in link && link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-text-secondary hover:text-accent transition-colors"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-text-secondary hover:text-accent transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Affiliated-party disclosure */}
+        <div className="border-t border-border pt-8 mb-8">
+          <Disclosure variant="compact" className="max-w-3xl mx-auto text-center" />
         </div>
 
         {/* Bottom */}
